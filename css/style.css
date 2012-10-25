@@ -39,7 +39,8 @@ body {
 /** layout **/
 #wrapper {
 	margin: 37px auto;
-	width: 672px;
+	/*width: 672px; */
+        width: 760px;
 	position: inherit;
 	background-color: #999;
 }
