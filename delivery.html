@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>Fashion Hut</title>
+	<link rel="stylesheet" href="style.css" type="text/css" charset="utf-8" />
+	
+<style type="text/css">
+<!--
+body,td,th {
+	color: #000;
+}
+body {
+	background-color: #CF9;
+	background-image: url(images/backg.jpg);
+	background-repeat: no-repeat;
+}
+-->
+</style>
+<script type="text/javascript">
+function newPage()
+{	
+	if(getCheckedValue(document.forms['custom'].elements['rdDesign'])==0)
+	{
+	var pageURL="invoice.html";
+	var left = (screen.width/2)-(400/2);
+	var top = (screen.height/2)-(400/2);
+	var targetWin = window.open (pageURL,'height=770,width=810,toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, top='+top+', left='+left);
+	}
+	else
+	{
+	var pageURL="register.html";
+	var left = (screen.width/2)-(400/2);
+	var top = (screen.height/2)-(400/2);
+	var targetWin = window.open (pageURL,'height=770,width=810,toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, top='+top+', left='+left);
+	}
+}
+function getCheckedValue(radioObj) {
+	if(!radioObj)
+		return "";
+	var radioLength = radioObj.length;
+	if(radioLength == undefined)
+		if(radioObj.checked)
+			return radioObj.value;
+		else
+			return "";
+	for(var i = 0; i < radioLength; i++) {
+		if(radioObj[i].checked) {
+			return radioObj[i].value;
+		}
+	}
+	return "";
+}
+</script>
+
+</head>
+
+<body>
+<form name="custom" method="post" action="delivery.html">
+  <div id="wrapper">
+    
+    <div id="header">
+      <div id="logo">
+        <h1>Custom myShirt</h1>
+      </div>
+      <div id="nav">
+        <ul>
+          <li><a href="">MEN</a> | </li>
+          <li><a href="">WOMEN</a> | </li>
+          <li><a href="">GIRLS</a> | </li>
+          <li><a href="">BOYS</a> | </li>
+          <li><a href="">ACCESSORIES</a> | </li>
+          <li><a href="">CONTACT US</a></li>
+        </ul>
+      </div>
+      <div id="gallery">
+        <ul>
+          <li class="gwomen"><a href="">Women</a></li>
+          <li class="gkids"><a href="">Kids</a></li>
+          <li class="gmen"><a href="">Men</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="copyright">
+      <div>Delivery Information</div>
+      <div><br />
+      These are item(s) in the cart      </div>
+      <table width="200" border="1" align="center">
+        <tr>
+          <td>Title</td>
+          <td>Design of Shirt</td>
+          <td>Type of Shirt</td>
+          <td>Add-Ons</td>
+          <td>Quantity</td>
+          <td>Price</td>
+        </tr>
+        <tr>
+          <td>
+            <p>
+            Product Description</p>
+          </form></td>
+          <td><img src="images/Corporate Tshirt1.jpg" alt="" width="271" height="183" /></td>
+          <td>Cotton</td>
+          <td>Shirt with word</td>
+          <td>10 pcs</td>
+          <td>RM280</td>
+        </tr>
+      </table>
+      <p> Billing/shipping information</p>
+     
+        <p>
+          <input type="radio" name="rdDesign" id="return" value="0" />
+        Returning Customer   
+        <input type="radio" name="rdDesign" id="new" value="1" />
+        New Customer 
+      
+        <p>
+         <input type="button" value="Proceed" onclick="newPage()"/>
+        </p>
+          
+       
+      </form>
+      <p><br />
+      Copyright &copy; 2012. Bancho Group Sdn.Bhd</p>
+    </div>
+  </div>
+</body>
+</html>

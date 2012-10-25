@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>Fashion Hut</title>
+	<link rel="stylesheet" href="style.css" type="text/css" charset="utf-8" />
+	
+<style type="text/css">
+<!--
+body,td,th {
+	color: #000;
+	font-size: 12px;
+}
+body {
+	background-color: #CF9;
+	background-image: url(images/backg.jpg);
+	background-repeat: no-repeat;
+}
+-->
+</style>
+<script type="text/javascript">
+function newPage()
+{	
+	if(getCheckedValue(document.forms['custom'].elements['rdDesign'])==0)
+	{
+	var pageURL="customeDesign.html";
+	var left = (screen.width/2)-(400/2);
+	var top = (screen.height/2)-(400/2);
+	var targetWin = window.open (pageURL,'height=770,width=810,toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, top='+top+', left='+left);
+	}
+	else
+	{
+	var pageURL="templateDesign.html";
+	var left = (screen.width/2)-(400/2);
+	var top = (screen.height/2)-(400/2);
+	var targetWin = window.open (pageURL,'height=770,width=810,toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, top='+top+', left='+left);
+	}
+}
+function getCheckedValue(radioObj) {
+	if(!radioObj)
+		return "";
+	var radioLength = radioObj.length;
+	if(radioLength == undefined)
+		if(radioObj.checked)
+			return radioObj.value;
+		else
+			return "";
+	for(var i = 0; i < radioLength; i++) {
+		if(radioObj[i].checked) {
+			return radioObj[i].value;
+		}
+	}
+	return "";
+}
+</script>
+</head>
+
+<body>
+<form name="custom" method="post" action="custom.html">
+  <div id="wrapper">
+    
+    <div id="header">
+      <div id="logo">
+        <h1>Custom myShirt</h1>
+      </div>
+      <div id="nav">
+        <ul>
+          <li><a href="http://www.freewebsitetemplates.com">MEN</a> | </li>
+          <li><a href="http://www.freewebsitetemplates.com">WOMEN</a> | </li>
+          <li><a href="http://www.freewebsitetemplates.com">GIRLS</a> | </li>
+          <li><a href="http://www.freewebsitetemplates.com">BOYS</a> | </li>
+          <li><a href="http://www.freewebsitetemplates.com">ACCESSORIES</a> | </li>
+          <li><a href="http://www.freewebsitetemplates.com">CONTACT US</a></li>
+        </ul>
+      </div>
+      <div id="gallery">
+        <ul>
+          <li class="gwomen"><a href="http://www.freewebsitetemplates.com">Women</a></li>
+          <li class="gkids"><a href="http://www.freewebsitetemplates.com">Kids</a></li>
+          <li class="gmen"><a href="http://www.freewebsitetemplates.com">Men</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="body">
+      <div class="clear"> </div>
+      
+    </div>
+    <div id="copyright">
+      <p>&nbsp;</p>
+      <table width="200" border="0" align="center">
+        <tr>
+          <td>Choose your own fabrics</td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="rdFabrics" id="radio" value="radio" />
+Tetra Cotton (TC 26)</td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="rdFabrics" id="radio2" value="radio2"  />
+Cotton 100%</td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="rdFabrics" id="radio3" value="radio3" />
+          CVC/PK/Lacoste</td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="rdFabrics" id="radio4" value="radio4" />
+          Micro Fibre</td>
+        </tr>
+      </table>
+      <br />
+      <table width="200" border="0" align="center">
+        <tr>
+          <td>Choose your design</td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="rdDesign" id="rdDesign0" value="0" />
+          Design your own shirt</td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="rdDesign" id="rdDesign1" value="1" />
+          Design from template</td>
+        </tr>
+      </table>
+        <p>
+          <input type="button" value="Proceed" onclick="newPage()"/>
+        </p>
+      <p>&nbsp;</p>
+      <p>Copyright &copy; 2012. Bancho Group Sdn.Bhd</p>
+    </div>
+  </div>
+</body>
+</html>
