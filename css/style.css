@@ -59,9 +59,9 @@ body {
 }
 
 #logo {
-	position: absolute;
+	position: relative;
 	top: 54px;
-	left: 505px;
+	left: 385px;
 	width: 373px;
 	color: #52616E;
 	text-align: left;
@@ -104,9 +104,9 @@ body {
 
 #nav {
 	background: #4B5360;
-	position: absolute;
-	top: 140px;
-	left: 493px;
+	position: relative;
+	top: 55px;
+	left: 325px;
 	width: 385px;
 	padding: 9px 0;
 	text-align: center;
@@ -123,10 +123,10 @@ body {
 	font-size: 10px;
 }
 #gallery {
-	position: absolute;
-	top: 187px;
-	left: 488px;
-	width: 385px;
+	position: relative;
+	top: 60px;
+	left: 325px;
+	width: 386px;
 }
 #gallery li {
   list-style: none;
