@@ -376,3 +376,29 @@ table
 { text-align: center;
   font-size: 10px;
 }
+
+/* this part is for catalog css */
+#catalog
+{ width: 450px;
+}
+
+#contentholder
+{ margin: 0px;
+  padding: 0;
+}
+
+#contentholder li
+{ float: left;
+  margin-bottom: 3px;
+}
+
+#contentholder li div
+{ width: 150px;
+  border: 1px solid;
+  background-color: #fff
+}
+
+#harga
+{ margin-bottom: 30px;
+  text-align: center;
+}
