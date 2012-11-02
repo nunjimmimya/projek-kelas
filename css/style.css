@@ -379,17 +379,19 @@ table
 
 /* this part is for catalog css */
 #catalog
-{ width: 450px;
+{ float: right;
+  width: 550px;  
+  background: #D4CAB6;
 }
 
 #contentholder
-{ margin: 0px;
+{ margin: auto;
   padding: 0;
 }
 
 #contentholder li
 { float: left;
-  margin-bottom: 3px;
+  margin: 3px;
 }
 
 #contentholder li div
