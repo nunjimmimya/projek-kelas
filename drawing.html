@@ -203,7 +203,7 @@
   strip_html += "<ul class=\"sel_strip\"><li id=\"nostrip\" class=\"selected\"><img src=\"img\/rainmaker_1panel.jpg\" width=\"200\"><span>No Strip<\/span><\/li><li id=\"doublestrip\"><img src=\"img\/rainmaker_1panel_doublestrip.jpg\" width=\"200\"><span>Double Strip (+RM 40)<\/span><\/li><li id=\"leftstrip\"><img src=\"img\/rainmaker_1panel_leftstrip.jpg\" width=\"200\"><span>Left Strip (+RM 20)<\/span><\/li><li id=\"rightstrip\"><img src=\"img\/rainmaker_1panel_rightstrip.jpg\" width=\"200\"><span>Right Strip (+RM 20)<\/span><\/li><\/ul>";
 
   var panel_html="";
-  panel_html += "<h3><a href=\"javascript:void(0)\">Panel 4<img height=\"15\" width=\"15\" id=\"panel3_box\" src=\"opt_img\/sel_white.png\" style=\"float: right\"><\/a><\/h3><div><input type=\"hidden\" id=\"panel3\" value=\"8\"><br><img src=\"opt_img\/selector.png\" usemap=\"#panel_four\" \/><map name=\"panel_four\" id=\"panel_four\"><area shape=\"rect\" coords=\"37,107,68,138\" href=\"javascript:void(0)\" alt=\"Black\" id=\"panel3_13\" class=\"colorsel\" \/><area shape=\"rect\" coords=\"3,107,34,138\" href=\"javascript:void(0)\" alt=\"Purple\" id=\"panel3_12\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"3,72,34,103\" href=\"javascript:void(0)\" alt=\"White\" id=\"panel3_8\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"37,72,68,103\" href=\"javascript:void(0)\" alt=\"Florescent Pink\" id=\"panel3_9\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"71,72,102,103\" href=\"javascript:void(0)\" alt=\"Orange\" id=\"panel3_10\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"106,72,137,103\" href=\"javascript:void(0)\" alt=\"Spectre Yellow\" id=\"panel3_11\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"106,37,137,68\" href=\"javascript:void(0)\" alt=\"Navy\" id=\"panel3_7\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"71,36,102,67\" href=\"javascript:void(0)\" alt=\"Mustard Yellow\" id=\"panel3_6\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"37,37,68,68\" href=\"javascript:void(0)\" alt=\"Red\" id=\"panel3_5\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"3,37,34,68\" href=\"javascript:void(0)\" alt=\"Florescent Green\" id=\"panel3_4\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"106,3,137,34\" href=\"javascript:void(0)\" alt=\"Grey\" id=\"panel3_3\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"71,3,102,34\" href=\"javascript:void(0)\" alt=\"Classic Blue\" id=\"panel3_2\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"37,3,68,34\" href=\"javascript:void(0)\" alt=\"Green\" id=\"panel3_1\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"3,3,34,34\" href=\"javascript:void(0)\" alt=\"Brown\" id=\"panel3_0\" class=\"colorsel\"\/><\/map><\/div>";
+  panel_html += "<h3><a href=\"javascript:void(0)\">Panel 4<img height=\"15\" width=\"15\" id=\"panel3_box\" src=\"images/drawing\/sel_white.png\" style=\"float: right\"><\/a><\/h3><div><input type=\"hidden\" id=\"panel3\" value=\"8\"><br><img src=\"images/drawing\/selector.png\" usemap=\"#panel_four\" \/><map name=\"panel_four\" id=\"panel_four\"><area shape=\"rect\" coords=\"37,107,68,138\" href=\"javascript:void(0)\" alt=\"Black\" id=\"panel3_13\" class=\"colorsel\" \/><area shape=\"rect\" coords=\"3,107,34,138\" href=\"javascript:void(0)\" alt=\"Purple\" id=\"panel3_12\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"3,72,34,103\" href=\"javascript:void(0)\" alt=\"White\" id=\"panel3_8\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"37,72,68,103\" href=\"javascript:void(0)\" alt=\"Florescent Pink\" id=\"panel3_9\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"71,72,102,103\" href=\"javascript:void(0)\" alt=\"Orange\" id=\"panel3_10\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"106,72,137,103\" href=\"javascript:void(0)\" alt=\"Spectre Yellow\" id=\"panel3_11\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"106,37,137,68\" href=\"javascript:void(0)\" alt=\"Navy\" id=\"panel3_7\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"71,36,102,67\" href=\"javascript:void(0)\" alt=\"Mustard Yellow\" id=\"panel3_6\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"37,37,68,68\" href=\"javascript:void(0)\" alt=\"Red\" id=\"panel3_5\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"3,37,34,68\" href=\"javascript:void(0)\" alt=\"Florescent Green\" id=\"panel3_4\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"106,3,137,34\" href=\"javascript:void(0)\" alt=\"Grey\" id=\"panel3_3\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"71,3,102,34\" href=\"javascript:void(0)\" alt=\"Classic Blue\" id=\"panel3_2\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"37,3,68,34\" href=\"javascript:void(0)\" alt=\"Green\" id=\"panel3_1\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"3,3,34,34\" href=\"javascript:void(0)\" alt=\"Brown\" id=\"panel3_0\" class=\"colorsel\"\/><\/map><\/div>";
 
   
 	var set_front_shirt = function() {
@@ -263,7 +263,7 @@
 			var col = $("#panel"+i).val();
 			if ( i != (panels - 1)) { pname = "Panel "+ (i + 1); }
 			else { pname = "Bottom"; }
-			//tmp_panels += "<li><span>"+ pname +"</span> <span><img class=\"col_thumb\" src=\"opt_img/"+ sel_color_file[ color_panels[i] ] +"\" width=\"15\" height=\"15\"> "+ sel_color_name[ color_panels[i] ] +"</span> </li>";
+			//tmp_panels += "<li><span>"+ pname +"</span> <span><img class=\"col_thumb\" src=\"images/drawing/"+ sel_color_file[ color_panels[i] ] +"\" width=\"15\" height=\"15\"> "+ sel_color_name[ color_panels[i] ] +"</span> </li>";
 			tmp_panels += "<li><span>"+ pname +"</span> <span><small class=\"sbox\" style=\"background-color:"+ sel_color_code[ color_panels[i] ] +"\"></small> "+ sel_color_name[ color_panels[i] ] +"</span> </li>";
 		}
 		
@@ -278,7 +278,7 @@
 	
 		if ( $('#inp_selected_strip').val() == 'leftstrip') {
 			$('#strip_option').html('Left');			
-			$('#strip_left_lining').html( "<img src=\"opt_img/"+ sel_color_file[ color_panels[ bg.panels.length - 1] ] +"\" width=\"15\" height=\"15\"> "+ sel_color_name[ color_panels[ bg.panels.length - 1] ] );
+			$('#strip_left_lining').html( "<img src=\"images/drawing/"+ sel_color_file[ color_panels[ bg.panels.length - 1] ] +"\" width=\"15\" height=\"15\"> "+ sel_color_name[ color_panels[ bg.panels.length - 1] ] );
 			$('#strip_right_lining').html( " - none - ");
 			
 		} else if ( $('#inp_selected_strip').val() == 'rightstrip') {
@@ -436,7 +436,7 @@
 		$('.colorsel').live('click',function(){
 			var sel = $(this).attr('id').split('_');
 			$('#'+sel[0]).val( sel[1] );
-			$('#'+sel[0]+'_box').attr( 'src', 'opt_img/'+sel_color_file[ parseInt(sel[1]) ] );
+			$('#'+sel[0]+'_box').attr( 'src', 'images/drawing/'+sel_color_file[ parseInt(sel[1]) ] );
 			
 			color_panels[ sel[0].substr(-1) ] = parseInt(sel[1]);
 
@@ -456,7 +456,7 @@
 		$('.colorsel2').live('click',function(){
 			var sel = $(this).attr('id').split('_');
 			$('#panelpocket').val( sel[1] );
-			$('#panelpocket_box').attr( 'src', 'opt_img/'+sel_color_file[ parseInt(sel[1]) ] );	
+			$('#panelpocket_box').attr( 'src', 'images/drawing/'+sel_color_file[ parseInt(sel[1]) ] );	
 			
 			pocket_color = sel_color_code[ parseInt(sel[1]) ];
 			n_pocket_color = parseInt(sel[1]);
@@ -467,7 +467,7 @@
 		$('.colorsel3').live('click',function(){
 			var sel = $(this).attr('id').split('_');
 			$('#panelpad').val( sel[1] );
-			$('#panelpad_box').attr( 'src', 'opt_img/'+sel_color_file[ parseInt(sel[1]) ] );	
+			$('#panelpad_box').attr( 'src', 'images/drawing/'+sel_color_file[ parseInt(sel[1]) ] );	
 			
 			shoulder_pad_color = sel_color_code[ parseInt(sel[1]) ];
 			n_shoulder_pad_color = parseInt(sel[1]);
