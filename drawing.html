@@ -1,20 +1,16 @@
 <!doctype html>
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-<head>
+ <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+ <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+ <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+ <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+ <!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+ <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+ <head>
   <meta charset="utf-8">
-
-  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
-       More info: h5bp.com/i/378 -->
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues  More info: h5bp.com/i/378 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
   <title></title>
   <meta name="description" content="">
-
   <!-- Mobile viewport optimized: h5bp.com/viewport -->
   <meta name="viewport" content="width=device-width">
 
@@ -24,85 +20,77 @@
   <link rel="stylesheet" href="css/smoothness/jquery-ui-1.8.18.custom.css">
   <link type="text/css" rel="stylesheet" href="css/jquery.stepy.css" />  
   
-
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
-
   <!-- All JavaScript at the bottom, except this Modernizr build.
        Modernizr enables HTML5 elements & feature detects for optimal performance.
        Create your own custom Modernizr build: www.modernizr.com/download/ -->
   <script src="script/modernizr-2.5.3.min.js"></script>
   <style>
-	canvas { border: 1px solid #ccc; }
+   canvas { border: 1px solid #ccc; }
 	
-	#accordion { width: 200px; float: left; }
-	#accordion2 { width: 200px; float: left; }
-	#accordion3 { width: 200px; float: left; }
+   #accordion { width: 200px; float: left; }
+   #accordion2 { width: 200px; float: left; }
+   #accordion3 { width: 200px; float: left; }
 	
-	h2 { clear: both; }
-	ul.sel_design { list-style-type: none; margin: 0px; padding: 0px; display: block; clear: both; overflow: hidden; }
-	ul.sel_design li { width: 200px; float: left; border: 4px solid #ccc; margin-right: 10px; cursor: pointer; } 
-	ul.sel_design li img { opacity:0.7; filter:alpha(opacity=70); }
-	
-	ul.sel_design li span { display: block; text-align: center; } 
-	
-	ul.sel_design li:hover { border: 4px solid #666; }
-	ul.sel_design li:hover img { opacity:1.0; filter:alpha(opacity=100); }
+   h2 { clear: both; }
 
-	ul.sel_design li.selected { border: 4px solid #000; }
-	ul.sel_design li.selected img { opacity:1.0; filter:alpha(opacity=100); }
+   ul.sel_design { list-style-type: none; margin: 0px; padding: 0px; display: block; clear: both; overflow: hidden; }
+   ul.sel_design li { width: 200px; float: left; border: 4px solid #ccc; margin-right: 10px; cursor: pointer; } 
+   ul.sel_design li img { opacity:0.7; filter:alpha(opacity=70); }
+   ul.sel_design li span { display: block; text-align: center; } 
+   ul.sel_design li:hover { border: 4px solid #666; }
+   ul.sel_design li:hover img { opacity:1.0; filter:alpha(opacity=100); }
+   ul.sel_design li.selected { border: 4px solid #000; }
+   ul.sel_design li.selected img { opacity:1.0; filter:alpha(opacity=100); }
+   ul.sel_strip { list-style-type: none; margin: 0px; padding: 0px; display: block; clear: both; overflow: hidden; }
+   ul.sel_strip li { width: 200px; float: left; border: 4px solid #ccc; margin-right: 10px; cursor: pointer; } 
+   ul.sel_strip li img { opacity:0.7; filter:alpha(opacity=70); }
+   ul.sel_strip li span { display: block; text-align: center; } 
+   ul.sel_strip li:hover { border: 4px solid #666; }
+   ul.sel_strip li:hover img { opacity:1.0; filter:alpha(opacity=100); }
+   ul.sel_strip li.selected { border: 4px solid #000; }
+   ul.sel_strip li.selected img { opacity:1.0; filter:alpha(opacity=100); }
 
-	ul.sel_strip { list-style-type: none; margin: 0px; padding: 0px; display: block; clear: both; overflow: hidden; }
-	ul.sel_strip li { width: 200px; float: left; border: 4px solid #ccc; margin-right: 10px; cursor: pointer; } 
-	ul.sel_strip li img { opacity:0.7; filter:alpha(opacity=70); }
-	
-	ul.sel_strip li span { display: block; text-align: center; } 
-	
-	ul.sel_strip li:hover { border: 4px solid #666; }
-	ul.sel_strip li:hover img { opacity:1.0; filter:alpha(opacity=100); }
+   #knickknack_img { opacity:5.0; filter:alpha(opacity=50); }
+   .knickknack_yes { opacity:1.0; filter:alpha(opacity=100); } 
 
-	ul.sel_strip li.selected { border: 4px solid #000; }
-	ul.sel_strip li.selected img { opacity:1.0; filter:alpha(opacity=100); }
-
-	#knickknack_img { opacity:5.0; filter:alpha(opacity=50); }
+   small { font-weight: normal; font-style: italic; }
 	
-	.knickknack_yes { opacity:1.0; filter:alpha(opacity=100); } 
-
-	small { font-weight: normal; font-style: italic; }
+   fieldset { padding-bottom: 20px; }
 	
-	fieldset { padding-bottom: 20px; }
+   .addon_item 
+   { width: 250px; 
+     padding: 5px; 
+     margin-right: 10px; 
+     float: left;
+	 border: 3px solid #ccc; 
+	 height: 330px; 
+	 margin-bottom: 10px;
+   }
 	
-	.addon_item { width: 250px; padding: 5px; margin-right: 10px; float: left;
-		border: 3px solid #ccc; height: 330px; margin-bottom: 10px;
-	}
+   ul#confirmlist { width: 600px; }
+   ul#confirmlist, ul#confirmlist ul { list-style-type: none; margin: 0px; padding: 0px; clear: left; }
+   ul#confirmlist li { font-size: 14px; font-weight: bold; padding-bottom: 3px; padding-top: 3px; }
+   ul#confirmlist > li { border-top: 1px dotted #ccc; }
+   ul#confirmlist li li { font-weight: normal; border-top: 1px dotted #ccc; padding-left: 10px; }
+   ul#confirmlist li span:first-child { width: 200px; float: left;}
+   ul#confirmlist > li span:first-child { width: 200px; margin-right: 10px; float: left;}
+   ul#confirmlist li span:nth-child(3){ width: 100px; text-align: right; float: right; font-weight: bold; }
 	
-	ul#confirmlist { width: 600px; }
+   .confirm_thumb { margin-right: 10px; margin-bottom: 10px; border: 4px solid #ccc; }
+   .col_thumb { border: 1px solid #ccc; }
 	
-	ul#confirmlist, ul#confirmlist ul { list-style-type: none; margin: 0px; padding: 0px; clear: left; }
-	
-	ul#confirmlist li { font-size: 14px; font-weight: bold; padding-bottom: 3px; padding-top: 3px; }
-	ul#confirmlist > li { border-top: 1px dotted #ccc; }
-	ul#confirmlist li li { font-weight: normal; border-top: 1px dotted #ccc; padding-left: 10px; }
-	ul#confirmlist li span:first-child { width: 200px; float: left;}
-	ul#confirmlist > li span:first-child { width: 200px; margin-right: 10px; float: left;}
-	ul#confirmlist li span:nth-child(3){ width: 100px; text-align: right; float: right; font-weight: bold; }
-	
-	.confirm_thumb { margin-right: 10px; margin-bottom: 10px; border: 4px solid #ccc; }
-	.col_thumb { border: 1px solid #ccc; }
-	
-	.sbox { height: 15px; width: 15px; display: block; float: left; border: 1px solid #ccc; }
+   .sbox { height: 15px; width: 15px; display: block; float: left; border: 1px solid #ccc; }
   </style>
-</head>
-<body>
+ </head>
+ <body>
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-  <header>
-
-  </header>
+  <header></header>
   <div role="main">
-  
-	<h1>Custom t-Shirt Design Arena</h1>
-	<form id="wizardform">
+   <h1>Custom t-Shirt Design Arena</h1>
+   <form id="wizardform">
 	<fieldset title="STEP 3">
 	 <legend>Choose Color</legend>
 	 <input type="hidden" id="shirt_front_image" value="shirt_front">
@@ -125,54 +113,41 @@
 	 <div id="accordion3"></div>
     </fieldset>
 
-<fieldset title="STEP 7">
-	    <legend>confirm</legend>
+    <fieldset title="STEP 7">
+	 <legend>confirm</legend>
 		
-		<img src="" id="front_thumbnail" width="250" class="confirm_thumb">
-		<img src="" id="inside_thumbnail" width="250" class="confirm_thumb">
-		<img src="" id="shoulder_pad_thumbnail" width="250" class="confirm_thumb">
+	 <img src="" id="front_thumbnail" width="250" class="confirm_thumb">
+	 <img src="" id="inside_thumbnail" width="250" class="confirm_thumb">
+	 <img src="" id="shoulder_pad_thumbnail" width="250" class="confirm_thumb">
 		
-		<ul id="confirmlist">
-			<li>
-				<span id="bag_name">Bootstrap Origin 5 Panels</span><span></span><span id="bag_price">RM 400.00</span>
-				<ul id="final_panels">
-
-				</ul>
-			</li>
-			<li>
-				<span>Reflector Strip</span> <span id="strip_option">Double</span> <span id="strip_price">RM 40.00</span>
-				<ul>
-					<li><span>Left Lining</span> <span id="strip_left_lining"> - none - </li>
-					<li><span>Right Lining</span> <span id="strip_right_lining"> - none - </li>
-				</ul>
-			</li>
-			<li>
-				<span>Add-On &amp; Preference</span>
-				<ul>
-					<li><span>Cambuckle Position</span> <span id="cambuckle_option"> </span> </li>
-					<li><span>Random Knickknack</span> <span id="knickknack_option"> </span> <span id="knickknack_price"> </span></li>
-					<li><span>Quick Grab Handle</span> <span id="grabhandle_option"> </span> <span id="grabhandle_price"> </span></li>
-					<li><span>Utility and Book Pouch</span> <span id="pouches_option"> </span> <span id="pouches_price"> </span></li>
-				</ul>
-			</li>
-
-			<li>
-				<span>&nbsp;</span><span>Total</span><span id="final_total">RM 650.00</span>
-			</li>
-			
-		</ul>
-
-</fieldset>
-</form>
-	<div>
-	</div>
-
+	 <ul id="confirmlist">
+	  <li>
+	   <span id="bag_name">Bootstrap Origin 5 Panels</span><span></span><span id="bag_price">RM 400.00</span>
+	   <ul id="final_panels"></ul>
+	  </li>
+	  <li>
+	   <span>Reflector Strip</span> <span id="strip_option">Double</span> <span id="strip_price">RM 40.00</span>
+	   <ul>
+		<li><span>Left Lining</span> <span id="strip_left_lining"> - none - </li>
+		<li><span>Right Lining</span> <span id="strip_right_lining"> - none - </li>
+	   </ul>
+	  </li>
+	  <li>
+	   <span>Add-On &amp; Preference</span>
+	   <ul>
+		<li><span>Cambuckle Position</span> <span id="cambuckle_option"> </span></li>
+		<li><span>Random Knickknack</span> <span id="knickknack_option"> </span> <span id="knickknack_price"> </span></li>
+		<li><span>Quick Grab Handle</span> <span id="grabhandle_option"> </span> <span id="grabhandle_price"> </span></li>
+		<li><span>Utility and Book Pouch</span> <span id="pouches_option"> </span> <span id="pouches_price"> </span></li>
+       </ul>
+	  </li>
+      <li><span>&nbsp;</span><span>Total</span><span id="final_total">RM 650.00</span></li>
+	 </ul>
+    </fieldset>
+   </form>
+   <div></div>
   </div>
-  <footer>
-
-  </footer>
-
-
+  <footer></footer>
 
   <!-- JavaScript at the bottom for fast page loading -->
 
@@ -188,368 +163,348 @@
   <script type="text/javascript" src="script/jquery.stepy.min.js"></script>  
   <!-- end scripts -->
 
-
   <script src="script/shirt.js"></script>
   <script>
-  var theshirt = shirt['shirt_front'];
-  var backshirt = shirt['roundneck_long_back'];
-  var colors = [ '#fff','#fff','#fff','#fff', '#fff','#fff', '#fff','#fff' ];
-  var color_panels = [ 8,8,8,8,8,8,8,8];
-  var pocket_color = '#fff';
-  var shoulder_pad_color = '#fff';
-  var n_pocket_color = 8;
-  var n_shoulder_pad_color = 8;
-  var strip_html ="";
-  strip_html += "<ul class=\"sel_strip\"><li id=\"nostrip\" class=\"selected\"><img src=\"img\/rainmaker_1panel.jpg\" width=\"200\"><span>No Strip<\/span><\/li><li id=\"doublestrip\"><img src=\"img\/rainmaker_1panel_doublestrip.jpg\" width=\"200\"><span>Double Strip (+RM 40)<\/span><\/li><li id=\"leftstrip\"><img src=\"img\/rainmaker_1panel_leftstrip.jpg\" width=\"200\"><span>Left Strip (+RM 20)<\/span><\/li><li id=\"rightstrip\"><img src=\"img\/rainmaker_1panel_rightstrip.jpg\" width=\"200\"><span>Right Strip (+RM 20)<\/span><\/li><\/ul>";
+   var theshirt = shirt['shirt_front'];
+   var backshirt = shirt['roundneck_long_back'];
+   var colors = [ '#fff','#fff','#fff','#fff', '#fff','#fff', '#fff','#fff' ];
+   var color_panels = [ 8,8,8,8,8,8,8,8];
+   var pocket_color = '#fff';
+   var shoulder_pad_color = '#fff';
+   var n_pocket_color = 8;
+   var n_shoulder_pad_color = 8;
+   var strip_html ="";
+   strip_html += "<ul class=\"sel_strip\"><li id=\"nostrip\" class=\"selected\"><img src=\"img\/rainmaker_1panel.jpg\" width=\"200\"><span>No Strip<\/span><\/li><li id=\"doublestrip\"><img src=\"img\/rainmaker_1panel_doublestrip.jpg\" width=\"200\"><span>Double Strip (+RM 40)<\/span><\/li><li id=\"leftstrip\"><img src=\"img\/rainmaker_1panel_leftstrip.jpg\" width=\"200\"><span>Left Strip (+RM 20)<\/span><\/li><li id=\"rightstrip\"><img src=\"img\/rainmaker_1panel_rightstrip.jpg\" width=\"200\"><span>Right Strip (+RM 20)<\/span><\/li><\/ul>";
 
-  var panel_html="";
-  panel_html += "<h3><a href=\"javascript:void(0)\">Panel 4<img height=\"15\" width=\"15\" id=\"panel3_box\" src=\"images/drawing\/sel_white.png\" style=\"float: right\"><\/a><\/h3><div><input type=\"hidden\" id=\"panel3\" value=\"8\"><br><img src=\"images/drawing\/selector.png\" usemap=\"#panel_four\" \/><map name=\"panel_four\" id=\"panel_four\"><area shape=\"rect\" coords=\"37,107,68,138\" href=\"javascript:void(0)\" alt=\"Black\" id=\"panel3_13\" class=\"colorsel\" \/><area shape=\"rect\" coords=\"3,107,34,138\" href=\"javascript:void(0)\" alt=\"Purple\" id=\"panel3_12\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"3,72,34,103\" href=\"javascript:void(0)\" alt=\"White\" id=\"panel3_8\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"37,72,68,103\" href=\"javascript:void(0)\" alt=\"Florescent Pink\" id=\"panel3_9\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"71,72,102,103\" href=\"javascript:void(0)\" alt=\"Orange\" id=\"panel3_10\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"106,72,137,103\" href=\"javascript:void(0)\" alt=\"Spectre Yellow\" id=\"panel3_11\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"106,37,137,68\" href=\"javascript:void(0)\" alt=\"Navy\" id=\"panel3_7\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"71,36,102,67\" href=\"javascript:void(0)\" alt=\"Mustard Yellow\" id=\"panel3_6\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"37,37,68,68\" href=\"javascript:void(0)\" alt=\"Red\" id=\"panel3_5\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"3,37,34,68\" href=\"javascript:void(0)\" alt=\"Florescent Green\" id=\"panel3_4\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"106,3,137,34\" href=\"javascript:void(0)\" alt=\"Grey\" id=\"panel3_3\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"71,3,102,34\" href=\"javascript:void(0)\" alt=\"Classic Blue\" id=\"panel3_2\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"37,3,68,34\" href=\"javascript:void(0)\" alt=\"Green\" id=\"panel3_1\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"3,3,34,34\" href=\"javascript:void(0)\" alt=\"Brown\" id=\"panel3_0\" class=\"colorsel\"\/><\/map><\/div>";
-
+   var panel_html="";
+   panel_html += "<h3><a href=\"javascript:void(0)\">Panel 4<img height=\"15\" width=\"15\" id=\"panel3_box\" src=\"images/drawing\/sel_white.png\" style=\"float: right\"><\/a><\/h3><div><input type=\"hidden\" id=\"panel3\" value=\"8\"><br><img src=\"images/drawing\/selector.png\" usemap=\"#panel_four\" \/><map name=\"panel_four\" id=\"panel_four\"><area shape=\"rect\" coords=\"37,107,68,138\" href=\"javascript:void(0)\" alt=\"Black\" id=\"panel3_13\" class=\"colorsel\" \/><area shape=\"rect\" coords=\"3,107,34,138\" href=\"javascript:void(0)\" alt=\"Purple\" id=\"panel3_12\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"3,72,34,103\" href=\"javascript:void(0)\" alt=\"White\" id=\"panel3_8\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"37,72,68,103\" href=\"javascript:void(0)\" alt=\"Florescent Pink\" id=\"panel3_9\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"71,72,102,103\" href=\"javascript:void(0)\" alt=\"Orange\" id=\"panel3_10\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"106,72,137,103\" href=\"javascript:void(0)\" alt=\"Spectre Yellow\" id=\"panel3_11\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"106,37,137,68\" href=\"javascript:void(0)\" alt=\"Navy\" id=\"panel3_7\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"71,36,102,67\" href=\"javascript:void(0)\" alt=\"Mustard Yellow\" id=\"panel3_6\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"37,37,68,68\" href=\"javascript:void(0)\" alt=\"Red\" id=\"panel3_5\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"3,37,34,68\" href=\"javascript:void(0)\" alt=\"Florescent Green\" id=\"panel3_4\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"106,3,137,34\" href=\"javascript:void(0)\" alt=\"Grey\" id=\"panel3_3\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"71,3,102,34\" href=\"javascript:void(0)\" alt=\"Classic Blue\" id=\"panel3_2\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"37,3,68,34\" href=\"javascript:void(0)\" alt=\"Green\" id=\"panel3_1\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"3,3,34,34\" href=\"javascript:void(0)\" alt=\"Brown\" id=\"panel3_0\" class=\"colorsel\"\/><\/map><\/div>";
   
-	var set_front_shirt = function() {
-		var strip = '';
-		if ( $('#inp_selected_strip').val() != 'nostrip') { strip = '_' + $('#inp_selected_strip').val(); }
-		theshirt = shirt[$('#inp_selected_design').val() + '_front' + strip ];
+   var set_front_shirt = function() 
+   { var strip = '';
+	 if ( $('#inp_selected_strip').val() != 'nostrip') { strip = '_' + $('#inp_selected_strip').val(); }
+  	 theshirt = shirt[$('#inp_selected_design').val() + '_front' + strip ];
 		
-		draw_front_shirt( theshirt );
+	 draw_front_shirt( theshirt );
 		
-	}  
+   }  
 	
-	var set_back_shirt = function() {
-		backshirt = shirt[$('#inp_selected_design').val() + '_inside_front' ];
-		draw_back_shirt( backshirt );
-	}  	
+   var set_back_shirt = function() 
+   { backshirt = shirt[$('#inp_selected_design').val() + '_inside_front' ];
+	 draw_back_shirt( backshirt );
+   }  	
 	
-	var set_shoulder_pad = function() {
-		shoulderpad = bags[ 'shoulder_pad' ];
-		draw_shoulder_pad( shoulderpad );
-	}  	
+   var set_shoulder_pad = function() 
+   { shoulderpad = bags[ 'shoulder_pad' ];
+	 draw_shoulder_pad( shoulderpad );
+   }  	
 	
-	var pocket_selector = function() {
-		var selector_html = '';
-			selector_html = panel_html.replace( /Panel 4/gi, 'Pocket Color');
-			selector_html = selector_html.replace( /panel3/gi, 'panelpocket' );
-			selector_html = selector_html.replace( /panel_four/gi, 'panel_pocket' );
-			selector_html = selector_html.replace( /colorsel\"/gi, 'colorsel2"' );
+   var pocket_selector = function() 
+   { var selector_html = '';
+	 selector_html = panel_html.replace( /Panel 4/gi, 'Pocket Color');
+	 selector_html = selector_html.replace( /panel3/gi, 'panelpocket' );
+	 selector_html = selector_html.replace( /panel_four/gi, 'panel_pocket' );
+	 selector_html = selector_html.replace( /colorsel\"/gi, 'colorsel2"' );
 	
-		$("#accordion2").html( selector_html );
-		$( "#accordion2" ).accordion('destroy').accordion({
+	 $("#accordion2").html( selector_html );
+	 $( "#accordion2" ).accordion('destroy').accordion({
+						autoHeight: false,
+						collapsible: true
+		});
+   }
+	
+   var final_price = function() 
+   { var final_total = 0;
+	
+	 $('#bag_name').html( bag_name[ $('#inp_selected_design').val() ] );
+	 $('#bag_price').html( 'RM '+bag_price[ $('#inp_selected_design').val() ].toFixed(2) );
+		
+	 final_total += bag_price[ $('#inp_selected_design').val() ];
+		
+	 var strip = '';
+	 if ( $('#inp_selected_strip').val() != 'nostrip') { strip = '_' + $('#inp_selected_strip').val(); }
+	 var bg = bags[$('#inp_selected_design').val() + '_front' + strip ];
+
+	 var tmp_panels = '';
+	 var pname = '';
+		
+	 panels = 0;
+	 if ($('#inp_selected_strip').val() == 'nostrip') { panels =  bg.panels.length; }
+	 else if ($('#inp_selected_strip').val() == 'doublestrip') { panels =  bg.panels.length - 2; }
+	 else  { panels =  bg.panels.length - 1; }
+		
+	 for (i = 0; i < panels ; i++) 
+	 { var col = $("#panel"+i).val();
+	   if ( i != (panels - 1)) { pname = "Panel "+ (i + 1); }
+	   else { pname = "Bottom"; }
+	   //tmp_panels += "<li><span>"+ pname +"</span> <span><img class=\"col_thumb\" src=\"images/drawing/"+ sel_color_file[ color_panels[i] ] +"\" width=\"15\" height=\"15\"> "+ sel_color_name[ color_panels[i] ] +"</span> </li>";
+	   tmp_panels += "<li><span>"+ pname +"</span> <span><small class=\"sbox\" style=\"background-color:"+ sel_color_code[ color_panels[i] ] +"\"></small> "+ sel_color_name[ color_panels[i] ] +"</span> </li>";
+	 }
+		
+	 var col = $("#panelpocket").val();
+	 tmp_panels += "<li><span>Inside Pocket</span> <span><small class=\"sbox\" style=\"background-color:"+ sel_color_code[ n_pocket_color ] +"\"></small> "+ sel_color_name[ n_pocket_color ] +"</span> </li>";		
+
+	 var col = $("#panelpad").val();
+	 tmp_panels += "<li><span>Shoulder Pad</span> <span><small class=\"sbox\" style=\"background-color:"+ sel_color_code[ n_shoulder_pad_color ] +"\"></small> "+ sel_color_name[ n_shoulder_pad_color ] +"</span> </li>";		
+	
+	 $('#final_panels').html(  tmp_panels );
+
+	
+	 if ( $('#inp_selected_strip').val() == 'leftstrip') 
+	 { $('#strip_option').html('Left');			
+	   $('#strip_left_lining').html( "<img src=\"images/drawing/"+ sel_color_file[ color_panels[ bg.panels.length - 1] ] +"\" width=\"15\" height=\"15\"> "+ sel_color_name[ color_panels[ bg.panels.length - 1] ] );
+	   $('#strip_right_lining').html( " - none - ");
+			
+	 }
+	 else if ( $('#inp_selected_strip').val() == 'rightstrip') 
+	 { $('#strip_option').html('Right');
+	   $('#strip_right_lining').html( "<small class=\"sbox\" style=\"background-color:"+ sel_color_code[ color_panels[bg.panels.length - 1] ] +"\"></small> "+ sel_color_name[ color_panels[bg.panels.length - 1] ] );
+	   $('#strip_left_lining').html( " - none - ");	
+  	 } 
+  	 else if ( $('#inp_selected_strip').val() == 'doublestrip') 
+  	 { $('#strip_option').html('Double');
+	   $('#strip_left_lining').html( "<small class=\"sbox\" style=\"background-color:"+ sel_color_code[ color_panels[bg.panels.length - 2] ] +"\"></small> "+ sel_color_name[ color_panels[bg.panels.length - 2] ] +"</span>" );
+ 	   $('#strip_right_lining').html( "<small class=\"sbox\" style=\"background-color:"+ sel_color_code[ color_panels[bg.panels.length - 1] ] +"\"></small> "+ sel_color_name[ color_panels[bg.panels.length - 1] ] +"</span>" );
+  	 } 
+  	 else 
+  	 { $('#strip_option').html(' - none - ');
+	   $('#strip_right_lining').html( " - none - ");
+	   $('#strip_left_lining').html( " - none - ");
+	 }
+		
+	 $('#strip_price').html( 'RM '+ strip_price[ $('#inp_selected_strip').val() ].toFixed(2) );
+	 final_total += strip_price[ $('#inp_selected_strip').val() ];
+		
+	 $('#knickknack_option').html( $('input[name=knickknack]:checked').val() );
+	 $('#grabhandle_option').html( $('input[name=grabhandle]:checked').val() );
+	 $('#pouches_option').html( $('input[name=pouches]:checked').val() );
+	 $('#cambuckle_option').html( $('input[name=cambuckle]:checked').val() );
+		
+	 if ( $('input[name=knickknack]:checked').val() == 'Yes' ) 
+	 { $('#knickknack_price').html( 'RM ' + addon_price['knickknack'].toFixed(2) ); 
+	   final_total += addon_price['knickknack'];
+	 }
+	 else { $('#knickknack_price').html( 'RM 0.00'); }
+
+	 if ( $('input[name=grabhandle]:checked').val() == 'Yes' ) 
+	 { $('#grabhandle_price').html( 'RM ' + addon_price['grabhandle'].toFixed(2) ); 
+	   final_total += addon_price['grabhandle'];
+	 }
+	 else { $('#grabhandle_price').html( 'RM 0.00'); }
+		
+	 if ( $('input[name=pouches]:checked').val() == 'Yes' ) 
+	 { $('#pouches_price').html( 'RM ' + addon_price['pouches'].toFixed(2) ); 
+	   final_total += addon_price['pouches'];
+	 }
+	 else { $('#pouches_price').html( 'RM 0.00'); }
+		
+	 $('#final_total').html('RM ' + final_total.toFixed(2));
+	}
+	
+	var pad_selector = function() 
+	{ var selector_html = '';
+	  selector_html = panel_html.replace( /Panel 4/gi, 'Shoulder Pad Color');
+	  selector_html = selector_html.replace( /panel3/gi, 'panelpad' );
+	  selector_html = selector_html.replace( /panel_four/gi, 'panel_pad' );
+	  selector_html = selector_html.replace( /colorsel\"/gi, 'colorsel3"' );
+	
+	  $("#accordion3").html( selector_html );
+	  $( "#accordion3" ).accordion('destroy').accordion({
 						autoHeight: false,
 						collapsible: true
 		});
 	}
-	
-	var final_price = function() {
-		var final_total = 0;
-	
-		$('#bag_name').html( bag_name[ $('#inp_selected_design').val() ] );
-		$('#bag_price').html( 'RM '+bag_price[ $('#inp_selected_design').val() ].toFixed(2) );
 		
-		final_total += bag_price[ $('#inp_selected_design').val() ];
-		
-		var strip = '';
-		if ( $('#inp_selected_strip').val() != 'nostrip') { strip = '_' + $('#inp_selected_strip').val(); }
-		var bg = bags[$('#inp_selected_design').val() + '_front' + strip ];
+	var draw_selector = function() 
+	{ var strip = '';
+	  if ( $('#inp_selected_strip').val() != 'nostrip') { strip = '_' + $('#inp_selected_strip').val(); }
+	  theshirt = shirt[$('#inp_selected_design').val() + '_front' + strip ];
 
-		var tmp_panels = '';
-		var pname = '';
+	  var numbers = ['one','two','three','four','five','six','seven','eight','nine','ten'];
+	  //alert( $('#inp_selected_design').val() + '_front' + strip );
 		
-		panels = 0;
-		if ($('#inp_selected_strip').val() == 'nostrip') { panels =  bg.panels.length; }
-		else if ($('#inp_selected_strip').val() == 'doublestrip') { panels =  bg.panels.length - 2; }
-		else  { panels =  bg.panels.length - 1; }
-		
-		for (i = 0; i < panels ; i++) {
-			var col = $("#panel"+i).val();
-			if ( i != (panels - 1)) { pname = "Panel "+ (i + 1); }
-			else { pname = "Bottom"; }
-			//tmp_panels += "<li><span>"+ pname +"</span> <span><img class=\"col_thumb\" src=\"images/drawing/"+ sel_color_file[ color_panels[i] ] +"\" width=\"15\" height=\"15\"> "+ sel_color_name[ color_panels[i] ] +"</span> </li>";
-			tmp_panels += "<li><span>"+ pname +"</span> <span><small class=\"sbox\" style=\"background-color:"+ sel_color_code[ color_panels[i] ] +"\"></small> "+ sel_color_name[ color_panels[i] ] +"</span> </li>";
+	  var accordion_html = '';
+	  for( i = 0; i < theshirt.panels.length; i++ ) 
+	  {	temp = panel_html.replace( /Panel 4/gi, 'Panel '+(i+1));
+		temp = temp.replace( /panel3/gi, 'panel'+i );
+		temp = temp.replace( /panel_four/gi, 'panel_'+numbers[i] );
+		accordion_html += temp;
+		colors[i] = '#ffffff';
+	  }
+
+	  if ( $('#inp_selected_strip').val() == 'doublestrip') 
+	  { var counter = 0;
+		for( i = theshirt.panels.length - 2; i < theshirt.panels.length; i++ ) 
+		{ counter++;
+		  accordion_html = accordion_html.replace( "Panel " + (i+1), 'Strip '+counter);
 		}
-		
-			var col = $("#panelpocket").val();
-			tmp_panels += "<li><span>Inside Pocket</span> <span><small class=\"sbox\" style=\"background-color:"+ sel_color_code[ n_pocket_color ] +"\"></small> "+ sel_color_name[ n_pocket_color ] +"</span> </li>";		
-
-			var col = $("#panelpad").val();
-			tmp_panels += "<li><span>Shoulder Pad</span> <span><small class=\"sbox\" style=\"background-color:"+ sel_color_code[ n_shoulder_pad_color ] +"\"></small> "+ sel_color_name[ n_shoulder_pad_color ] +"</span> </li>";		
-	
-		$('#final_panels').html(  tmp_panels );
-
-	
-		if ( $('#inp_selected_strip').val() == 'leftstrip') {
-			$('#strip_option').html('Left');			
-			$('#strip_left_lining').html( "<img src=\"images/drawing/"+ sel_color_file[ color_panels[ bg.panels.length - 1] ] +"\" width=\"15\" height=\"15\"> "+ sel_color_name[ color_panels[ bg.panels.length - 1] ] );
-			$('#strip_right_lining').html( " - none - ");
 			
-		} else if ( $('#inp_selected_strip').val() == 'rightstrip') {
-			$('#strip_option').html('Right');
-			$('#strip_right_lining').html( "<small class=\"sbox\" style=\"background-color:"+ sel_color_code[ color_panels[bg.panels.length - 1] ] +"\"></small> "+ sel_color_name[ color_panels[bg.panels.length - 1] ] );
-			$('#strip_left_lining').html( " - none - ");
-			
-		} else if ( $('#inp_selected_strip').val() == 'doublestrip') {
-			$('#strip_option').html('Double');
-			
-			$('#strip_left_lining').html( "<small class=\"sbox\" style=\"background-color:"+ sel_color_code[ color_panels[bg.panels.length - 2] ] +"\"></small> "+ sel_color_name[ color_panels[bg.panels.length - 2] ] +"</span>" );
-			$('#strip_right_lining').html( "<small class=\"sbox\" style=\"background-color:"+ sel_color_code[ color_panels[bg.panels.length - 1] ] +"\"></small> "+ sel_color_name[ color_panels[bg.panels.length - 1] ] +"</span>" );
-			
-		} else {
-			$('#strip_option').html(' - none - ');
-			$('#strip_right_lining').html( " - none - ");
-			$('#strip_left_lining').html( " - none - ");
+		accordion_html = accordion_html.replace( "Panel " + (theshirt.panels.length - 2), 'Bottom');
+ 	  }
+		
+	  if (( $('#inp_selected_strip').val() == 'leftstrip') || ( $('#inp_selected_strip').val() == 'rightstrip') )
+	  { var counter = 0;
+		for( i = theshirt.panels.length - 1; i < theshirt.panels.length; i++ ) 
+		{ counter++;
+		  accordion_html = accordion_html.replace( "Panel " + (i+1), 'Strip '+counter);
 		}
+		accordion_html = accordion_html.replace( "Panel " + (theshirt.panels.length - 1), 'Bottom');
+ 	  }
 		
-		$('#strip_price').html( 'RM '+ strip_price[ $('#inp_selected_strip').val() ].toFixed(2) );
-		final_total += strip_price[ $('#inp_selected_strip').val() ];
-		
-		$('#knickknack_option').html( $('input[name=knickknack]:checked').val() );
-		$('#grabhandle_option').html( $('input[name=grabhandle]:checked').val() );
-		$('#pouches_option').html( $('input[name=pouches]:checked').val() );
-		$('#cambuckle_option').html( $('input[name=cambuckle]:checked').val() );
-		
-		if ( $('input[name=knickknack]:checked').val() == 'Yes' ) { 
-			$('#knickknack_price').html( 'RM ' + addon_price['knickknack'].toFixed(2) ); 
-			final_total += addon_price['knickknack'];
-		}
-		else { $('#knickknack_price').html( 'RM 0.00'); }
+	  if ( $('#inp_selected_strip').val() == 'nostrip') 
+	  { accordion_html = accordion_html.replace( "Panel " + (theshirt.panels.length), 'Bottom'); }
 
-		if ( $('input[name=grabhandle]:checked').val() == 'Yes' ) { 
-			$('#grabhandle_price').html( 'RM ' + addon_price['grabhandle'].toFixed(2) ); 
-			final_total += addon_price['grabhandle'];
-		}
-		else { $('#grabhandle_price').html( 'RM 0.00'); }
-		
-		if ( $('input[name=pouches]:checked').val() == 'Yes' ) { 
-			$('#pouches_price').html( 'RM ' + addon_price['pouches'].toFixed(2) ); 
-			final_total += addon_price['pouches'];
-		}
-		else { $('#pouches_price').html( 'RM 0.00'); }
-		
-		$('#final_total').html('RM ' + final_total.toFixed(2));
-	}
-	
-	var pad_selector = function() {
-		var selector_html = '';
-			selector_html = panel_html.replace( /Panel 4/gi, 'Shoulder Pad Color');
-			selector_html = selector_html.replace( /panel3/gi, 'panelpad' );
-			selector_html = selector_html.replace( /panel_four/gi, 'panel_pad' );
-			selector_html = selector_html.replace( /colorsel\"/gi, 'colorsel3"' );
-	
-		$("#accordion3").html( selector_html );
-		$( "#accordion3" ).accordion('destroy').accordion({
-						autoHeight: false,
-						collapsible: true
-		});
-	}
-		
-	
-	var draw_selector = function() {
-	
-		var strip = '';
-		if ( $('#inp_selected_strip').val() != 'nostrip') { strip = '_' + $('#inp_selected_strip').val(); }
-		theshirt = shirt[$('#inp_selected_design').val() + '_front' + strip ];
-
-		var numbers = ['one','two','three','four','five','six','seven','eight','nine','ten'];
-		//alert( $('#inp_selected_design').val() + '_front' + strip );
-		
-		var accordion_html = '';
-		for( i = 0; i < theshirt.panels.length; i++ ) {		
-			temp = panel_html.replace( /Panel 4/gi, 'Panel '+(i+1));
-			temp = temp.replace( /panel3/gi, 'panel'+i );
-			temp = temp.replace( /panel_four/gi, 'panel_'+numbers[i] );
-			accordion_html += temp;
-			colors[i] = '#ffffff';
-		}
-
-		if ( $('#inp_selected_strip').val() == 'doublestrip') {
-			var counter = 0;
-			for( i = theshirt.panels.length - 2; i < theshirt.panels.length; i++ ) {
-				counter++;
-				accordion_html = accordion_html.replace( "Panel " + (i+1), 'Strip '+counter);
-			}
-			
-			accordion_html = accordion_html.replace( "Panel " + (theshirt.panels.length - 2), 'Bottom');
-		}
-		
-		if (( $('#inp_selected_strip').val() == 'leftstrip') ||
-		( $('#inp_selected_strip').val() == 'rightstrip') ){
-			var counter = 0;
-			for( i = theshirt.panels.length - 1; i < theshirt.panels.length; i++ ) {
-				counter++;
-				accordion_html = accordion_html.replace( "Panel " + (i+1), 'Strip '+counter);
-			}
-			accordion_html = accordion_html.replace( "Panel " + (theshirt.panels.length - 1), 'Bottom');
-		}
-		
-		if ( $('#inp_selected_strip').val() == 'nostrip') {
-			accordion_html = accordion_html.replace( "Panel " + (theshirt.panels.length), 'Bottom');
-		}
-
-		$("#accordion").html( accordion_html );
-		$( "#accordion" ).accordion('destroy').accordion({
+ 	  $("#accordion").html( accordion_html );
+	  $( "#accordion" ).accordion('destroy').accordion({
 						autoHeight: false,
 						collapsible: true
 		});
 	}
 
-	$(document).ready(function() {	
-
-	draw_selector();
-	set_front_bag();  
+	$(document).ready(function() 
+	{ draw_selector();
+	  set_front_bag();  
 	
-	$('#knickknack_img').css('opacity','0.5');
-	$('#knickknack_img').css('filter','alpha(opacity=50)');
+	  $('#knickknack_img').css('opacity','0.5');
+	  $('#knickknack_img').css('filter','alpha(opacity=50)');
 	
-	$('#grabhandle_img').css('opacity','0.5');
-	$('#grabhandle_img').css('filter','alpha(opacity=50)');
+ 	  $('#grabhandle_img').css('opacity','0.5');
+	  $('#grabhandle_img').css('filter','alpha(opacity=50)');
 
-	$('#pouches_img').css('opacity','0.5');
-	$('#pouches_img').css('filter','alpha(opacity=50)');
+	  $('#pouches_img').css('opacity','0.5');
+	  $('#pouches_img').css('filter','alpha(opacity=50)');
 
-	// STEP 1: SELECT DESIGN
-		$('ul.sel_design li').click(function() {
-			$('ul.sel_design li').siblings().removeClass( 'selected' );
-			$(this).addClass( 'selected' );
+	  // STEP 1: SELECT DESIGN
+	  $('ul.sel_design li').click(function() 
+	  { $('ul.sel_design li').siblings().removeClass( 'selected' );
+		$(this).addClass( 'selected' );
 			
-			$('#inp_selected_design').val( $(this).attr('id') );
-			
-			$('#select_strip_area').html( strip_html.replace( /rainmaker_1panel/gi, $(this).attr('id') ) );
-			$('#inp_selected_strip').val( 'nostrip' );
+		$('#inp_selected_design').val( $(this).attr('id') );
+		$('#select_strip_area').html( strip_html.replace( /rainmaker_1panel/gi, $(this).attr('id') ) );
+		$('#inp_selected_strip').val( 'nostrip' );
 
-			draw_selector();
-			set_front_bag(); 
-			set_inside_bag();
-			
-		});
+		draw_selector();
+		set_front_bag(); 
+		set_inside_bag();	
+	  });
 		
-		// STEP 2: SELECT STRIP DESIGN
-		$('ul.sel_strip li').live('click', function() {
-			$('ul.sel_strip li').siblings().removeClass( 'selected' );
-			$(this).addClass( 'selected' );
+	  // STEP 2: SELECT STRIP DESIGN
+	  $('ul.sel_strip li').live('click', function() 
+	  { $('ul.sel_strip li').siblings().removeClass( 'selected' );
+		$(this).addClass( 'selected' );
 			
-			$('#inp_selected_strip').val( $(this).attr('id') );
-			draw_selector();
-			set_front_bag(); 
-			set_inside_bag();
-		});
+		$('#inp_selected_strip').val( $(this).attr('id') );
+		draw_selector();
+		set_front_bag(); 
+		set_inside_bag();
+	  });
 
+	  $('.colorsel').live('click',function()
+	  { var sel = $(this).attr('id').split('_');
+		$('#'+sel[0]).val( sel[1] );
+		$('#'+sel[0]+'_box').attr( 'src', 'images/drawing/'+sel_color_file[ parseInt(sel[1]) ] );
+			
+		color_panels[ sel[0].substr(-1) ] = parseInt(sel[1]);
+
+		var strip = '';
+		if ( $('#inp_selected_strip').val() != 'nostrip') { strip = '_' + $('#inp_selected_strip').val(); }
+		theshirt = shirt[$('#inp_selected_design').val() + '_front' + strip ];		
 		
-		$('.colorsel').live('click',function(){
-			var sel = $(this).attr('id').split('_');
-			$('#'+sel[0]).val( sel[1] );
-			$('#'+sel[0]+'_box').attr( 'src', 'images/drawing/'+sel_color_file[ parseInt(sel[1]) ] );
-			
-			color_panels[ sel[0].substr(-1) ] = parseInt(sel[1]);
+		for( i = 0; i < theshirt.panels.length; i++ ) 
+		{ c = $('#panel'+i).val();
+		  colors[i] = sel_color_code[ c ];
+		}
 
-			var strip = '';
-			if ( $('#inp_selected_strip').val() != 'nostrip') { strip = '_' + $('#inp_selected_strip').val(); }
-			theshirt = shirt[$('#inp_selected_design').val() + '_front' + strip ];		
+		set_front_bag();
+	  });
 		
-			for( i = 0; i < theshirt.panels.length; i++ ) {
-				c = $('#panel'+i).val();
-				colors[i] = sel_color_code[ c ];
-			}
-
-			set_front_bag();
+	  $('.colorsel2').live('click',function()
+	  { var sel = $(this).attr('id').split('_');
+		$('#panelpocket').val( sel[1] );
+		$('#panelpocket_box').attr( 'src', 'images/drawing/'+sel_color_file[ parseInt(sel[1]) ] );	
 			
-		});
+		pocket_color = sel_color_code[ parseInt(sel[1]) ];
+		n_pocket_color = parseInt(sel[1]);
+		set_inside_bag();	
+ 	  });
+
+	  $('.colorsel3').live('click',function()
+	  { var sel = $(this).attr('id').split('_');
+		$('#panelpad').val( sel[1] );
+		$('#panelpad_box').attr( 'src', 'images/drawing/'+sel_color_file[ parseInt(sel[1]) ] );	
+			
+		shoulder_pad_color = sel_color_code[ parseInt(sel[1]) ];
+		n_shoulder_pad_color = parseInt(sel[1]);
+		set_shoulder_pad();
+	  });
 		
-		$('.colorsel2').live('click',function(){
-			var sel = $(this).attr('id').split('_');
-			$('#panelpocket').val( sel[1] );
-			$('#panelpocket_box').attr( 'src', 'images/drawing/'+sel_color_file[ parseInt(sel[1]) ] );	
-			
-			pocket_color = sel_color_code[ parseInt(sel[1]) ];
-			n_pocket_color = parseInt(sel[1]);
-			set_inside_bag();
-			
-		});
+	  $('input[name=cambuckle]').click(function()
+	  { if( $('input[name=cambuckle]:checked').val() == 'Left Hand User')
+	    { $('#cambuckle_img').attr('src', 'img/cambuckle-left.jpg'); }
+	    else 
+	    { $('#cambuckle_img').attr('src', 'img/cambuckle-right.jpg'); }
+	  });
 
-		$('.colorsel3').live('click',function(){
-			var sel = $(this).attr('id').split('_');
-			$('#panelpad').val( sel[1] );
-			$('#panelpad_box').attr( 'src', 'images/drawing/'+sel_color_file[ parseInt(sel[1]) ] );	
-			
-			shoulder_pad_color = sel_color_code[ parseInt(sel[1]) ];
-			n_shoulder_pad_color = parseInt(sel[1]);
-			set_shoulder_pad();
-			
-		});
+	  $('input[name=knickknack]').click(function()
+	  { if( $('input[name=knickknack]:checked').val() == 'Yes')
+	    { $('#knickknack_img').css('opacity','1.0');
+		  $('#knickknack_img').css('filter','alpha(opacity=100)');
+		} 
+		else 
+		{ $('#knickknack_img').css('opacity','0.5');
+		  $('#knickknack_img').css('filter','alpha(opacity=50)');
+		}
+	  });		
+
+ 	  $('input[name=grabhandle]').click(function()
+ 	  { if( $('input[name=grabhandle]:checked').val() == 'Yes')
+ 	    { $('#grabhandle_img').css('opacity','1.0');
+		  $('#grabhandle_img').css('filter','alpha(opacity=100)');
+		} 
+		else 
+		{ $('#grabhandle_img').css('opacity','0.5');
+		  $('#grabhandle_img').css('filter','alpha(opacity=50)');
+		}
+	  });
 		
-		$('input[name=cambuckle]').click(function(){
-			if( $('input[name=cambuckle]:checked').val() == 'Left Hand User'){
-				$('#cambuckle_img').attr('src', 'img/cambuckle-left.jpg');
-			} else {
-				$('#cambuckle_img').attr('src', 'img/cambuckle-right.jpg');
-			}
-		});
+	  $('input[name=pouches]').click(function()
+	  { if( $('input[name=pouches]:checked').val() == 'Yes')
+	    { $('#pouches_img').css('opacity','1.0');
+		  $('#pouches_img').css('filter','alpha(opacity=100)');
+		} 
+		else 
+		{ $('#pouches_img').css('opacity','0.5');
+		  $('#pouches_img').css('filter','alpha(opacity=50)');
+		}
+	  });
 
-		$('input[name=knickknack]').click(function(){
-			if( $('input[name=knickknack]:checked').val() == 'Yes'){
-				$('#knickknack_img').css('opacity','1.0');
-				$('#knickknack_img').css('filter','alpha(opacity=100)');
-			} else {
-				$('#knickknack_img').css('opacity','0.5');
-				$('#knickknack_img').css('filter','alpha(opacity=50)');
-			}
-		});		
-
-
-		$('input[name=grabhandle]').click(function(){
-			if( $('input[name=grabhandle]:checked').val() == 'Yes'){
-				$('#grabhandle_img').css('opacity','1.0');
-				$('#grabhandle_img').css('filter','alpha(opacity=100)');
-			} else {
-				$('#grabhandle_img').css('opacity','0.5');
-				$('#grabhandle_img').css('filter','alpha(opacity=50)');
-			}
-		});
+	  pocket_selector();
+	  pad_selector();	
 		
-		$('input[name=pouches]').click(function(){
-			if( $('input[name=pouches]:checked').val() == 'Yes'){
-				$('#pouches_img').css('opacity','1.0');
-				$('#pouches_img').css('filter','alpha(opacity=100)');
-			} else {
-				$('#pouches_img').css('opacity','0.5');
-				$('#pouches_img').css('filter','alpha(opacity=50)');
-			}
-		});
+	  $("#wizardform-next-2").live('click', function() 
+	  { set_inside_bag(); });
 
-	pocket_selector();
-	pad_selector();	
+  	  $("#wizardform-next-3").live('click', function() 
+  	  { set_shoulder_pad(); });
+
+  	  $("#wizardform-next-5").live('click', function() 
+  	  { $('#front_thumbnail').attr('src', $("#front_bag_canvas").getCanvasImage("png") );
+		$('#inside_thumbnail').attr('src', $("#inside_bag_canvas").getCanvasImage("png") );	
+		$('#shoulder_pad_thumbnail').attr('src', $("#shoulder_pad_canvas").getCanvasImage("png") );		
+
+		final_price();
+	  });
 		
-		$("#wizardform-next-2").live('click', function() {
-			set_inside_bag();
-		});
-
-		$("#wizardform-next-3").live('click', function() {
-			set_shoulder_pad();
-		});
-
-
-		$("#wizardform-next-5").live('click', function() {
-			$('#front_thumbnail').attr('src', $("#front_bag_canvas").getCanvasImage("png") );
-			$('#inside_thumbnail').attr('src', $("#inside_bag_canvas").getCanvasImage("png") );	
-			$('#shoulder_pad_thumbnail').attr('src', $("#shoulder_pad_canvas").getCanvasImage("png") );		
-
-
-			final_price();
-		});
-		
-		$('#wizardform').stepy();
-
-
-
-			
+	  $('#wizardform').stepy();
 	});  
   </script>
   
   <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
        mathiasbynens.be/notes/async-analytics-snippet -->
   <script>
-    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-    s.parentNode.insertBefore(g,s)}(document,'script'));
+   var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+   (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+   g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+   s.parentNode.insertBefore(g,s)}(document,'script'));
   </script>
-</body>
+ </body>
 </html>
