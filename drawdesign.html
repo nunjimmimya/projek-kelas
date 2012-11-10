@@ -113,10 +113,49 @@
   <script>
    var selectedShirt = 'roundneck_long_front';
    var theshirt = shirt[selectedShirt];
-   alert(theshirt);
    var colors = [ '#fff','#fff','#fff','#fff', '#fff','#fff', '#fff','#fff' ];
    var color_panels = [ 8,8,8,8,8,8,8,8];
    var strip_html ="";
- </script>
+
+	var set_front_bag = function() 
+	{ var strip = '';
+	  theshirt = shirt['_front' + strip ];
+		
+	  draw_front_shirt(theshirt);
+	}
+	
+	$(document).ready(function() 
+	{ set_front_bag();  
+	
+ 	  $('.colorsel').live('click',function()
+ 	  { var sel = $(this).attr('id').split('_');
+	    $('#'+sel[0]).val( sel[1] );
+	    $('#'+sel[0]+'_box').attr( 'src', 'opt_img/'+sel_color_file[ parseInt(sel[1]) ] );
+			
+	    color_panels[ sel[0].substr(-1) ] = parseInt(sel[1]);
+
+	    var strip = '';
+	    if ( $('#inp_selected_strip').val() != 'nostrip') { strip = '_' + $('#inp_selected_strip').val(); }
+	    thebag = bags[$('#inp_selected_design').val() + '_front' + strip ];		
+		
+	    for(i = 0; i < thebag.panels.length; i++) 
+	    { c = $('#panel'+i).val();
+		  colors[i] = sel_color_code[ c ];
+		}
+
+		set_front_bag();
+	  });
+		
+  	  $("#wizardform-next-5").live('click', function() 
+	  { $('#front_thumbnail').attr('src', $("#front_bag_canvas").getCanvasImage("png") );
+	    $('#inside_thumbnail').attr('src', $("#inside_bag_canvas").getCanvasImage("png") );	
+	    $('#shoulder_pad_thumbnail').attr('src', $("#shoulder_pad_canvas").getCanvasImage("png") );		
+
+  	    final_price();
+	  });
+		
+	  $('#wizardform').stepy();			
+	});  
+  </script>
  </body>
 </html>
