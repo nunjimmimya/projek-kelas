@@ -163,18 +163,15 @@
   <script type="text/javascript" src="script/jquery.stepy.min.js"></script>  
   <!-- end scripts -->
 
-  <script src="script/shirt.js"></script>
+  <script type="text/javascript" src="script/shirt.js"></script>
   <script>
-   var theshirt = shirt['shirt_front'];
-   var backshirt = shirt['roundneck_long_back'];
+   var selected_shirt = 'roundneck_long_front';
+   var theshirt = shirt['selected_shirt'];
+   alert(theshirt);
+   //var backshirt = shirt['roundneck_long_back'];
    var colors = [ '#fff','#fff','#fff','#fff', '#fff','#fff', '#fff','#fff' ];
    var color_panels = [ 8,8,8,8,8,8,8,8];
    var pocket_color = '#fff';
-   var shoulder_pad_color = '#fff';
-   var n_pocket_color = 8;
-   var n_shoulder_pad_color = 8;
-   var strip_html ="";
-   strip_html += "<ul class=\"sel_strip\"><li id=\"nostrip\" class=\"selected\"><img src=\"img\/rainmaker_1panel.jpg\" width=\"200\"><span>No Strip<\/span><\/li><li id=\"doublestrip\"><img src=\"img\/rainmaker_1panel_doublestrip.jpg\" width=\"200\"><span>Double Strip (+RM 40)<\/span><\/li><li id=\"leftstrip\"><img src=\"img\/rainmaker_1panel_leftstrip.jpg\" width=\"200\"><span>Left Strip (+RM 20)<\/span><\/li><li id=\"rightstrip\"><img src=\"img\/rainmaker_1panel_rightstrip.jpg\" width=\"200\"><span>Right Strip (+RM 20)<\/span><\/li><\/ul>";
 
    var panel_html="";
    panel_html += "<h3><a href=\"javascript:void(0)\">Panel 4<img height=\"15\" width=\"15\" id=\"panel3_box\" src=\"images/drawing\/sel_white.png\" style=\"float: right\"><\/a><\/h3><div><input type=\"hidden\" id=\"panel3\" value=\"8\"><br><img src=\"images/drawing\/selector.png\" usemap=\"#panel_four\" \/><map name=\"panel_four\" id=\"panel_four\"><area shape=\"rect\" coords=\"37,107,68,138\" href=\"javascript:void(0)\" alt=\"Black\" id=\"panel3_13\" class=\"colorsel\" \/><area shape=\"rect\" coords=\"3,107,34,138\" href=\"javascript:void(0)\" alt=\"Purple\" id=\"panel3_12\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"3,72,34,103\" href=\"javascript:void(0)\" alt=\"White\" id=\"panel3_8\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"37,72,68,103\" href=\"javascript:void(0)\" alt=\"Florescent Pink\" id=\"panel3_9\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"71,72,102,103\" href=\"javascript:void(0)\" alt=\"Orange\" id=\"panel3_10\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"106,72,137,103\" href=\"javascript:void(0)\" alt=\"Spectre Yellow\" id=\"panel3_11\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"106,37,137,68\" href=\"javascript:void(0)\" alt=\"Navy\" id=\"panel3_7\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"71,36,102,67\" href=\"javascript:void(0)\" alt=\"Mustard Yellow\" id=\"panel3_6\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"37,37,68,68\" href=\"javascript:void(0)\" alt=\"Red\" id=\"panel3_5\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"3,37,34,68\" href=\"javascript:void(0)\" alt=\"Florescent Green\" id=\"panel3_4\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"106,3,137,34\" href=\"javascript:void(0)\" alt=\"Grey\" id=\"panel3_3\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"71,3,102,34\" href=\"javascript:void(0)\" alt=\"Classic Blue\" id=\"panel3_2\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"37,3,68,34\" href=\"javascript:void(0)\" alt=\"Green\" id=\"panel3_1\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"3,3,34,34\" href=\"javascript:void(0)\" alt=\"Brown\" id=\"panel3_0\" class=\"colorsel\"\/><\/map><\/div>";
@@ -192,12 +189,7 @@
    { backshirt = shirt[$('#inp_selected_design').val() + '_inside_front' ];
 	 draw_back_shirt( backshirt );
    }  	
-	
-   var set_shoulder_pad = function() 
-   { shoulderpad = bags[ 'shoulder_pad' ];
-	 draw_shoulder_pad( shoulderpad );
-   }  	
-	
+		
    var pocket_selector = function() 
    { var selector_html = '';
 	 selector_html = panel_html.replace( /Panel 4/gi, 'Pocket Color');
@@ -206,7 +198,7 @@
 	 selector_html = selector_html.replace( /colorsel\"/gi, 'colorsel2"' );
 	
 	 $("#accordion2").html( selector_html );
-	 $( "#accordion2" ).accordion('destroy').accordion({
+	 $("#accordion2").accordion('destroy').accordion({
 						autoHeight: false,
 						collapsible: true
 		});
@@ -219,27 +211,7 @@
 	 $('#bag_price').html( 'RM '+bag_price[ $('#inp_selected_design').val() ].toFixed(2) );
 		
 	 final_total += bag_price[ $('#inp_selected_design').val() ];
-		
-	 var strip = '';
-	 if ( $('#inp_selected_strip').val() != 'nostrip') { strip = '_' + $('#inp_selected_strip').val(); }
-	 var bg = bags[$('#inp_selected_design').val() + '_front' + strip ];
-
-	 var tmp_panels = '';
-	 var pname = '';
-		
-	 panels = 0;
-	 if ($('#inp_selected_strip').val() == 'nostrip') { panels =  bg.panels.length; }
-	 else if ($('#inp_selected_strip').val() == 'doublestrip') { panels =  bg.panels.length - 2; }
-	 else  { panels =  bg.panels.length - 1; }
-		
-	 for (i = 0; i < panels ; i++) 
-	 { var col = $("#panel"+i).val();
-	   if ( i != (panels - 1)) { pname = "Panel "+ (i + 1); }
-	   else { pname = "Bottom"; }
-	   //tmp_panels += "<li><span>"+ pname +"</span> <span><img class=\"col_thumb\" src=\"images/drawing/"+ sel_color_file[ color_panels[i] ] +"\" width=\"15\" height=\"15\"> "+ sel_color_name[ color_panels[i] ] +"</span> </li>";
-	   tmp_panels += "<li><span>"+ pname +"</span> <span><small class=\"sbox\" style=\"background-color:"+ sel_color_code[ color_panels[i] ] +"\"></small> "+ sel_color_name[ color_panels[i] ] +"</span> </li>";
-	 }
-		
+				
 	 var col = $("#panelpocket").val();
 	 tmp_panels += "<li><span>Inside Pocket</span> <span><small class=\"sbox\" style=\"background-color:"+ sel_color_code[ n_pocket_color ] +"\"></small> "+ sel_color_name[ n_pocket_color ] +"</span> </li>";		
 
@@ -247,29 +219,6 @@
 	 tmp_panels += "<li><span>Shoulder Pad</span> <span><small class=\"sbox\" style=\"background-color:"+ sel_color_code[ n_shoulder_pad_color ] +"\"></small> "+ sel_color_name[ n_shoulder_pad_color ] +"</span> </li>";		
 	
 	 $('#final_panels').html(  tmp_panels );
-
-	
-	 if ( $('#inp_selected_strip').val() == 'leftstrip') 
-	 { $('#strip_option').html('Left');			
-	   $('#strip_left_lining').html( "<img src=\"images/drawing/"+ sel_color_file[ color_panels[ bg.panels.length - 1] ] +"\" width=\"15\" height=\"15\"> "+ sel_color_name[ color_panels[ bg.panels.length - 1] ] );
-	   $('#strip_right_lining').html( " - none - ");
-			
-	 }
-	 else if ( $('#inp_selected_strip').val() == 'rightstrip') 
-	 { $('#strip_option').html('Right');
-	   $('#strip_right_lining').html( "<small class=\"sbox\" style=\"background-color:"+ sel_color_code[ color_panels[bg.panels.length - 1] ] +"\"></small> "+ sel_color_name[ color_panels[bg.panels.length - 1] ] );
-	   $('#strip_left_lining').html( " - none - ");	
-  	 } 
-  	 else if ( $('#inp_selected_strip').val() == 'doublestrip') 
-  	 { $('#strip_option').html('Double');
-	   $('#strip_left_lining').html( "<small class=\"sbox\" style=\"background-color:"+ sel_color_code[ color_panels[bg.panels.length - 2] ] +"\"></small> "+ sel_color_name[ color_panels[bg.panels.length - 2] ] +"</span>" );
- 	   $('#strip_right_lining').html( "<small class=\"sbox\" style=\"background-color:"+ sel_color_code[ color_panels[bg.panels.length - 1] ] +"\"></small> "+ sel_color_name[ color_panels[bg.panels.length - 1] ] +"</span>" );
-  	 } 
-  	 else 
-  	 { $('#strip_option').html(' - none - ');
-	   $('#strip_right_lining').html( " - none - ");
-	   $('#strip_left_lining').html( " - none - ");
-	 }
 		
 	 $('#strip_price').html( 'RM '+ strip_price[ $('#inp_selected_strip').val() ].toFixed(2) );
 	 final_total += strip_price[ $('#inp_selected_strip').val() ];
@@ -300,20 +249,6 @@
 	 $('#final_total').html('RM ' + final_total.toFixed(2));
 	}
 	
-	var pad_selector = function() 
-	{ var selector_html = '';
-	  selector_html = panel_html.replace( /Panel 4/gi, 'Shoulder Pad Color');
-	  selector_html = selector_html.replace( /panel3/gi, 'panelpad' );
-	  selector_html = selector_html.replace( /panel_four/gi, 'panel_pad' );
-	  selector_html = selector_html.replace( /colorsel\"/gi, 'colorsel3"' );
-	
-	  $("#accordion3").html( selector_html );
-	  $( "#accordion3" ).accordion('destroy').accordion({
-						autoHeight: false,
-						collapsible: true
-		});
-	}
-		
 	var draw_selector = function() 
 	{ var strip = '';
 	  if ( $('#inp_selected_strip').val() != 'nostrip') { strip = '_' + $('#inp_selected_strip').val(); }
@@ -331,28 +266,6 @@
 		colors[i] = '#ffffff';
 	  }
 
-	  if ( $('#inp_selected_strip').val() == 'doublestrip') 
-	  { var counter = 0;
-		for( i = theshirt.panels.length - 2; i < theshirt.panels.length; i++ ) 
-		{ counter++;
-		  accordion_html = accordion_html.replace( "Panel " + (i+1), 'Strip '+counter);
-		}
-			
-		accordion_html = accordion_html.replace( "Panel " + (theshirt.panels.length - 2), 'Bottom');
- 	  }
-		
-	  if (( $('#inp_selected_strip').val() == 'leftstrip') || ( $('#inp_selected_strip').val() == 'rightstrip') )
-	  { var counter = 0;
-		for( i = theshirt.panels.length - 1; i < theshirt.panels.length; i++ ) 
-		{ counter++;
-		  accordion_html = accordion_html.replace( "Panel " + (i+1), 'Strip '+counter);
-		}
-		accordion_html = accordion_html.replace( "Panel " + (theshirt.panels.length - 1), 'Bottom');
- 	  }
-		
-	  if ( $('#inp_selected_strip').val() == 'nostrip') 
-	  { accordion_html = accordion_html.replace( "Panel " + (theshirt.panels.length), 'Bottom'); }
-
  	  $("#accordion").html( accordion_html );
 	  $( "#accordion" ).accordion('destroy').accordion({
 						autoHeight: false,
@@ -362,17 +275,8 @@
 
 	$(document).ready(function() 
 	{ draw_selector();
-	  set_front_bag();  
+	  set_front_shirt();  
 	
-	  $('#knickknack_img').css('opacity','0.5');
-	  $('#knickknack_img').css('filter','alpha(opacity=50)');
-	
- 	  $('#grabhandle_img').css('opacity','0.5');
-	  $('#grabhandle_img').css('filter','alpha(opacity=50)');
-
-	  $('#pouches_img').css('opacity','0.5');
-	  $('#pouches_img').css('filter','alpha(opacity=50)');
-
 	  // STEP 1: SELECT DESIGN
 	  $('ul.sel_design li').click(function() 
 	  { $('ul.sel_design li').siblings().removeClass( 'selected' );
@@ -437,55 +341,6 @@
 		set_shoulder_pad();
 	  });
 		
-	  $('input[name=cambuckle]').click(function()
-	  { if( $('input[name=cambuckle]:checked').val() == 'Left Hand User')
-	    { $('#cambuckle_img').attr('src', 'img/cambuckle-left.jpg'); }
-	    else 
-	    { $('#cambuckle_img').attr('src', 'img/cambuckle-right.jpg'); }
-	  });
-
-	  $('input[name=knickknack]').click(function()
-	  { if( $('input[name=knickknack]:checked').val() == 'Yes')
-	    { $('#knickknack_img').css('opacity','1.0');
-		  $('#knickknack_img').css('filter','alpha(opacity=100)');
-		} 
-		else 
-		{ $('#knickknack_img').css('opacity','0.5');
-		  $('#knickknack_img').css('filter','alpha(opacity=50)');
-		}
-	  });		
-
- 	  $('input[name=grabhandle]').click(function()
- 	  { if( $('input[name=grabhandle]:checked').val() == 'Yes')
- 	    { $('#grabhandle_img').css('opacity','1.0');
-		  $('#grabhandle_img').css('filter','alpha(opacity=100)');
-		} 
-		else 
-		{ $('#grabhandle_img').css('opacity','0.5');
-		  $('#grabhandle_img').css('filter','alpha(opacity=50)');
-		}
-	  });
-		
-	  $('input[name=pouches]').click(function()
-	  { if( $('input[name=pouches]:checked').val() == 'Yes')
-	    { $('#pouches_img').css('opacity','1.0');
-		  $('#pouches_img').css('filter','alpha(opacity=100)');
-		} 
-		else 
-		{ $('#pouches_img').css('opacity','0.5');
-		  $('#pouches_img').css('filter','alpha(opacity=50)');
-		}
-	  });
-
-	  pocket_selector();
-	  pad_selector();	
-		
-	  $("#wizardform-next-2").live('click', function() 
-	  { set_inside_bag(); });
-
-  	  $("#wizardform-next-3").live('click', function() 
-  	  { set_shoulder_pad(); });
-
   	  $("#wizardform-next-5").live('click', function() 
   	  { $('#front_thumbnail').attr('src', $("#front_bag_canvas").getCanvasImage("png") );
 		$('#inside_thumbnail').attr('src', $("#inside_bag_canvas").getCanvasImage("png") );	

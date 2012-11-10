@@ -1,4 +1,4 @@
-var shirt = {'roundneck_long_front':{'image':'roundnecklong_front.png','panels':[{x:0, y: 0},{x:233.521,y:233.521},]}}
+var shirt = {'roundneck_long_front':{'image':'roundnecklong_front.png','panels':[{x:0, y: 0},{x:233.521,y:233.521}]}}
 
 var sel_color_code = [
 
@@ -95,6 +95,7 @@ var sel_color_file = [
 	'sel_black.png'
 
 ];
+
 // custom function for jCanvas
 
 $.jCanvas.extend({
