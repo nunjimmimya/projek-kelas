@@ -130,7 +130,7 @@
  	  $('.colorsel').live('click',function()
  	  { var sel = $(this).attr('id').split('_');
 	    $('#'+sel[0]).val( sel[1] );
-	    $('#'+sel[0]+'_box').attr( 'src', 'opt_img/'+sel_color_file[ parseInt(sel[1]) ] );
+	    $('#'+sel[0]+'_box').attr( 'src', 'images/drawing/'+sel_color_file[ parseInt(sel[1]) ] );
 			
 	    color_panels[ sel[0].substr(-1) ] = parseInt(sel[1]);
 
@@ -146,7 +146,7 @@
 		set_front_bag();
 	  });
 		
-  	  $("#wizardform-next-5").live('click', function() 
+  	  /*$("#wizardform-next-5").live('click', function()
 	  { $('#front_thumbnail').attr('src', $("#front_bag_canvas").getCanvasImage("png") );
 	    $('#inside_thumbnail').attr('src', $("#inside_bag_canvas").getCanvasImage("png") );	
 	    $('#shoulder_pad_thumbnail').attr('src', $("#shoulder_pad_canvas").getCanvasImage("png") );		
@@ -154,7 +154,7 @@
   	    final_price();
 	  });
 		
-	  $('#wizardform').stepy();			
+	  $('#wizardform').stepy();*/
 	});  
   </script>
  </body>
