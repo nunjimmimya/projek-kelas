@@ -52,7 +52,6 @@ var sel_color_file = [
 ];
 
 // custom function for jCanvas
-
 $.jCanvas.extend(
 { name: "fillspot",
   fn: function(ctx, p)
@@ -79,7 +78,6 @@ $.jCanvas.extend(
 }); 
 
 // custom function for jCanvas
-
 $.jCanvas.extend(
 { name: "fillspot",
   fn: function(ctx, p)
@@ -131,19 +129,19 @@ $.jCanvas.extend(
   }
 }); 
 
-var img_folder = 'images/';
+var img_folder = 'images/drawing/';
 
 // drawing the panels and filling in the color
 var draw_front_shirt = function(myshirt)
 { var panels = myshirt.panels;
 
   for(var pl in panels) 
-  { $('canvas#front_bag_canvas').addLayer({ method: "fillspot", 
+  { $('canvas#front_shirt_canvas').addLayer({ method: "fillspot", 
 	color: colors[pl],
 	nodes:panels[pl] });
   }
 	
-  $('canvas#front_bag_canvas').addLayer(
+  $('canvas#front_shirt_canvas').addLayer(
   { method: 'drawImage',
 	source: img_folder + myshirt.image,
 	x: 0, y: 0,
@@ -151,7 +149,7 @@ var draw_front_shirt = function(myshirt)
 	fromCenter: false
   }).drawLayers();
 
-  var layers = $('canvas#front_bag_canvas').getLayers();
+  var layers = $('canvas#front_shirt_canvas').getLayers();
   layers.length = 0;
 }
 

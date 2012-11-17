@@ -15,7 +15,6 @@
 
   <link rel="stylesheet" href="css/drawing.css">
   <link rel="stylesheet" href="css/smoothness/jquery-ui-1.8.18.custom.css">
-  <link type="text/css" rel="stylesheet" href="css/jquery.stepy.css" />  
   
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
   <!-- All JavaScript at the bottom, except this Modernizr build.
@@ -85,19 +84,9 @@
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
   <header></header>
-  <div role="main">
-   <h1>Custom t-Shirt Design Arena</h1>
-   <form id="wizardform">
-	<fieldset title="STEP 3">
-	 <legend>Choose Color</legend>
-	 <input type="hidden" id="shirt_front_image" value="shirt_front">
-     <div> </div>
-   	 <canvas id="front_shirt" width="494" height="390"></canvas>
- 	 <div id="accordion"></div>
-    </fieldset>
-   </form>
-  </div>
-    <!-- JavaScript at the bottom for fast page loading -->
+  <h1>Custom t-Shirt Design Arena</h1>
+  <canvas id="front_shirt_canvas" width="760" height="600" style="border: 1px solid #000"</canvas>
+  <!-- JavaScript at the bottom for fast page loading -->
 
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
   <script src="script/jquery-1.8.2.min.js"></script>
@@ -118,28 +107,9 @@
    var strip_html ="";
 
    var set_front_bag = function()
-   { var strip = '';
-	 //theshirt = shirt['_front' + strip ];
-		
-	 draw_front_shirt(theshirt);
+   { draw_front_shirt(theshirt);
    }
 	
-   var final_price = function()
-   { var final_total = 0;
-          
-     $('#shirt_name').html( bag_name[ $('#inp_selected_design').val() ] );
-     $('#shirt_price').html( 'RM '+bag_price[ $('#inp_selected_design').val() ].toFixed(2) );
-          
-     final_total += bag_price[ $('#inp_selected_design').val() ];
-          
-     $('#final_panels').html(  tmp_panels );
-          
-     $('#strip_price').html( 'RM '+ strip_price[ $('#inp_selected_strip').val() ].toFixed(2) );
-     final_total += strip_price[ $('#inp_selected_strip').val() ];
-          
-     $('#final_total').html('RM ' + final_total.toFixed(2));
-   }
-
    $(document).ready(function()
    { set_front_bag();
 	
@@ -150,10 +120,6 @@
 			
 	   color_panels[ sel[0].substr(-1) ] = parseInt(sel[1]);
 
-	   //var strip = '';
-	   //if ( $('#inp_selected_strip').val() != 'nostrip') { strip = '_' + $('#inp_selected_strip').val(); }
-	   //thebag = bags[$('#inp_selected_design').val() + '_front' + strip ];
-		
 	   for(i = 0; i < theshirt.panels.length; i++)
 	   { c = $('#panel'+i).val();
 	     colors[i] = sel_color_code[ c ];
@@ -161,16 +127,6 @@
 
 	   set_front_bag();
      });
-
-  	 $("#wizardform-next-5").live('click', function()
-	 { $('#front_thumbnail').attr('src', $("#front_shirt_canvas").getCanvasImage("png") );
-	   //$('#inside_thumbnail').attr('src', $("#inside_shirt_canvas").getCanvasImage("png") );
-	   //$('#shoulder_pad_thumbnail').attr('src', $("#shoulder_pad_canvas").getCanvasImage("png") );
-
-  	   final_price();
-	 });
-		
-	 $('#wizardform').stepy();
    });
   </script>
  </body>
