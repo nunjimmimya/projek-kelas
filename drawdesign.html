@@ -21,7 +21,7 @@
   <!-- All JavaScript at the bottom, except this Modernizr build.
        Modernizr enables HTML5 elements & feature detects for optimal performance.
        Create your own custom Modernizr build: www.modernizr.com/download/ -->
-  <script src="script/modernizr-2.5.3.min.js"></script>
+  <script type="text/javascript" src="script/modernizr-2.5.3.min.js"></script>
   <style>
    canvas { border: 1px solid #ccc; }
 	
@@ -95,17 +95,17 @@
    	 <canvas id="front_shirt" width="494" height="390"></canvas>
  	 <div id="accordion"></div>
     </fieldset>
-   </form>
+   </form> 
   </div>
     <!-- JavaScript at the bottom for fast page loading -->
 
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-  <script src="script/jquery-1.8.2.min.js"></script>
-  <script src="script/jquery-ui-1.8.custom.js"></script>
+  <script type="text/javascript" src="script/jquery-1.8.2.min.js"></script>
+  <script type="text/javascript" src="script/jquery-ui-1.8.custom.js"></script>
 
   <!-- scripts concatenated and minified via build script -->
-  <script src="script/plugins.js"></script>
-  <script src="script/jcanvas.min.js"></script>
+  <script type="text/javascript" src="script/plugins.js"></script>
+  <script type="text/javascript" src="script/jcanvas.min.js"></script>
   <script type="text/javascript" src="script/jquery.stepy.min.js"></script>  
   <!-- end scripts -->
 
@@ -124,24 +124,8 @@
 	 draw_front_shirt(theshirt);
    }
 	
-   var final_price = function()
-   { var final_total = 0;
-          
-     $('#shirt_name').html( bag_name[ $('#inp_selected_design').val() ] );
-     $('#shirt_price').html( 'RM '+bag_price[ $('#inp_selected_design').val() ].toFixed(2) );
-          
-     final_total += bag_price[ $('#inp_selected_design').val() ];
-          
-     $('#final_panels').html(  tmp_panels );
-          
-     $('#strip_price').html( 'RM '+ strip_price[ $('#inp_selected_strip').val() ].toFixed(2) );
-     final_total += strip_price[ $('#inp_selected_strip').val() ];
-          
-     $('#final_total').html('RM ' + final_total.toFixed(2));
-   }
-
-   $(document).ready(function()
-   { set_front_bag();
+	$(document).ready(function() {
+		set_front_bag();  
 	
  	 $('.colorsel').live('click',function()
  	 { var sel = $(this).attr('id').split('_');
@@ -170,8 +154,8 @@
   	   final_price();
 	 });
 		
-	 $('#wizardform').stepy();
-   });
+	  //$('#wizardform').stepy();			
+	});  
   </script>
  </body>
 </html>
