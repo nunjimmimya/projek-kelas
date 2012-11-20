@@ -13,6 +13,7 @@
 
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
+  <link rel="stylesheet" href="css/drawme.css">
   <link rel="stylesheet" href="css/drawing.css">
   <link rel="stylesheet" href="css/smoothness/jquery-ui-1.8.18.custom.css">
   
@@ -46,9 +47,6 @@
    ul.sel_strip li:hover img { opacity:1.0; filter:alpha(opacity=100); }
    ul.sel_strip li.selected { border: 4px solid #000; }
    ul.sel_strip li.selected img { opacity:1.0; filter:alpha(opacity=100); }
-
-   #knickknack_img { opacity:5.0; filter:alpha(opacity=50); }
-   .knickknack_yes { opacity:1.0; filter:alpha(opacity=100); } 
 
    small { font-weight: normal; font-style: italic; }
 	
@@ -84,8 +82,15 @@
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
   <header></header>
-  <h1>Custom t-Shirt Design Arena</h1>
-  <canvas id="front_shirt_canvas" width="760" height="600" style="border: 1px solid #000"</canvas>
+  <div role="main">
+   <h1>Custom t-Shirt Design Arena</h1>
+   <form>
+    <fieldset>
+     <canvas id="front_shirt_canvas" width="494" height="390" style="border: 1px solid #000"</canvas>
+     <div id="accordion"></div>
+    </fieldset>
+   </form>
+  </div>
   <!-- JavaScript at the bottom for fast page loading -->
 
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
@@ -95,7 +100,7 @@
   <!-- scripts concatenated and minified via build script -->
   <script src="script/plugins.js"></script>
   <script src="script/jcanvas.min.js"></script>
-  <script type="text/javascript" src="script/jquery.stepy.min.js"></script>  
+  <script type="text/javascript" src="script/jquery.stepy.min.js"></script>
   <!-- end scripts -->
 
   <script type="text/javascript" src="script/shirt.js"></script>
