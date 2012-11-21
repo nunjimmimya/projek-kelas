@@ -86,8 +86,8 @@
    <h1>Custom t-Shirt Design Arena</h1>
    <form>
     <fieldset>
-     <canvas id="front_shirt_canvas" width="494" height="390" style="border: 1px solid #000"</canvas>
      <div id="accordion"></div>
+     <canvas id="front_shirt_canvas" width="494" height="390"></canvas>
     </fieldset>
    </form>
   </div>
@@ -150,7 +150,7 @@
 
 	   for(i = 0; i < theshirt.panels.length; i++)
 	   { c = $('#panel'+i).val();
-	     colors[i] = sel_color_code[ c ];
+	     colors[i] = sel_color_code[c];
        }
 
 	   set_front_bag();
