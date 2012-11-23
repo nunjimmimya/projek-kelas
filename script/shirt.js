@@ -1,4 +1,10 @@
-var shirt = {'roundneck_long_front':{'image':'roundnecklong_front.png','panels':[[{x:0,y:0},{x:500,y:555}]]}}
+var shirt = {
+	'roundneck_long_front':{'image':'roundnecklong_front.png',
+	'panels':[
+		[{x:0,y:0},{x:0,y:555},{x:500,y:555},{x:500,y:0},{x:0,y:0} ]
+	]
+	}
+}
 
 var sel_color_code = [
 	'#94511a', // brown
@@ -145,12 +151,21 @@ var draw_front_shirt = function(myshirt)
   { method: 'drawImage',
 	source: img_folder + myshirt.image,
 	x: 0, y: 0,
-	width: 500, height: 555,
+	width: (500 * 0.65), height: (555 * 0.65),
 	fromCenter: false
-  }).drawLayers();
+  }).addLayer({ method: 'drawText',
+  fillStyle: "#9cf",
+  strokeStyle: "#25a",
+  strokeWidth: 2,
+  x: 150, y: 100,
+  font: "36pt Verdana, sans-serif",
+  draggable: true,
+  text: $('#ttext').val() }).drawLayers();
+  
 
-  var layers = $('canvas#front_shirt_canvas').getLayers();
-  layers.length = 0;
+
+//  var layers = $('canvas#front_shirt_canvas').getLayers();
+//  layers.length = 0;
 }
 
 // drawing the panels and filling in the color
