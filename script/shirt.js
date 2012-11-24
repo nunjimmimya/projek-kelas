@@ -1,8 +1,8 @@
 var shirt =
-{ 'roundneck_long_front':
-  { 'image':'roundnecklong_front.png',
+{ 'roundneck_long':
+  { 'image':'roundneck_long.png',
     'panels':
-    [[{x:0,y:0},{x:0,y:555},{x:500,y:555},{x:500,y:0},{x:0,y:0}]]
+    [[{x:0,y:0},{x:0,y:553},{x:992,y:553},{x:992,y:0},{x:0,y:0}]]
   }
 }
 
@@ -56,32 +56,6 @@ var sel_color_file = [
 	'sel_purple.png',
 	'sel_black.png'
 ];
-
-// custom function for jCanvas
-$.jCanvas.extend(
-{ name: "fillspot",
-  fn: function(ctx, p)
-  { ctx.lineWidth = 1;
-    ctx.lineCap = "round";
-    ctx.lineJoin = "miter";
-    ctx.beginPath();
-
-	var nodes = p.nodes;
-	for(var nx in nodes)
-    { if (nx == 0) 
-      { var os_x = nodes[nx].x * 0.65;
-		var os_y = nodes[nx].y * 0.65;
-	  }
-      else 
-      { if (nx == 1) { ctx.moveTo( (nodes[nx].x * 0.65) + os_x, (nodes[nx].y * 0.65)+ os_y ); }
-	    else { ctx.lineTo( (nodes[nx].x * 0.65)+ os_x, (nodes[nx].y * 0.65) + os_y ); }
-	  }
-	}
-
-	ctx.fillStyle = p.color;
-	ctx.fill();
-  }
-}); 
 
 // custom function for jCanvas
 $.jCanvas.extend(
@@ -151,18 +125,18 @@ var draw_front_shirt = function(myshirt)
   { method: 'drawImage',
 	source: img_folder + myshirt.image,
 	x: 0, y: 0,
-	width: (500 * 0.65), height: (555 * 0.65),
+	width: (993 * 0.65), height: (555 * 0.65),
 	fromCenter: false
-  }).addLayer({ method: 'drawText',
-  fillStyle: "#9cf",
-  strokeStyle: "#25a",
-  strokeWidth: 2,
-  x: 150, y: 100,
-  font: "36pt Verdana, sans-serif",
-  draggable: true,
-  text: $('#ttext').val() }).drawLayers();
-  
-
+  })
+  .addLayer(
+  { method: 'drawText',
+    fillStyle: "#9cf",
+    strokeStyle: "#25a",
+    strokeWidth: 2,
+    x: 150, y: 100,
+    font: "36pt Verdana, sans-serif",
+    draggable: true,
+    text: $('#ttext').val() }).drawLayers();
 
 //  var layers = $('canvas#front_shirt_canvas').getLayers();
 //  layers.length = 0;
