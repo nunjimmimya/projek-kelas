@@ -1,9 +1,9 @@
-var shirt = {
-	'roundneck_long_front':{'image':'roundnecklong_front.png',
-	'panels':[
-		[{x:0,y:0},{x:0,y:555},{x:500,y:555},{x:500,y:0},{x:0,y:0} ]
-	]
-	}
+var shirt =
+{ 'roundneck_long_front':
+  { 'image':'roundnecklong_front.png',
+    'panels':
+    [[{x:0,y:0},{x:0,y:555},{x:500,y:555},{x:500,y:0},{x:0,y:0}]]
+  }
 }
 
 var sel_color_code = [
