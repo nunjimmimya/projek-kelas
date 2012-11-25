@@ -125,7 +125,7 @@ var draw_front_shirt = function(myshirt)
   { method: 'drawImage',
 	source: img_folder + myshirt.image,
 	x: 0, y: 0,
-	width: (993 * 0.65), height: (555 * 0.65),
+	width: (993 * 0.65), height: (585 * 0.65),
 	fromCenter: false
   })
   .addLayer(
