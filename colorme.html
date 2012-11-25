@@ -89,8 +89,18 @@
    <h1>Custom t-Shirt Design Arena</h1>
    <form>
     <fieldset>
-     <div id="accordion"></div>
-	 <input type="text" id="ttext" style="float: left;" />
+     <div id="categories">
+      <div id="tabs">
+       <ul>
+        <li><a href="#tabs-1">Input Color</li>
+        <li><a href="#tabs-2">Input Texts</li>
+        <li><a href="#tabs-3">Input Image</li>
+       </ul>
+       <div id="tabs-1"><div id="accordion"></div></div>
+       <div id="tabs-2"><input type="text" id="ttext" style="float: left;" /></div>
+       <div id="tabs-3">kacang</div>
+      </div>
+     </div>
      <canvas id="front_shirt_canvas" width="660" height="400"></canvas>
     </fieldset>
    </form>
@@ -146,6 +156,8 @@
    { draw_selector();
      set_front_shirt();
 	
+     $('#tabs').tabs();
+    
  	 $('.colorsel').live('click',function()
  	 { var sel = $(this).attr('id').split('_');
 	   $('#'+sel[0]).val(sel[1]);
