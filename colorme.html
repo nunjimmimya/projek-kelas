@@ -92,9 +92,9 @@
      <div id="categories">
       <div id="tabs">
        <ul>
-        <li><a href="#tabs-1"><span>Input Color</span></li>
-        <li><a href="#tabs-2"><span>Input Texts</span></li>
-        <li><a href="#tabs-3"><span>Input Image</span></li>
+        <li><a href="#tabs-1">Input Color</a></li>
+        <li><a href="#tabs-2">Input Texts</a></li>
+        <li><a href="#tabs-3">Input Image</a></li>
        </ul>
        <div id="tabs-1"><div id="accordion"></div></div>
        <div id="tabs-2"><input type="text" id="ttext" /></div>
@@ -150,6 +150,10 @@
       { autoHeight: false,
         collapsible: true
       });
+
+     var tabHeight = 395;
+     $('#tabs').height(tabHeight);
+     $('#tabs').tabs();
    }
 	
    $(document).ready(function()
@@ -169,9 +173,7 @@
        }
 
 	   set_front_shirt();
-     });
-     
-     $('#tabs').tabs();     
+     });     
    });
   </script>
  </body>
