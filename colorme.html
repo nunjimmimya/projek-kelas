@@ -92,12 +92,12 @@
      <div id="categories">
       <div id="tabs">
        <ul>
-        <li><a href="#tabs-1">Input Color</li>
-        <li><a href="#tabs-2">Input Texts</li>
-        <li><a href="#tabs-3">Input Image</li>
+        <li><a href="#tabs-1"><span>Input Color</span></li>
+        <li><a href="#tabs-2"><span>Input Texts</span></li>
+        <li><a href="#tabs-3"><span>Input Image</span></li>
        </ul>
        <div id="tabs-1"><div id="accordion"></div></div>
-       <div id="tabs-2"><input type="text" id="ttext" style="float: left;" /></div>
+       <div id="tabs-2"><input type="text" id="ttext" /></div>
        <div id="tabs-3">kacang</div>
       </div>
      </div>
@@ -155,9 +155,7 @@
    $(document).ready(function()
    { draw_selector();
      set_front_shirt();
-	
-     $('#tabs').tabs();
-    
+	    
  	 $('.colorsel').live('click',function()
  	 { var sel = $(this).attr('id').split('_');
 	   $('#'+sel[0]).val(sel[1]);
@@ -172,6 +170,8 @@
 
 	   set_front_shirt();
      });
+     
+     $('#tabs').tabs();     
    });
   </script>
  </body>
