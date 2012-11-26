@@ -2,3 +2,10 @@
 { float: left;
   width: 400px;
 }
+
+.my-textfield
+{ font: inherit;
+  color: inherit;
+  outline: none;
+  cursor: text;
+}

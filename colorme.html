@@ -9,7 +9,7 @@
   <meta charset="utf-8" />
   <!-- Use the .htaccess and remove these lines to avoid edge case issues  More info: h5bp.com/i/378 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title></title>
+  <title>.: Designing Mode :.</title>
   <meta name="description" content="" />
   <!-- Mobile viewport optimized: h5bp.com/viewport -->
   <meta name="viewport" content="width=device-width" />
@@ -98,8 +98,8 @@
        </ul>
        <div id="tabs-1"><div id="accordion"></div></div>
        <div id="tabs-2">
-        <div>Front:<input type="text" id="ttext" /></div>
-        <div>Back:<input type="text" id="btext" /></div>
+        <input type="text" id="ttext" style="text-align: left" />
+        <input type="text" id="btext" style="text-align: left" />
        </div>
        <div id="tabs-3">kacang</div>
       </div>
@@ -153,6 +153,9 @@
       { autoHeight: false,
         collapsible: true
       });
+      
+     $('input:text, input:password, input[type=email]')
+     .button().addClass('my-textfield');
 
      var tabHeight = 395;
      $('#tabs').height(tabHeight);
