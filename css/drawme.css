@@ -3,9 +3,11 @@
   width: 400px;
 }
 
-.my-textfield
-{ font: inherit;
-  color: inherit;
-  outline: none;
-  cursor: text;
+input 
+{ padding:5px; 
+  border:1px solid #999; 
+  border-radius:4px; 
+  -moz-border-radius:4px; 
+  -web-kit-border-radius:4px; 
+  -khtml-border-radius:4px; 
 }

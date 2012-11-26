@@ -99,10 +99,16 @@
        <div id="tabs-1"><div id="accordion"></div></div>
        <div id="tabs-2">
         <h3>Front Design</h3>
-        <input type="text" id="ttext" style="text-align: left" />
+        <h2><a href="#" id="addFront">+ Text</a></h2>
+        <div id="f_scents">
+         <p><label for="p_scnts"><input type="text" id="front_text" size="20" name="p_scnt" value="" placeholder="Input Text" /></label></p>
+        </div>
         <hr>
         <h3>Back Design</h3>
-        <input type="text" id="btext" style="text-align: left" />
+        <h2><a href="#" id="addBack">+ Text</a></h2>
+        <div id="b_scents">
+         <p><label for="p_scnts"><input type="text" id="back_text" size="20" name="p_scnt" value="" placeholder="Input Text" /></label></p>
+        </div>
        </div>
        <div id="tabs-3">kacang</div>
       </div>
@@ -157,9 +163,34 @@
         collapsible: true
       });
       
-     $('input:text, input:password, input[type=email]')
-     .button().addClass('my-textfield');
-
+     $(function() 
+     { var scntFDiv = $('#f_scents');
+       var i = $('#f_scents p').size() + 1;
+        
+       var scntBDiv = $('#b_scents');
+       var i = $('#b_scents p').size() + 1;
+       
+       $('#addFront').live('click', function() 
+       { $('<p><label for="p_scnts"><input type="text" id="front_text" size="20" name="p_scnt_' + i +'" value="" placeholder="Input Value" /></label> <a href="#" id="remScnt">Remove</a></p>').appendTo(scntFDiv);
+         i++;
+         return false;
+       });
+       
+       $('#addBack').live('click', function() 
+       { $('<p><label for="p_scnts"><input type="text" id="back_text" size="20" name="p_scnt_' + i +'" value="" placeholder="Input Value" /></label> <a href="#" id="remScnt">Remove</a></p>').appendTo(scntBDiv);
+         i++;
+         return false;
+       });       
+        
+       $('#remScnt').live('click', function() 
+       { if( i > 2 ) 
+         { $(this).parents('p').remove();
+           i--;
+         }
+         return false;
+       });
+     });
+     
      var tabHeight = 395;
      $('#tabs').height(tabHeight);
      $('#tabs').tabs();
