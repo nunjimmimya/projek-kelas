@@ -171,13 +171,13 @@
        var i = $('#b_scents p').size() + 1;
        
        $('#addFront').live('click', function() 
-       { $('<p><label for="p_scnts"><input type="text" id="front_text" size="20" name="p_scnt_' + i +'" value="" placeholder="Input Value" /></label> <a href="#" id="remScnt">Remove</a></p>').appendTo(scntFDiv);
+       { $('<p><label for="p_scnts"><input type="text" id="front_text' +i+ '" size="20" name="p_scnt_' + i +'" value="" placeholder="Input Value" /></label> <a href="#" id="remScnt">Remove</a></p>').appendTo(scntFDiv);
          i++;
          return false;
        });
        
        $('#addBack').live('click', function() 
-       { $('<p><label for="p_scnts"><input type="text" id="back_text" size="20" name="p_scnt_' + i +'" value="" placeholder="Input Value" /></label> <a href="#" id="remScnt">Remove</a></p>').appendTo(scntBDiv);
+       { $('<p><label for="p_scnts"><input type="text" id="back_text' +i+ '" size="20" name="p_scnt_' + i +'" value="" placeholder="Input Value" /></label> <a href="#" id="remScnt">Remove</a></p>').appendTo(scntBDiv);
          i++;
          return false;
        });       
