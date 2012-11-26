@@ -134,9 +134,20 @@ var draw_front_shirt = function(myshirt)
     strokeStyle: "#25a",
     strokeWidth: 2,
     x: 150, y: 100,
-    font: "36pt Verdana, sans-serif",
+    font: "8pt Verdana, sans-serif",
     draggable: true,
-    text: $('#ttext').val() }).drawLayers();
+    text: $('#ttext').val()
+  })
+  .addLayer(
+  { method: 'drawText',
+    fillStyle: "#9cf",
+    strokeStyle: "#25a",
+    strokeWidth: 2,
+    x: 150, y: 100,
+    font: "24pt Verdana, sans-serif",
+    draggable: true,
+    text: $('#btext').val()
+  }).drawLayers();
 
 //  var layers = $('canvas#front_shirt_canvas').getLayers();
 //  layers.length = 0;
