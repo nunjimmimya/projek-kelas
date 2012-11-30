@@ -11,3 +11,8 @@ input
   -web-kit-border-radius:4px; 
   -khtml-border-radius:4px; 
 }
+
+a #front_ok_click, #front_cancel_click, #back_ok_click, #back_cancel_click
+{ width: 25px;
+  height: 25px;
+}

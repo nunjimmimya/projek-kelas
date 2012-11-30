@@ -99,16 +99,16 @@
        <div id="tabs-1"><div id="accordion"></div></div>
        <div id="tabs-2">
         <h3>Front Design</h3>
-        <h2><a href="#" id="addFront"><img src="images/icon/plus.png" /></a></h2>
-        <div id="f_scents">
-         <p><label for="p_scnts"><input type="text" id="front_text" size="20" name="p_scnt" value="" placeholder="Input Text" /></label></p>
-        </div>
+        <!-- <h2><a href="#" id="addFront"><img src="images/icon/plus.png" /></a></h2> -->
+        <!-- <div id="f_scents"> -->
+        <p><label for="p_scnts"><input type="text" id="front_text" size="20" name="p_scnt" value="" placeholder="Input Text" /></label><a href="#" id="front_icon_ok"><img id="front_ok_click" src="images/icon/ok.png" /></a><a href="#" id="front_icon_cancel"><img id="front_cancel_click" src="images/icon/cancel.png" /></a></p>
+        <!-- </div> -->
         <hr>
         <h3>Back Design</h3>
-        <h2><a href="#" id="addBack"><img src="images/icon/plus.png" /></a></h2>
-        <div id="b_scents">
-         <p><label for="p_scnts"><input type="text" id="back_text" size="20" name="p_scnt" value="" placeholder="Input Text" /></label></p>
-        </div>
+        <!-- <h2><a href="#" id="addBack"><img src="images/icon/plus.png" /></a></h2> -->
+        <!-- <div id="b_scents"> -->
+        <p><label for="p_scnts"><input type="text" id="back_text" size="20" name="p_scnt" value="" placeholder="Input Text" /></label><a href="#" id="back_icon_ok_"><img id="back_ok_click" src="images/icon/ok.png" /></a><a href="#" id="back_icon_cancel"><img id="back_cancel_click" src="images/icon/cancel.png" /></a></p>
+        <!-- </div> -->
        </div>
        <div id="tabs-3">kacang</div>
       </div>
@@ -162,8 +162,8 @@
       { autoHeight: false,
         collapsible: true
       });
-      
-     $(function() 
+             
+     /*$(function()
      { var scntFDiv = $('#f_scents');
        var i = $('#f_scents p').size() + 1;
         
@@ -189,7 +189,7 @@
          }
          return false;
        });
-     });
+     });*/
      
      var tabHeight = 395;
      $('#tabs').height(tabHeight);
@@ -213,7 +213,11 @@
        }
 
 	   set_front_shirt();
-     });     
+     });
+
+     $('#front_icon_ok').live('click', function()
+     { 
+     });
    });
   </script>
  </body>
