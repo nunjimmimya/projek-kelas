@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="css/drawme.css" />
   <link rel="stylesheet" href="css/drawing.css" />
   <link rel="stylesheet" href="css/smoothness/jquery-ui-1.8.18.custom.css" />
+  <link type="text/css" rel="stylesheet" href="css/jquery.stepy.css" />
   
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
   <!-- All JavaScript at the bottom, except this Modernizr build.
@@ -89,7 +90,7 @@
    <h1>Custom t-Shirt Design Arena</h1>
    <form id="wizardform">
     <input type="hidden" id="inp_selected_design" value="roundneck_long">    
-    <fieldset>
+    <fieldset title="Step 3">
      <legend>set the design</legend>
      <div id="categories">
       <div id="tabs">
@@ -129,7 +130,7 @@
      </div>
      <canvas id="front_shirt_canvas" width="660" height="400"></canvas>
     </fieldset>
-    <fieldset>
+    <fieldset title="Step 4">
      <legend>confirm</legend>
      <img src="" id="shirt_thumbnail" width="250" class="confirm_thumb">
      <ul id="confirmlist">
@@ -149,6 +150,7 @@
       </li>
      </ul>
     </fieldset>
+    <input type="submit" class="finish" value="Pay" />
    </form>
   </div>
   <!-- JavaScript at the bottom for fast page loading -->
