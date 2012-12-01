@@ -147,7 +147,20 @@ var draw_front_shirt = function(myshirt)
     font: "24pt Verdana, sans-serif",
     draggable: true,
     text: $('#back_text').val()
-  }).drawLayers();
+  })
+  .addLayer(
+  { method: 'drawImage',
+    source: $('front_logo').val(),
+    x:100, y:150,
+    fromCenter: false
+  })
+  .addLayer(
+  { method: 'drawImage',
+    source: $('back_logo').val(),
+    x:100, y:150,
+    fromCenter: false
+  })
+  .drawLayers();
 
 //  var layers = $('canvas#front_shirt_canvas').getLayers();
 //  layers.length = 0;

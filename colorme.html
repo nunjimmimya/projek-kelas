@@ -87,8 +87,10 @@
   <header></header>
   <div role="main">
    <h1>Custom t-Shirt Design Arena</h1>
-   <form>
+   <form id="wizardform">
+    <input type="hidden" id="inp_selected_design" value="roundneck_long">    
     <fieldset>
+     <legend>set the design</legend>
      <div id="categories">
       <div id="tabs">
        <ul>
@@ -110,10 +112,42 @@
         <p><label for="p_scnts"><input type="text" id="back_text" size="20" name="p_scnt" value="" placeholder="Input Text" /></label><a href="#" id="back_icon_ok"><img id="back_ok_click" src="images/icon/ok.png" /></a><a href="#" id="back_icon_cancel"><img id="back_cancel_click" src="images/icon/cancel.png" /></a></p>
         <!-- </div> -->
        </div>
-       <div id="tabs-3">kacang</div>
+       <div id="tabs-3">
+        <h4>Front Design</h4>
+        <!-- <h2><a href="#" id="addFront"><img src="images/icon/plus.png" /></a></h2> -->
+        <!-- <div id="f_scents"> -->
+        <p><label for="p_scnts"><input type="text" id="front_logo" size="20" name="p_scnt" value="" placeholder="Place Your Logo" /></label><a href="#" id="logofront_ok"><img id="front_ok_click" src="images/icon/ok.png" /></a><a href="#" id="front_icon_cancel"><img id="front_cancel_click" src="images/icon/cancel.png" /></a></p>
+        <!-- </div> -->
+        <hr>
+        <h4>Back Design</h4>
+        <!-- <h2><a href="#" id="addBack"><img src="images/icon/plus.png" /></a></h2> -->
+        <!-- <div id="b_scents"> -->
+        <p><label for="p_scnts"><input type="text" id="back_logo" size="20" name="p_scnt" value="" placeholder="Place Your Logo" /></label><a href="#" id="logoback_ok"><img id="back_ok_click" src="images/icon/ok.png" /></a><a href="#" id="back_icon_cancel"><img id="back_cancel_click" src="images/icon/cancel.png" /></a></p>
+        <!-- </div> -->
+       </div>
       </div>
      </div>
      <canvas id="front_shirt_canvas" width="660" height="400"></canvas>
+    </fieldset>
+    <fieldset>
+     <legend>confirm</legend>
+     <img src="" id="shirt_thumbnail" width="250" class="confirm_thumb">
+     <ul id="confirmlist">
+      <li>
+       <span id="shirt_name">Round Neck Shirt Design</span><span></span><span id="shirt_price">RM20</span>
+       <ul id="final_panels"></ul>
+      </li>
+      <li>
+       <span>Add-On</span>
+       <li><span>Front Text</span><span id="fronttext_option"></span><span id="fronttext_price"></span></li>
+       <li><span>Back Text</span><span id="backtext_option"></span><span id="backtext_price"></span></li>
+       <li><span>Front Logo</span><span id="frontlogo_option"></span><span id="frontlogo_price"></span></li>
+       <li><span>Back Logo</span><span id="frontlogo_option"></span><span id="backlogo_price"></span></li>
+      </li>
+      <li>
+       <span></span><span>Total</span><span id="final_total">RM45</span>
+      </li>
+     </ul>
     </fieldset>
    </form>
   </div>
@@ -132,8 +166,7 @@
 
   <script type="text/javascript" src="script/shirt.js"></script>
   <script>
-   var selectedShirt = 'roundneck_long';
-   var theshirt = shirt[selectedShirt];
+   var theshirt = shirt['roundneck_long'];
    var colors = [ '#fff','#fff','#fff','#fff', '#fff','#fff', '#fff','#fff' ];
    var color_panels = [ 8,8,8,8,8,8,8,8];
    var strip_html ="";
@@ -195,6 +228,55 @@
      $('#tabs').height(tabHeight);
      $('#tabs').tabs();
    }
+   
+   var final_price = function()
+   { var final_total = 0;
+     $('#shirt_name').html(shirt_name[$('#inp_selected_design').val()]);
+     $('#shirt_price').html('RM' + shirt_price[$('#inp_selected_design').val()]);
+    
+     final_total += shirt_price[$('#inp_selected_design').val()];
+    
+     var tmp_panels = '';
+     var pname = '';
+    
+     panels = 0;
+     panels = bg.panels.length;
+    
+     for (i=0; i<panels; i++)
+     { var col = $("#panel"+i).val();
+       pname = "Panel " + (i+1);
+       tmp_panels += "<li><span>"+ pname +"</span> <span><small class=\"sbox\" style=\"background-color:"+ sel_color_code[ color_panels[i] ] +"\"></small> "+ sel_color_name[ color_panels[i] ] +"</span> </li>";
+     }
+    
+     $('#final_panels').html(tmp_panels);
+       
+     //add-on
+     if ($('input[name=front_text]').val() != '')
+     { $('#fronttext_price').html('RM' + addon_price['front_text']);
+       final_total += addon_price['front_text'];
+     }
+     else { $('#fronttext_price').html('RM0');}
+       
+     if ($('input[name=back_text]').val() != '')
+     { $('#backtext_price').html('RM' + addon_price['back_text']);
+         final_total += addon_price['back_text'];
+     }
+     else { $('#backtext_price').html('RM0');}
+
+     if ($('input[name=front_logo]').val() != '')
+     { $('#frontlogo_price').html('RM' + addon_price['front_logo']);
+         final_total += addon_price['front_logo'];
+     }
+     else { $('#frontlogo_price').html('RM0');}
+
+     if ($('input[name=back_logo]').val() != '')
+     { $('#backlogo_price').html('RM' + addon_price['back_logo']);
+         final_total += addon_price['back_logo'];
+     }
+     else { $('#backlogo_price').html('RM0');}
+       
+     $('#final_total').html('RM' + final_total);
+   }
 	
    $(document).ready(function()
    { draw_selector();
@@ -216,12 +298,23 @@
      });
 
      $('#front_icon_ok').live('click', function()
-     { set_front_shirt();
-     });
+     { set_front_shirt(); });
 
      $('#back_icon_ok').live('click', function()
-     { set_front_shirt();
+     { set_front_shirt(); });
+
+     $('#logofront_ok').live('click', function()
+     { set_front_shirt(); });
+                     
+     $('#logoback_ok').live('click', function()
+     { set_front_shirt(); });
+    
+     $('#wizardform-next-5').live('click', function()
+     { $('#shirt_thumbnail').attr('src', $('#front_shirt_canvas').getCanvasImage("png"));
+       final_price();
      });
+        
+     $('#wizardform').stepy();
    });
   </script>
  </body>
