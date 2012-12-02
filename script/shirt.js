@@ -123,6 +123,7 @@ $.jCanvas.extend(
 }); 
 
 var img_folder = 'images/drawing/';
+var cust_folder = 'images/cart';
 
 // drawing the panels and filling in the color
 var draw_front_shirt = function(myshirt)
@@ -163,13 +164,13 @@ var draw_front_shirt = function(myshirt)
   })
   .addLayer(
   { method: 'drawImage',
-    source: $('front_logo').val(),
+    source: $('#front_logo').val(),
     x:100, y:150,
     fromCenter: false
   })
   .addLayer(
   { method: 'drawImage',
-    source: $('back_logo').val(),
+    source: $('#back_logo').val(),
     x:100, y:150,
     fromCenter: false
   })
@@ -178,28 +179,3 @@ var draw_front_shirt = function(myshirt)
 //  var layers = $('canvas#front_shirt_canvas').getLayers();
 //  layers.length = 0;
 }
-
-// drawing the panels and filling in the color
-/*var draw_inside_bag = function( insidebag ) {
-	var panels = insidebag.panels;
-	for(var pl in panels) {
-		$('canvas#inside_bag_canvas').addLayer({ method: "fillspot", 
-		color: colors[pl], 
-		nodes:panels[pl] });
-	}
-
-	$('canvas#inside_bag_canvas').addLayer({ method: "fillspot", 
-		color: pocket_color, 
-		nodes: panels[ panels.length - 1] });
-
-	$('canvas#inside_bag_canvas').addLayer({
-		method: 'drawImage',
-		source: img_folder + insidebag.image,
-		x: 0, y: 0,
-		width: 494, height: 390,
-		fromCenter: false
-	}).drawLayers();
-
-	var layers = $('canvas#inside_bag_canvas').getLayers();
-	layers.length = 0;	
-}*/

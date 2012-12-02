@@ -103,67 +103,24 @@
        <div id="tabs-2">
         <h2>I like to add word (+ RM8)</h2>
         <h4>Front Design</h4>
-        <!-- <h2><a href="#" id="addFront"><img src="images/icon/plus.png" /></a></h2> -->
-        <!-- <div id="f_scents"> -->
         <p><label for="p_scnts"><input type="text" id="front_text" size="20" name="p_scnt" value="" placeholder="Input Text" /></label><a href="#" id="front_icon_ok"><img id="front_ok_click" src="images/icon/ok.png" /></a><a href="#" id="front_icon_cancel"><img id="front_cancel_click" src="images/icon/cancel.png" /></a></p>
-        <!-- </div> -->
         <hr>
         <h4>Back Design</h4>
-        <!-- <h2><a href="#" id="addBack"><img src="images/icon/plus.png" /></a></h2> -->
-        <!-- <div id="b_scents"> -->
         <p><label for="p_scnts"><input type="text" id="back_text" size="20" name="p_scnt" value="" placeholder="Input Text" /></label><a href="#" id="back_icon_ok"><img id="back_ok_click" src="images/icon/ok.png" /></a><a href="#" id="back_icon_cancel"><img id="back_cancel_click" src="images/icon/cancel.png" /></a></p>
-        <!-- </div> -->
        </div>
        <div id="tabs-3">
         <h2>I like to add logo (+ RM8)</h2>
         <h4>Front Design</h4>
-        <!-- <h2><a href="#" id="addFront"><img src="images/icon/plus.png" /></a></h2> -->
-        <!-- <div id="f_scents"> -->
-        <p><label for="p_scnts"><input type="text" id="front_logo" size="20" name="p_scnt" value="" placeholder="Place Your Logo" /></label><a href="#" id="logofront_ok"><img id="front_ok_click" src="images/icon/ok.png" /></a><a href="#" id="front_icon_cancel"><img id="front_cancel_click" src="images/icon/cancel.png" /></a></p>
-        <!-- </div> -->
+        <p><label for="p_scnts"><input type="file" id="front_logo" size="20" name="logo" /></label><a href="#" id="logofront_ok"><img id="front_ok_click" src="images/icon/ok.png" /></a><a href="#" id="front_icon_cancel"><img id="front_cancel_click" src="images/icon/cancel.png" /></a></p>
         <hr>
         <h4>Back Design</h4>
-        <!-- <h2><a href="#" id="addBack"><img src="images/icon/plus.png" /></a></h2> -->
-        <!-- <div id="b_scents"> -->
-        <p><label for="p_scnts"><input type="text" id="back_logo" size="20" name="p_scnt" value="" placeholder="Place Your Logo" /></label><a href="#" id="logoback_ok"><img id="back_ok_click" src="images/icon/ok.png" /></a><a href="#" id="back_icon_cancel"><img id="back_cancel_click" src="images/icon/cancel.png" /></a></p>
-        <!-- </div> -->
+        <p><label for="p_scnts"><input type="file" id="back_logo" size="20" name="logo" /></label><a href="#" id="logoback_ok"><img id="back_ok_click" src="images/icon/ok.png" /></a><a href="#" id="back_icon_cancel"><img id="back_cancel_click" src="images/icon/cancel.png" /></a></p>
        </div>
       </div>
      </div>
      <canvas id="front_shirt_canvas" width="660" height="400"></canvas>
      <div style="clear: both"> </div>
     </fieldset>
-    <!--<fieldset title="STEP 4">
-	 <legend>add-ons</legend>
-	 <div class="addon_item" id="cambuckle">
-	  <img src="img/cambuckle-right.jpg" width="250" id="cambuckle_img">
-	  <p><strong>Cam Buckle Position</strong></p>
-	  <p><input type="radio" name="cambuckle" value="Right Hand User" checked> Right Hand User</p>
-	  <p><input type="radio" name="cambuckle" value="Left Hand User"> Left Hand User</p>
-	 </div>
-	 <div class="addon_item" id="knickknack">
-	  <img src="img/knickknack.jpg" width="250" id="knickknack_img">
-	  <p><strong>Add a Random Knick Knack</strong></p>
-	  <p><input type="radio" name="knickknack" value="No" checked> No, thank you</p>
-	  <p><input type="radio" name="knickknack" value="Yes"> Yes, please (+RM 49)</p>
-	 </div>
-		
-	 <div class="addon_item" id="grabhandle">
-	  <img src="img/grabhandle.jpg" width="250" id="grabhandle_img">		
-	  <p><strong>Add a Quick Grab Handle</strong></p>
-	  <p><input type="radio" name="grabhandle" value="No" checked> No, thank you</p>
-	  <p><input type="radio" name="grabhandle" value="Yes"> Yes, please (+RM 20)</p>		
-	 </div>
-
-	 <div class="addon_item" id="pouches">
-	  <img src="img/pouches.jpg" width="250" id="pouches_img">		
-	  <p><strong>Add Book Pouch &amp; Utility Pouch</strong></p>
-	  <p><input type="radio" name="pouches" value="No" checked> No, thank you</p>
-	  <p><input type="radio" name="pouches" value="Yes"> Yes, please (+RM 100)</p>		
-	 </div>
-		
-	 <div style="clear: both"> </div>
-    </fieldset> -->
     <fieldset title="STEP 4">
      <legend>confirm</legend>
      <img src="" id="shirt_thumbnail" width="250" class="confirm_thumb">
@@ -365,7 +322,7 @@
                      
      $('#logoback_ok').live('click', function()
      { set_front_shirt(); });
-    
+     
      $('#wizardform').live('click', function()
      { $('#shirt_thumbnail').attr('src', $('#front_shirt_canvas').getCanvasImage("png"));
        final_price();
