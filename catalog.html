@@ -3,7 +3,6 @@
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <title>Fashion Hut</title>
-  <script type="text/javascript" src="script/jquery-1.8.2.min.js"></script>
   <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
   <style type="text/css">
    <!--
@@ -57,7 +56,8 @@
        <li><a href="http://www.freewebsitetemplates.com">Evening shirt</a></li>
        <li><a href="http://www.freewebsitetemplates.com">Kids shirt</a>        </li>
       </ul>
-      <p><img src="images/payment.jpg" alt="" width="151" height="152" /></p>
+      <!-- <p><img src="images/payment.jpg" alt="" width="151" height="152" /></p> -->
+      <p><div id="cart"></div></p>
      </div>
      <div id="seasonal">
       <div class="inner"><h2>Catalog</h2></div>
@@ -108,5 +108,9 @@
    </div>
   </form>
   <div id="copyright"><p>Copyright &copy; 2012. Bancho Group Sdn.Bhd</p></div>
+  <script type="text/javascript" src="script/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript">
+   $('#cart').html('<img src=\"images\/cart.gif\" \/>My Cart Status<p>Current Cart: 0</p><a href=\"#\">View My Cart<\/a>');
+  </script>
  </body>
 </html>

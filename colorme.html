@@ -184,7 +184,8 @@
       </li>
      </ul>
     </fieldset>
-    <input type="submit" class="finish" value="Pay" onclick="javascript: window.open('invoice.html'); self.close();" />
+    <!-- add to cart -->
+    <input type="submit" class="finish" value="Add to Cart" onclick="javascript: alert('Successfully Add to Cart'); window.open('confirmation.html'); self.close();" />
    </form>
   </div>
   <!-- JavaScript at the bottom for fast page loading -->
@@ -276,7 +277,7 @@
      var pname = '';
     
      panels = 0;
-     panels = bg.panels.length;
+     panels = bg.panels.length - 1;
     
      for (i=0; i<panels; i++)
      { var col = $("#panel"+i).val();
@@ -295,20 +296,21 @@
      else { $('#fronttext_price').html('RM0');}
        
      if ($('input[name=back_text]').val() != '')
-     { $('#backtext_price').html('RM' + addon_price['back_text']);
-         final_total += addon_price['back_text'];
+     { //$('#backtext_price').html('RM' + addon_price['back_text']);
+       $('#backtext_price').html('RM8');
+       final_total += 8;
      }
      else { $('#backtext_price').html('RM0');}
 
      if ($('input[name=front_logo]').val() != '')
-     { $('#frontlogo_price').html('RM' + addon_price['front_logo']);
-         final_total += addon_price['front_logo'];
+     { $('#frontlogo_price').html('RM8');
+         final_total += 8;
      }
      else { $('#frontlogo_price').html('RM0');}
 
      if ($('input[name=back_logo]').val() != '')
-     { $('#backlogo_price').html('RM' + addon_price['back_logo']);
-         final_total += addon_price['back_logo'];
+     { $('#backlogo_price').html('RM8');
+       final_total += 8;
      }
      else { $('#backlogo_price').html('RM0');}
        
@@ -346,7 +348,7 @@
      $('#logoback_ok').live('click', function()
      { set_front_shirt(); });
     
-     $('#wizardform-next-5').live('click', function()
+     $('#wizardform').live('click', function()
      { $('#shirt_thumbnail').attr('src', $('#front_shirt_canvas').getCanvasImage("png"));
        final_price();
      });
