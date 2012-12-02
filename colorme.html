@@ -174,10 +174,12 @@
       </li>
       <li>
        <span>Add-On</span>
-       <li><span>Front Text</span><span id="fronttext_option"></span><span id="fronttext_price"></span></li>
-       <li><span>Back Text</span><span id="backtext_option"></span><span id="backtext_price"></span></li>
-       <li><span>Front Logo</span><span id="frontlogo_option"></span><span id="frontlogo_price"></span></li>
-       <li><span>Back Logo</span><span id="frontlogo_option"></span><span id="backlogo_price"></span></li>
+       <ul>
+        <li><span>Front Text</span><span id="fronttext_option"></span><span id="fronttext_price"></span></li>
+        <li><span>Back Text</span><span id="backtext_option"></span><span id="backtext_price"></span></li>
+        <li><span>Front Logo</span><span id="frontlogo_option"></span><span id="frontlogo_price"></span></li>
+        <li><span>Back Logo</span><span id="backlogo_option"></span><span id="backlogo_price"></span></li>
+       </ul>
       </li>
       <li>
        <span></span><span>Total</span><span id="final_total">RM45</span>
@@ -273,6 +275,8 @@
     
      final_total += shirt_price[$('#inp_selected_design').val()];
     
+ 	 var bg = shirt[$('#inp_selected_design').val()];
+
      var tmp_panels = '';
      var pname = '';
     
@@ -288,32 +292,46 @@
      $('#final_panels').html(tmp_panels);
        
      //add-on
-     if ($('input[name=front_text]').length())
-     { //$('#fronttext_price').html('RM' + addon_price['front_text']);
-       $('#fronttext_price').html('RM8');
-       final_total += 8;
+     if (typeof $('input[name=front_text]').val() !== "undefined") 
+     { $('#fronttext_option').html('Yes');
+       $('#fronttext_price').html('RM' + addon_price['text']);
+       final_total += addon_price['text'];
      }
-     else { $('#fronttext_price').html('RM0');}
+     else 
+     { $('#fronttext_option').html('No');
+       $('#fronttext_price').html('RM0');
+     }
        
-     if ($('input[name=back_text]').val() != '')
-     { //$('#backtext_price').html('RM' + addon_price['back_text']);
-       $('#backtext_price').html('RM8');
-       final_total += 8;
+     if (typeof $('input[name=back_text]').val() !== "undefined") 
+     { $('#backtext_option').html('Yes');
+       $('#backtext_price').html('RM' + addon_price['text']);
+       final_total += addon_price['text'];
      }
-     else { $('#backtext_price').html('RM0');}
+     else 
+     { $('#backtext_option').html('No');
+       $('#backtext_price').html('RM0');
+     }
 
-     if ($('input[name=front_logo]').val() != '')
-     { $('#frontlogo_price').html('RM8');
-         final_total += 8;
+     if (typeof $('input[name=front_logo]').val() !== "undefined") 
+     { $('#frontlogo_option').html('Yes');
+       $('#frontlogo_price').html('RM' + addon_price['logo']);
+         final_total += addon_price['logo'];
      }
-     else { $('#frontlogo_price').html('RM0');}
-
-     if ($('input[name=back_logo]').val() != '')
-     { $('#backlogo_price').html('RM8');
-       final_total += 8;
+     else 
+     { $('#frontlogo_option').html('No');
+       $('#frontlogo_price').html('RM0');
      }
-     else { $('#backlogo_price').html('RM0');}
-       
+     
+     if (typeof $('input[name=back_logo]').val() !== "undefined") 
+     { $('#backlogo_option').html('Yes');
+       $('#backlogo_price').html('RM' + addon_price['logo']);
+       final_total += addon_price['logo'];
+     }
+     else 
+     { $('#backlogo_option').html('No');
+       $('#backlogo_price').html('RM0');
+     }
+     
      $('#final_total').html('RM' + final_total);
    }
 	

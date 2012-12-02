@@ -57,6 +57,19 @@ var sel_color_file = [
 	'sel_black.png'
 ];
 
+var shirt_price = 
+{ 'roundneck_long' : 20.00
+}
+
+var shirt_name = 
+{ 'roundneck_long' : 't-Shirt Long Sleeve Roundneck'
+}
+	
+var addon_price = 
+{ 'text' : 8.00,
+  'logo' : 8.00
+}
+
 // custom function for jCanvas
 $.jCanvas.extend(
 { name: "fillspot",
