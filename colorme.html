@@ -16,6 +16,7 @@
 
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
+  <link rel="stylesheet" href="css/table.css" />
   <link rel="stylesheet" href="css/drawme.css" />
   <link rel="stylesheet" href="css/drawing.css" />
   <link rel="stylesheet" href="css/smoothness/jquery-ui-1.8.18.custom.css" />
@@ -123,7 +124,9 @@
     </fieldset>
     <fieldset title="STEP 4">
      <legend>confirm</legend>
-     <img src="" id="shirt_thumbnail" width="250" class="confirm_thumb">
+     <img src="" id="shirt_thumbnail" width="250" class="confirm_thumb" />
+     <p><input type="text" id="quantity" size="12" placeholder="Type Quantity" /><input type="button" id="calculate" value="Calculate" />
+     <br /><font color="red" size="1">*must above 20 units</font></p>
      <ul id="confirmlist">
       <li>
        <span id="shirt_name">Round Neck Shirt Design</span><span></span><span id="shirt_price">RM20</span>
@@ -143,7 +146,6 @@
       </li>
      </ul>
     </fieldset>
-    <!-- add to cart -->
     <input type="submit" class="finish" value="Add to Cart" onclick="javascript: alert('Successfully Add to Cart'); window.open('confirmation.html'); self.close();" />
    </form>
   </div>
@@ -167,12 +169,20 @@
    var color_panels = [ 8,8,8,8,8,8,8,8];
    var strip_html ="";
    var panel_html="";
+   var final_total = 0;
    
    panel_html += "<h3><a href=\"javascript:void(0)\">Panel 4<img height=\"15\" width=\"15\" id=\"panel3_box\" src=\"images\/drawing\/sel_white.png\" style=\"float: right\"><\/a><\/h3><div><input type=\"hidden\" id=\"panel3\" value=\"8\"><br><img src=\"images\/drawing\/selector.png\" usemap=\"#panel_four\" \/><map name=\"panel_four\" id=\"panel_four\"><area shape=\"rect\" coords=\"37,107,68,138\" href=\"javascript:void(0)\" alt=\"Black\" id=\"panel3_13\" class=\"colorsel\" \/><area shape=\"rect\" coords=\"3,107,34,138\" href=\"javascript:void(0)\" alt=\"Purple\" id=\"panel3_12\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"3,72,34,103\" href=\"javascript:void(0)\" alt=\"White\" id=\"panel3_8\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"37,72,68,103\" href=\"javascript:void(0)\" alt=\"Florescent Pink\" id=\"panel3_9\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"71,72,102,103\" href=\"javascript:void(0)\" alt=\"Orange\" id=\"panel3_10\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"106,72,137,103\" href=\"javascript:void(0)\" alt=\"Spectre Yellow\" id=\"panel3_11\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"106,37,137,68\" href=\"javascript:void(0)\" alt=\"Navy\" id=\"panel3_7\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"71,36,102,67\" href=\"javascript:void(0)\" alt=\"Mustard Yellow\" id=\"panel3_6\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"37,37,68,68\" href=\"javascript:void(0)\" alt=\"Red\" id=\"panel3_5\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"3,37,34,68\" href=\"javascript:void(0)\" alt=\"Florescent Green\" id=\"panel3_4\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"106,3,137,34\" href=\"javascript:void(0)\" alt=\"Grey\" id=\"panel3_3\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"71,3,102,34\" href=\"javascript:void(0)\" alt=\"Classic Blue\" id=\"panel3_2\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"37,3,68,34\" href=\"javascript:void(0)\" alt=\"Green\" id=\"panel3_1\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"3,3,34,34\" href=\"javascript:void(0)\" alt=\"Brown\" id=\"panel3_0\" class=\"colorsel\"\/><\/map><\/div>";
 
    var set_front_shirt = function()
    { draw_front_shirt(theshirt);
    }
+
+   var calculate_all = function()
+   { grand_total = final_total + parseInt($('#quantity').val(), 10);
+     $('#final_total').html('RM' + grand_total);
+   }
+   
+   var counter = 0;
 
    var draw_selector = function()
    { var numbers = ['one','two','three','four','five','six','seven','eight','nine','ten'];
@@ -192,42 +202,13 @@
         collapsible: true
       });
              
-     /*$(function()
-     { var scntFDiv = $('#f_scents');
-       var i = $('#f_scents p').size() + 1;
-        
-       var scntBDiv = $('#b_scents');
-       var i = $('#b_scents p').size() + 1;
-       
-       $('#addFront').live('click', function() 
-       { $('<p><label for="p_scnts"><input type="text" id="front_text' +i+ '" size="20" name="p_scnt_' + i +'" value="" placeholder="Input Value" /></label> <a href="#" id="remScnt">Remove</a></p>').appendTo(scntFDiv);
-         i++;
-         return false;
-       });
-       
-       $('#addBack').live('click', function() 
-       { $('<p><label for="p_scnts"><input type="text" id="back_text' +i+ '" size="20" name="p_scnt_' + i +'" value="" placeholder="Input Value" /></label> <a href="#" id="remScnt">Remove</a></p>').appendTo(scntBDiv);
-         i++;
-         return false;
-       });       
-        
-       $('#remScnt').live('click', function() 
-       { if( i > 2 ) 
-         { $(this).parents('p').remove();
-           i--;
-         }
-         return false;
-       });
-     });*/
-     
      var tabHeight = 395;
      $('#tabs').height(tabHeight);
      $('#tabs').tabs();
    }
    
    var final_price = function()
-   { var final_total = 0;
-     $('#shirt_name').html(shirt_name[$('#inp_selected_design').val()]);
+   { $('#shirt_name').html(shirt_name[$('#inp_selected_design').val()]);
      $('#shirt_price').html('RM' + shirt_price[$('#inp_selected_design').val()]);
     
      final_total += shirt_price[$('#inp_selected_design').val()];
@@ -272,7 +253,7 @@
      if (typeof $('input[name=front_logo]').val() !== "undefined") 
      { $('#frontlogo_option').html('Yes');
        $('#frontlogo_price').html('RM' + addon_price['logo']);
-         final_total += addon_price['logo'];
+       final_total += addon_price['logo'];
      }
      else 
      { $('#frontlogo_option').html('No');
@@ -322,10 +303,13 @@
                      
      $('#logoback_ok').live('click', function()
      { set_front_shirt(); });
-     
+          
      $('#wizardform').live('click', function()
      { $('#shirt_thumbnail').attr('src', $('#front_shirt_canvas').getCanvasImage("png"));
-       final_price();
+       if (counter == 0)
+        final_price();
+       counter += 1;
+       //alert(counter);
      });
         
      $('#wizardform').stepy();

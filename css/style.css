@@ -4,6 +4,11 @@ html, body, h1, h2, h3, h4, ul, li
   list-style-type:none;
 }
 
+select
+{ float: left;
+  margin-left: 200px;
+}
+
 h1 img 
 { display: block; }
 
@@ -403,14 +408,4 @@ table
 #harga
 { margin-bottom: 30px;
   text-align: center;
-}
-
-#cart
-{ width: 150px;
-  height: 150px;
-  background-color: #fff;
-  border: 1px solid;
-  float: left;
-  border-radius:0px 0px 10px 10px;
-  -moz-border-radius:0px 0px 10px 10px;
 }
