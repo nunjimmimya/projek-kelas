@@ -305,49 +305,12 @@
       }
      ?>
      
+     var qty = $('#quantity').val();
      $('#final_total').html('RM' + final_total);
      $('#total').val(final_total);
      $('input[name=sum_total]').val(final_total);
    }
    
-   /*function saveViaAJAX()
-{
-	var testCanvas = document.getElementById("testCanvas");  
-	var canvasData = testCanvas.toDataURL("image/png");
-	var postData = "canvasData="+canvasData;
-	var debugConsole= document.getElementById("debugConsole");  
-	debugConsole.value=canvasData;
-
-	//alert("canvasData ="+canvasData );	  
-	var ajax = new XMLHttpRequest();
-	ajax.open("POST",'testSave.php',true);    
-	ajax.setRequestHeader('Content-Type', 'canvas/upload');
-	//ajax.setRequestHeader('Content-TypeLength', postData.length);
-
-
-	ajax.onreadystatechange=function()
-  	{
-		if (ajax.readyState == 4)
-		{ 
-			//alert(ajax.responseText);
-			// Write out the filename.
-    			document.getElementById("debugFilenameConsole").innerHTML="Saved as<br><a target='_blank' href='"+ajax.responseText+"'>"+ajax.responseText+"</a><br>Reload this page to generate new image or click the filename to open the image file in a new window.";
-		}
-  	}
-
-	ajax.send(postData);  
-}*/
-   /*var save_shirt = function()
-   { var canvas = document.getElementById("front_shirt_canvas");
-     var canvasData = canvas.toDataURL("image/png");
- 	 var postData = "canvasData="+canvasData;
-     
-     var ajax = new XMLHttpRequest();
-     ajax.open("POST",'saveimage.php',true);
-     ajax.setRequestHeader('Content-Type', 'canvas/upload');
-     ajax.send(postData); 
-   }*/
-	
    $(document).ready(function()
    { draw_selector();
      set_front_shirt();

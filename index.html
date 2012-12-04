@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
  <head>
+  <?php
+    // If your page calls session_start() be sure to include jcart.php first
+    include_once('jcart/jcart.php');
+    //session_start();    
+  ?>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Fashion Hut</title>
   <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
   <script type="text/javascript" src="script/jquery-1.8.2.min.js"></script>
-  <script type="text/javascript" src="script/imgscale.jquery.min.js"></script>
+  <script type="text/javascript" src="jcart/js/jcart.js"></script>
+  <link rel="stylesheet" type="text/css" media="screen, projection" href="jcart/css/style.css" />
+  <link rel="stylesheet" type="text/css" media="screen, projection" href="jcart/css/jcart.css" />
   <style type="text/css">
    <!--
     body,td,th { color: #000; }
@@ -20,40 +27,17 @@
  <body>
   <div id="wrapper">
    <div id="header">
-    <div id="logo"><h1>Custom myShirt</h1></div>
-    <div id="nav">
-     <ul>
-      <li><a href="">MEN</a> | </li>
-      <li><a href="">WOMEN</a> | </li>
-      <li><a href="">GIRLS</a> | </li>
-      <li><a href="">BOYS</a> | </li>
-      <li><a href="">ACCESSORIES</a> | </li>
-      <li><a href="">CONTACT US</a></li>
-     </ul>
-    </div>
-    <div id="gallery">
-     <ul>
-      <li class="gwomen"><a href="">Women</a></li>
-      <li class="gkids"><a href="">Kids</a></li>
-      <li class="gmen"><a href="">Men</a></li>
-     </ul>
-    </div>
+    <div id="logo"><h1>Custom myShirt</h1></div><div id="cartbar"><div id="jcart"><?php $jcart->display_cart();?></div></div>
    </div>
    <div id="body">
     <div id="categories">
      <h2>Catalog</h2>
      <ul>
-      <li><a href="">Jersey</a></li>
-      <li>F1 shirt</li>
-      <li><a href="">Polo shirt</a></li>
-      <li><a href="">Corporate shirt</a></li>
+      <li><a href="catalog.html">Corporate shirt</a></li>
       <li><a href="catalog.html">Round Neck shirt</a></li>
-      <li><a href="">Collar shirt</a></li>
-      <li><a href="">Long sleeves shirt</a></li>
-      <li><a href=""></a>V-neck shirt</li>
-      <li>Dress shirt</li>
-      <li><a href="">Evening shirt</a></li>
-      <li><a href="">Kids shirt</a></li>
+      <li><a href="catalog.html">Collar shirt</a></li>
+      <li><a href="catalog.html">Long sleeves shirt</a></li>
+      <li><a href="catalog.html">V-neck shirt</a></li>
      </ul>
     </div>
     <div id="seasonal">
