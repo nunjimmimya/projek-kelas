@@ -1,8 +1,19 @@
 var shirt =
-{ 'roundneck_long':
+{ 'corporate_shirt1':
+  { 'image':'corporate_shirt1.png',
+    'panels':[[]]
+  },
+  'corporate_shirt2':
+  { 'image':'corporate_shirt2.png',
+    'panels': [[]]
+  },
+  'roundneck_long':
   { 'image':'roundneck_long.png',
-    'panels':
-    [[{x:0,y:0},{x:0,y:553},{x:992,y:553},{x:992,y:0},{x:0,y:0}]]
+    'panels':[[{x:0,y:0},{x:0,y:553},{x:992,y:553},{x:992,y:0},{x:0,y:0}]]
+  },
+  'roundneck_short':
+  { 'image':'roundneck_short.png',
+    'panels':[[{x:0,y:0},{x:0,y:553},{x:992,y:553},{x:992,y:0},{x:0,y:0}]]
   }
 }
 
@@ -58,11 +69,17 @@ var sel_color_file = [
 ];
 
 var shirt_price = 
-{ 'roundneck_long' : 20
+{ 'corporate_shirt1' : 80,
+  'corporate_shirt2' : 80,
+  'roundneck_long' : 20,
+  'roundneck_short' : 18
 }
 
 var shirt_name = 
-{ 'roundneck_long' : 't-Shirt Long Sleeve Roundneck'
+{ 'corporate_shirt1' : 'Corporate Shirt',
+  'corporate_shirt2' : 'Corporate Shirt',
+  'roundneck_long' : 't-Shirt Long Sleeve Roundneck',
+  'roundneck_shirt' : 't-Shirt Short Sleeve Roundneck'
 }
 	
 var addon_price = 

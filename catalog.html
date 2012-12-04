@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html>
  <head>
+  <?php
+   // If your page calls session_start() be sure to include jcart.php first
+   include_once('jcart/jcart.php');
+  ?>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <title>Fashion Hut</title>
   <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
-  <style type="text/css">
+  <link rel="stylesheet" type="text/css" media="screen, projection" href="jcart/css/jcart.css" />
+  <link rel="stylesheet" type="text/css" media="screen, projection" href="jcart/css/style.css" />
+  <script type="text/javascript" src="jcart/js/jquery-1.4.4.min.js"></script>
+  <script type="text/javascript" src="jcart/js/jcart.min.js"></script><style type="text/css">
    <!--
    body,td,th {
 	color: #000;
@@ -18,82 +25,54 @@
   </style>
  </head>
  <body>
-  <form method = "post" action="custom.html">
+  <form>
    <div id="wrapper">
     <div id="header">
      <div id="logo"><h1>Custom myShirt</h1></div>
-     <div id="nav">
-      <ul>
-       <li><a href="http://www.freewebsitetemplates.com">MEN</a> | </li>
-       <li><a href="http://www.freewebsitetemplates.com">WOMEN</a> | </li>
-       <li><a href="http://www.freewebsitetemplates.com">GIRLS</a> | </li>
-       <li><a href="http://www.freewebsitetemplates.com">BOYS</a> | </li>
-       <li><a href="http://www.freewebsitetemplates.com">ACCESSORIES</a> | </li>
-       <li><a href="http://www.freewebsitetemplates.com">CONTACT US</a></li>
-      </ul>
-     </div>
-     <div id="gallery">
-      <ul>
-       <li class="gwomen"><a href="http://www.freewebsitetemplates.com">Women</a></li>
-       <li class="gkids"><a href="http://www.freewebsitetemplates.com">Kids</a></li>
-       <li class="gmen"><a href="http://www.freewebsitetemplates.com">Men</a></li>
-      </ul>
-     </div>
+     <div id="cartbar"><div id="jcart"><?php $jcart->display_cart();?></div></div>
     </div>
     <div id="body">
      <div id="categories">
       <h2>Catalog</h2>
       <ul>
-       <li><a href="http://www.freewebsitetemplates.com">Jersey</a></li>
-       <li>F1 shirt</li>
-       <li><a href="http://www.freewebsitetemplates.com">Polo shirt</a></li>
-       <li><a href="http://www.freewebsitetemplates.com">Corporate shirt</a></li>
-       <li><a href="http://www.freewebsitetemplates.com">Round Neck shirt</a></li>
-       <li><a href="http://www.freewebsitetemplates.com">Collar shirt</a></li>
-       <li><a href="http://www.freewebsitetemplates.com">Long sleeves shirt</a></li>
-       <li><a href="http://www.freewebsitetemplates.com"></a>V-neck shirt</li>
-       <li>Dress shirt</li>
-       <li><a href="http://www.freewebsitetemplates.com">Evening shirt</a></li>
-       <li><a href="http://www.freewebsitetemplates.com">Kids shirt</a>        </li>
+       <li><a href="#">Corporate shirt</a></li>
+       <li><a href="#">Round Neck shirt</a></li>
+       <li><a href="#">Collar shirt</a></li>
+       <li><a href="#">Long sleeves shirt</a></li>
+       <li><a href="#">V-neck shirt</a></li>
       </ul>
-      <!-- <p><img src="images/payment.jpg" alt="" width="151" height="152" /></p> -->
-      <p><div id="cart"></div></p>
      </div>
      <div id="seasonal">
-      <div class="inner"><h2>Catalog</h2></div>
+      <div class="inner"><h2>Click image in our collection</h2></div>
      </div>
+     <form method="post" action="colorme.html">
      <div id="catalog">
+      <ul><li>Ready Made: Corporate Shirt</li></ul>
       <ul id="contentholder">
        <li>
-        <div><a href="colorme.html" target="_blank"><img src="images/drawing/roundneck_long.png" alt="" width="140" height="108" /></a></div>
+        <div><input type="image" src="images/corporate tshirt1.png" name="shirt_type1" value="corporate_shirt1" width="200" onclick="" /></div>
+        <div id="harga">RM80</div>
+        <input type="hidden" name="shirt_type" value="" />
+       </li>
+       <li>
+        <div><input type="image" src="images/corporate tshirt3.png" name="shirt_type2" value="corporate_shirt2" width="200" /></div>
+        <div id="harga">RM80</div>
+       </li>
+      </ul>
+      <div class="clear"></div>
+      <hr />
+      <ul><li>Customizable: Shirt</li></ul>
+      <ul id="contentholder">
+       <li>
+        <div><a href="colorme.html" target="_blank"><img src="images/roundneck_long.png" alt=""  width="200" /></a></div>
         <div id="harga">RM20</div>
        </li>
        <li>
-        <div><a href="colorme.html" target="_blank"><img src="images/drawing/roundneck_long.png" alt=""  width="140" height="108" /></a></div>
-        <div id="harga">RM20</div>
-       </li>
-       <li>
-        <div><a href="colorme.html" target="_blank"><img src="images/drawing/roundneck_long.png" alt=""  width="140" height="108" /></a></div>
-        <div id="harga">RM20</div>
-       </li>
-       <li>
-        <div><a href="colorme.html" target="_blank"><img src="images/drawing/roundneck_long.png" alt="" width="140" height="108" /></a></div>
-        <div id="harga">RM20</div>
-       </li>
-       <li>
-        <div><a href="colorme.html" target="_blank"><img src="images/drawing/roundneck_long.png" alt=""  width="140" height="108" /></a></div>
-        <div id="harga">RM20</div>
-       </li>
-       <li>
-        <div><a href="colorme.html" target="_blank"><img src="images/drawing/roundneck_long.png" alt=""  width="140" height="108" /></a></div>
-        <div id="harga">RM20</div>
+        <div><a href="colorme.html" target="_blank"><img src="images/roundneck_short.png" alt=""  width="200" height="112" /></a></div>
+        <div id="harga">RM18</div>
        </li>
        <li>
         <div><a href="colorme.html" target="_blank"><img src="images/drawing/roundneck_long.png" alt="" width="140" height="108" /></a></div>
-        <div id="harga">RM20</div>
-       </li>
-       <li>
-        <div><a href="colorme.html" target="_blank"><img src="images/drawing/roundneck_long.png" alt=""  width="140" height="108" /></a></div>
         <div id="harga">RM20</div>
        </li>
        <li>
@@ -102,6 +81,7 @@
        </li>
       </ul>
      </div>
+     </form>
      <div id="seas">
       <div class="clear"><div id="gallery2"></div></div>
      </div>
@@ -110,7 +90,13 @@
   <div id="copyright"><p>Copyright &copy; 2012. Bancho Group Sdn.Bhd</p></div>
   <script type="text/javascript" src="script/jquery-1.8.3.min.js"></script>
   <script type="text/javascript">
-   $('#cart').html('<img src=\"images\/cart.gif\" \/>My Cart Status<p>Current Cart: 0</p><a href=\"#\">View My Cart<\/a>');
+   $(document).ready(function() 
+   { $('input[name=shirt_type1]').click(function() 
+     { $('input[name=shirt_type]').val(1); });
+     
+     $('input[name=shirt_type2]').click(function() 
+     { $('input[name=shirt_type]').val(2); });
+   });
   </script>
  </body>
 </html>

@@ -9,7 +9,7 @@
   <?php
     // If your page calls session_start() be sure to include jcart.php first
     include_once('jcart/jcart.php');
-    //session_start();
+    //session_start();    
   ?>
   <meta charset="utf-8" />
   <!-- Use the .htaccess and remove these lines to avoid edge case issues  More info: h5bp.com/i/378 -->
@@ -94,13 +94,23 @@
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
   <header></header>
   <div role="main">
-   <h1>Custom t-Shirt Design Arena</h1><div id="sidebar"><div id="jcart"><?php $jcart->display_cart();?></div></div>
+   <h1>Custom t-Shirt Design Arena</h1><div id="cartbar"><div id="jcart"><?php $jcart->display_cart();?></div></div>
    <form id="wizardform" method="post" action="">
     <input type="hidden" name="jcartToken" value="<?php echo $_SESSION['jcartToken'];?>" />
-    <input type="hidden" name="inp_selected_design" value="roundneck_long">
-    <input type="hidden" name="design_id" value="1" />
+    <?php 
+     $shirt_type = $_POST["shirt_type"];
+     
+     switch ($shirt_type)
+     { case '1'  : print '<input type="hidden" name="inp_selected_design" value="corporate_shirt1">';
+                   break;
+       case '2'  : print '<input type="hidden" name="inp_selected_design" value="corporate_shirt2">';
+                   break;
+     }
+     
+     print "<input type=\"hidden\" name=\"design_id\" value=\"$shirt_type\">";
+    ?>
     <input type="hidden" name="selected_design" value="">
-    <fieldset title="STEP 3">
+    <fieldset title="STEP 1">
      <legend>set the design</legend>
      <div id="categories">
       <div id="tabs">
@@ -131,7 +141,7 @@
      <canvas id="front_shirt_canvas" width="660" height="400"></canvas>
      <div style="clear: both"> </div>
     </fieldset>
-    <fieldset title="STEP 4">
+    <fieldset title="STEP 2">
      <legend>confirm</legend>
      <img src="" id="shirt_thumbnail" width="250" class="confirm_thumb" />
      <p><input type="text" name="quantity" size="12" value="30" /><input type="button" id="calculate" value="Calculate" onclick=calculate_all() />
@@ -157,7 +167,7 @@
       </li>
      </ul>
     </fieldset>
-    <input type="submit" class="finish button tip" name="my-add-button" value="Add to Cart" />
+    <input type="submit" class="finish button tip" name="my-add-button" value="Add to Cart" onclick="javascript: window.open('catalog.html'); self.close();" />
    </form>
   </div>
   <!-- JavaScript at the bottom for fast page loading -->
@@ -179,13 +189,13 @@
    var theshirt = shirt['roundneck_long'];
    var colors = [ '#fff','#fff','#fff','#fff', '#fff','#fff', '#fff','#fff' ];
    var color_panels = [ 8,8,8,8,8,8,8,8];
-   var strip_html ="";
    var panel_html="";
    
    panel_html += "<h3><a href=\"javascript:void(0)\">Panel 4<img height=\"15\" width=\"15\" id=\"panel3_box\" src=\"images\/drawing\/sel_white.png\" style=\"float: right\"><\/a><\/h3><div><input type=\"hidden\" id=\"panel3\" value=\"8\"><br><img src=\"images\/drawing\/selector.png\" usemap=\"#panel_four\" \/><map name=\"panel_four\" id=\"panel_four\"><area shape=\"rect\" coords=\"37,107,68,138\" href=\"javascript:void(0)\" alt=\"Black\" id=\"panel3_13\" class=\"colorsel\" \/><area shape=\"rect\" coords=\"3,107,34,138\" href=\"javascript:void(0)\" alt=\"Purple\" id=\"panel3_12\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"3,72,34,103\" href=\"javascript:void(0)\" alt=\"White\" id=\"panel3_8\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"37,72,68,103\" href=\"javascript:void(0)\" alt=\"Florescent Pink\" id=\"panel3_9\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"71,72,102,103\" href=\"javascript:void(0)\" alt=\"Orange\" id=\"panel3_10\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"106,72,137,103\" href=\"javascript:void(0)\" alt=\"Spectre Yellow\" id=\"panel3_11\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"106,37,137,68\" href=\"javascript:void(0)\" alt=\"Navy\" id=\"panel3_7\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"71,36,102,67\" href=\"javascript:void(0)\" alt=\"Mustard Yellow\" id=\"panel3_6\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"37,37,68,68\" href=\"javascript:void(0)\" alt=\"Red\" id=\"panel3_5\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"3,37,34,68\" href=\"javascript:void(0)\" alt=\"Florescent Green\" id=\"panel3_4\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"106,3,137,34\" href=\"javascript:void(0)\" alt=\"Grey\" id=\"panel3_3\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"71,3,102,34\" href=\"javascript:void(0)\" alt=\"Classic Blue\" id=\"panel3_2\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"37,3,68,34\" href=\"javascript:void(0)\" alt=\"Green\" id=\"panel3_1\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"3,3,34,34\" href=\"javascript:void(0)\" alt=\"Brown\" id=\"panel3_0\" class=\"colorsel\"\/><\/map><\/div>";
 
    var set_front_shirt = function()
-   { draw_front_shirt(theshirt);
+   { theshirt = shirt[$('input[name=inp_selected_design]').val()];
+     draw_front_shirt(theshirt);
    }
 
    var calculate_all = function()
