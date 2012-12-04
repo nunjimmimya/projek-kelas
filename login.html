@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Custom myShirt</title>
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+  <style type="text/css">
+   <!--
+   body,td,th {
+	color: #000;
+   }
+   body {
+	background-color: #CF9;
+	background-image: url(images/backg.jpg);
+	background-repeat: no-repeat;
+   }
+   -->
+   <?php
+    //validate me than goes straight to the checkout page
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+ 
+    $con = mysql_connect("localhost","shikin","abc123");
+    if (!$con)
+    { die('Could not connect: ' . mysql_error());   }
+
+    $selecteddb = mysql_select_db('dbbancho', $link);
+    if (!$db_selected) 
+    { die ('Can\'t use foo : ' . mysql_error()); }
+ 
+    $username = stripslashes($username);
+    $password = stripslashes($password);
+    $username = mysql_real_escape_string($username);
+    $password = mysql_real_escape_string($password);
+
+    $sql="SELECT * FROM customer WHERE username='$username' and password='$password'";
+    $result=mysql_query($sql);
+    $count=mysql_num_rows($result);
+    
+   ?>
+  </style>
+ </head>
+ <body>
+ <form method="post" action="<?php $_SELF; ?>">
+  <div id="wrapper">
+   <div id="header">
+    <div id="logo"><h1>Custom myShirt</h1></div>
+   </div>
+   <div id="copyright">
+    <form id='register' action='register.php' method='post' accept-charset='UTF-8'>
+     <fieldset >
+      <legend>**Login Form**</legend>
+      <br />
+      <center>
+      <table width="500" border="0" align="left">
+       <tr>
+        <td width="136" align="right">Username</td>
+        <td width="10">:</td>
+        <td width="145" align="left"><input type='text' name='username' maxlength="50" /></td>
+       </tr>
+       <tr>
+        <td width="136" align="right">Password</td>
+        <td width="10">:</td>
+        <td width="145" align="left"><input type='text' name="password" maxlength="50" /></td>
+       </tr>
+       </tr>
+      </table>
+      <?php 
+       // If result matched $myusername and $mypassword, table row must be 1 row
+       if($count==1)
+       { // Register $myusername, $mypassword and redirect to file "login_success.php"
+         session_register("username");
+         session_register("password");
+         header("location:checkout.php");
+       }
+       else { echo "Wrong Username or Password"; }
+       ob_end_flush();
+      ?>
+      </center>
+      <br />
+      <p>&nbsp;  </p>
+      <p>&nbsp;  </p>
+      <p>&nbsp;  </p>
+      <div><br />
+       <input type="submit" name="reset" id="reset" value="Reset" />
+       <input type='submit' name='Submit' value='Submit' />
+      </div>
+      <p>&nbsp;  </p>
+     </fieldset>
+    </form>
+    <p>Copyright &copy; 2012. Bancho Group Sdn.Bhd</p>
+   </div>
+  </div>
+ </body>
+</html>
