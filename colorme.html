@@ -102,14 +102,21 @@
      
      switch ($shirt_type)
      { case '1'  : print '<input type="hidden" name="inp_selected_design" value="corporate_shirt1">';
+                   print '<input type="hidden" name="selected_design" value="Corporate Shirt Type 1">';
                    break;
        case '2'  : print '<input type="hidden" name="inp_selected_design" value="corporate_shirt2">';
+                   print '<input type="hidden" name="selected_design" value="Corporate Shirt Type 2">';
+                   break;
+       case '3'  : print '<input type="hidden" name="inp_selected_design" value="roundneck_long">';
+                   print '<input type="hidden" name="selected_design" value="t-Shirt Long Sleeve Roundneck">';
+                   break;
+       case '4'  : print '<input type="hidden" name="inp_selected_design" value="roundneck_short">';
+                   print '<input type="hidden" name="selected_design" value="t-Shirt Short Sleeve Roundneck">';
                    break;
      }
      
      print "<input type=\"hidden\" name=\"design_id\" value=\"$shirt_type\">";
     ?>
-    <input type="hidden" name="selected_design" value="">
     <fieldset title="STEP 1">
      <legend>set the design</legend>
      <div id="categories">
@@ -167,7 +174,7 @@
       </li>
      </ul>
     </fieldset>
-    <input type="submit" class="finish button tip" name="my-add-button" value="Add to Cart" onclick="javascript: window.open('catalog.html'); self.close();" />
+    <input type="submit" class="finish button tip" name="my-add-button" value="Add to Cart" />
    </form>
   </div>
   <!-- JavaScript at the bottom for fast page loading -->
@@ -209,17 +216,6 @@
        $('#final_total').html('RM' + grand_total);
        $('input[name=previous_quantity]').val($('input[name=quantity]').val());
      }
-     
-     $('input[name=selected_design]').val(shirt_name[$('input[name=inp_selected_design]').val()]);
-     
-     //alert all of the variable to submit to cart
-     alert($('input[name=selected_design]').val() +", "+ 
-           $('input[name=front_text]').val() +", "+  
-           $('input[name=back_text]').val() +", "+ 
-           $('input[name=front_logo]').val() +", "+ 
-           $('input[name=back_logo]').val() +", "+ 
-           $('input[name=quantity]').val() +", "+
-           $('input[name=sum_total]').val());
    }
    
    var draw_selector = function()

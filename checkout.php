@@ -10,6 +10,7 @@ include_once('jcart/jcart.php');
 
 session_start();
 ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
@@ -17,8 +18,21 @@ session_start();
  <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <title>Custom myShirt</title>
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
   <link rel="stylesheet" type="text/css" media="screen, projection" href="jcart/css/style.css" />
   <link rel="stylesheet" type="text/css" media="screen, projection" href="jcart/css/jcart.css" />
+  <style type="text/css">
+   <!--
+   body,td,th {
+	color: #000;
+   }
+   body {
+	background-color: #CF9;
+	background-image: url(images/backg.jpg);
+	background-repeat: no-repeat;
+   }
+   -->
+  </style>
  </head>
  <body>
  <div id="wrapper">
@@ -26,7 +40,7 @@ session_start();
   <div id="sidebar"></div>
    <div id="content">
     <div id="jcart"><?php $jcart->display_cart();?></div>
-    <p><a href="catalog.html">&larr; Continue shopping</a></p>
+    <input type="button" value="&larr; Continue shopping" onclick="location.href='catalog.html'" />
     <?php
      //echo '<pre>';
      //var_dump($_SESSION['jcart']);

@@ -8,7 +8,7 @@ This file represents any existing CSS your site may already use
 
 * { margin:0; padding:0; }
 
-#cartbar { width:35%; float:right; margin-top: 100px; }
+#cartbar { width:35%; float:right; margin-top: 60px; }
 .clear { clear:both; }
 
 /* Item forms */

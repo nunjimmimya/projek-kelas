@@ -13,7 +13,7 @@ var shirt =
   },
   'roundneck_short':
   { 'image':'roundneck_short.png',
-    'panels':[[{x:0,y:0},{x:0,y:553},{x:992,y:553},{x:992,y:0},{x:0,y:0}]]
+    'panels':[[{x:0,y:0},{x:0,y:580},{x:992,y:580},{x:992,y:0},{x:0,y:0}]]
   }
 }
 
@@ -76,8 +76,8 @@ var shirt_price =
 }
 
 var shirt_name = 
-{ 'corporate_shirt1' : 'Corporate Shirt',
-  'corporate_shirt2' : 'Corporate Shirt',
+{ 'corporate_shirt1' : 'Corporate Shirt Type 1',
+  'corporate_shirt2' : 'Corporate Shirt Type 2',
   'roundneck_long' : 't-Shirt Long Sleeve Roundneck',
   'roundneck_shirt' : 't-Shirt Short Sleeve Roundneck'
 }
