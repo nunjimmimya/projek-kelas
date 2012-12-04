@@ -27,6 +27,7 @@
   <link type="text/css" rel="stylesheet" href="css/jquery.stepy.css" />
   <link rel="stylesheet" type="text/css" media="screen, projection" href="jcart/css/style.css" />
   <link rel="stylesheet" type="text/css" media="screen, projection" href="jcart/css/jcart.css" />
+  <link rel="stylesheet" type="text/css" href="upload/styles.css" />
   
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
   <!-- All JavaScript at the bottom, except this Modernizr build.
@@ -95,7 +96,7 @@
   <header></header>
   <div role="main">
    <h1>Custom t-Shirt Design Arena</h1><div id="cartbar"><div id="jcart"><?php $jcart->display_cart();?></div></div>
-   <form id="wizardform" method="post" action="">
+   <form id="wizardform" method="post" action="catalog.html">
     <input type="hidden" name="jcartToken" value="<?php echo $_SESSION['jcartToken'];?>" />
     <?php 
      $shirt_type = $_POST["shirt_type"];
@@ -138,10 +139,14 @@
        <div id="tabs-3">
         <h2>I like to add logo (+ RM8)</h2>
         <h4>Front Design</h4>
-        <p><label for="p_scnts"><input type="file" name="front_logo" size="20" /></label><a href="#" id="logofront_ok"><img id="front_ok_click" src="images/icon/ok.png" /></a><a href="#" id="front_icon_cancel"><img id="front_cancel_click" src="images/icon/cancel.png" /></a></p>
-        <hr>
+        <div id="front_upload" ><span>Upload File<span></div>
+        <p><font color="red">* must be in 640x480 dimension</font></p>
+		<input type="hidden" name="front_logo" value="" /><input type="hidden" name="frontlogo_width" value="" /><input type="hidden" name="frontlogo_height" value="" />
+        <img id="frontimg_logo" src="" />
+		<hr>
         <h4>Back Design</h4>
-        <p><label for="p_scnts"><input type="file" name="back_logo" size="20" /></label><a href="#" id="logoback_ok"><img id="back_ok_click" src="images/icon/ok.png" /></a><a href="#" id="back_icon_cancel"><img id="back_cancel_click" src="images/icon/cancel.png" /></a></p>
+        <div id="back_upload" ><span>Upload File<span></div><span id="status" ></span>
+		<input type="hidden" name="back_logo" value="" /><input type="hidden" name="backlogo_width" value="" /><input type="hidden" name="backlogo_height" value="" />
        </div>
       </div>
      </div>
@@ -152,7 +157,7 @@
      <legend>confirm</legend>
      <img src="" id="shirt_thumbnail" width="250" class="confirm_thumb" />
      <p><input type="text" name="quantity" size="12" value="30" /><input type="button" id="calculate" value="Calculate" onclick=calculate_all() />
-     <br /><font color="red" size="1">*must above 20 units</font></p>
+     <br /><font color="red" size="1">*must above 30 units</font></p>
      <input type="hidden" name="previous_quantity" value="0" /><input type="hidden" name="total" value="0" />
      <ul id="confirmlist">
       <li>
@@ -192,6 +197,7 @@
 
   <script type="text/javascript" src="jcart/js/jcart.js"></script>
   <script type="text/javascript" src="script/shirt.js"></script>
+  <script type="text/javascript" src="upload/js/ajaxupload.3.5.js" ></script>
   <script>
    var theshirt = shirt['roundneck_long'];
    var colors = [ '#fff','#fff','#fff','#fff', '#fff','#fff', '#fff','#fff' ];
@@ -265,51 +271,44 @@
      $('#final_panels').html(tmp_panels);
        
      //add-on
-     if ($('input[name=front_text]').val() != "") 
-     { $('#fronttext_option').html('Yes');
-       $('#fronttext_price').html('RM' + addon_price['text']);
-       final_total += addon_price['text'];
-     }
-     else 
-     { $('#fronttext_option').html('No');
-       $('#fronttext_price').html('RM0');
-     }
-       
-     if ($('input[name=back_text]').val() !== "") 
-     { $('#backtext_option').html('Yes');
-       $('#backtext_price').html('RM' + addon_price['text']);
-       final_total += addon_price['text'];
-     }
-     else 
-     { $('#backtext_option').html('No');
-       $('#backtext_price').html('RM0');
-     }
-
-     if ($('input[name=front_logo]').val() != "") 
-     { $('#frontlogo_option').html('Yes');
-       $('#frontlogo_price').html('RM' + addon_price['logo']);
-       final_total += addon_price['logo'];
-     }
-     else 
-     { $('#frontlogo_option').html('No');
-       $('#frontlogo_price').html('RM0');
-     }
-     
-     if ($('input[name=back_logo]').val() != "") 
-     { $('#backlogo_option').html('Yes');
-       $('#backlogo_price').html('RM' + addon_price['logo']);
-       final_total += addon_price['logo'];
-     }
-     else 
-     { $('#backlogo_option').html('No');
-       $('#backlogo_price').html('RM0');
-     }
+     <?php
+      switch ($shirt_type)
+      { case '1' : break;
+        case '2' : break;
+        default  : print "if ($('input[name=front_text]').val() != \"\")";
+                   print "{ $('#fronttext_option').html('Yes');";
+                   print "$('#fronttext_price').html('RM' + addon_price['text']);";
+                   print "final_total += addon_price['text'];} else";
+                   print "{ $('#fronttext_option').html('No');";
+                   print "$('#fronttext_price').html('RM0');}\n";
+                   
+                   print "if ($('input[name=back_text]').val() != \"\")";
+                   print "{ $('#backtext_option').html('Yes');";
+                   print "$('#backtext_price').html('RM' + addon_price['text']);";
+                   print "final_total += addon_price['text'];} else";
+                   print "{ $('#backtext_option').html('No');";
+                   print "$('#backtext_price').html('RM0');}\n";
+                   
+                   print "if ($('input[name=front_logo]').val() != \"\")";
+                   print "{ $('#frontlogo_option').html('Yes');";
+                   print "$('#frontlogo_price').html('RM' + addon_price['text']);";
+                   print "final_total += addon_price['text'];} else";
+                   print "{ $('#frontlogo_option').html('No');";
+                   print "$('#frontlogo_price').html('RM0');}\n";
+                   
+                   print "if ($('input[name=back_logo]').val() != \"\")";
+                   print "{ $('#backlogo_option').html('Yes');";
+                   print "$('#backlogo_price').html('RM' + addon_price['text']);";
+                   print "final_total += addon_price['text'];} else";
+                   print "{ $('#backlogo_option').html('No');";
+                   print "$('#backlogo_price').html('RM0');}\n";
+      }
+     ?>
      
      $('#final_total').html('RM' + final_total);
      $('#total').val(final_total);
      $('input[name=sum_total]').val(final_total);
    }
-   
    
    /*function saveViaAJAX()
 {
@@ -368,17 +367,86 @@
 	   set_front_shirt();
      });
 
-     $('#front_icon_ok').live('click', function()
-     { set_front_shirt(); });
-
-     $('#back_icon_ok').live('click', function()
-     { set_front_shirt(); });
-
-     $('#logofront_ok').live('click', function()
-     { set_front_shirt(); });
-                     
-     $('#logoback_ok').live('click', function()
-     { set_front_shirt(); });
+ 	 $('#front_upload').live('click', $(function()
+ 	 { var btnUpload=$('#front_upload');
+	   var status=$('#status');
+	   new AjaxUpload(btnUpload, 
+	   { action: 'upload/upload-file.php',
+		 name: 'uploadfile',
+		 onSubmit: function(file, ext)
+		 { if (! (ext && /^(jpg|png|jpeg|gif)$/.test(ext)))
+		   { // extension is not allowed 
+			 status.text('Only JPG, PNG or GIF files are allowed');
+			 return false;
+		   }
+		   status.text('Uploading...');
+		 },
+		 onComplete: function(file, response)
+		 { //On completion clear the status
+		   status.text('');
+		   //Add uploaded file to list
+		   if(response==="success")
+		   { $('input[name=front_logo]').val(file);   
+		     $('#frontimg_logo').attr('src','images/drawing/cart/' + file);
+		     $('input[name=frontlogo_width]').val($('#frontimg_logo').width());
+		     $('input[name=frontlogo_height]').val($('#frontimg_logo').height());
+		     $('#frontimg_logo').hide();
+		   } 
+		   else
+		   { $('<li></li>').appendTo('#files').text(file).addClass('error'); }
+		   
+		   set_front_shirt();
+		 }
+	   });
+ 	 }));
+     
+ 	 $('#back_upload').live('click', $(function()
+ 	 { var btnUpload=$('#back_upload');
+	   var status=$('#status');
+	   new AjaxUpload(btnUpload, 
+	   { action: 'upload/upload-file.php',
+		 name: 'uploadfile',
+		 onSubmit: function(file, ext)
+		 { if (! (ext && /^(jpg|png|jpeg|gif)$/.test(ext)))
+		   { // extension is not allowed 
+			 status.text('Only JPG, PNG or GIF files are allowed');
+			 return false;
+		   }
+		   status.text('Uploading...');
+		 },
+		 onComplete: function(file, response)
+		 { //On completion clear the status
+		   status.text('');
+		   //Add uploaded file to list
+		   if(response==="success")
+		   { $('input[name=back_logo]').val(file);  } 
+		   else
+		   { $('<li></li>').appendTo('#files').text(file).addClass('error'); }
+		   
+		   set_front_shirt();
+		 }
+	   });
+ 	 }));
+ 	 
+     <?php 
+      switch($shirt_type)
+      { case '1'  : //print nothing
+                    break;
+        case '2'  : //print nothing
+                    break;
+        default   : print "$('#front_icon_ok').live('click', function()";
+                    print "{ set_front_shirt(); });";
+                    
+                    print "$('#back_icon_ok').live('click', function()";
+                    print "{ set_front_shirt(); });";                    
+                    
+                    print "$('#logofront_ok').live('click', function()";
+                    print "{ upload_file(); set_front_shirt(); });";
+                    
+                    print "$('#logoback_ok').live('click', function()";
+                    print "{ upload_file(); set_front_shirt(); });";
+      }                     
+     ?>
      
      $('#calculate').live('click', function()
      { calculate_all(); });

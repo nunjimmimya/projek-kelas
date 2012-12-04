@@ -140,7 +140,7 @@ $.jCanvas.extend(
 }); 
 
 var img_folder = 'images/drawing/';
-var cust_folder = 'images/cart';
+var cust_folder = 'images/drawing/cart/';
 
 // drawing the panels and filling in the color
 var draw_front_shirt = function(myshirt)
@@ -167,7 +167,7 @@ var draw_front_shirt = function(myshirt)
     x: 150, y: 100,
     font: "8pt Verdana, sans-serif",
     draggable: true,
-    text: $('#front_text').val()
+    text: $('input[name=front_text]').val()
   })
   .addLayer(
   { method: 'drawText',
@@ -177,18 +177,22 @@ var draw_front_shirt = function(myshirt)
     x: 150, y: 100,
     font: "24pt Verdana, sans-serif",
     draggable: true,
-    text: $('#back_text').val()
+    text: $('input[name=back_text]').val()
   })
   .addLayer(
   { method: 'drawImage',
-    source: $('#front_logo').val(),
+    source: cust_folder + $('input[name=front_logo]').val(),
     x:100, y:150,
+    width: ($('input[name=frontlogo_width]').val()*0.2), height: ($('input[name=frontlogo_height]').val()*0.2),
+    draggable: true,
     fromCenter: false
   })
   .addLayer(
   { method: 'drawImage',
-    source: $('#back_logo').val(),
+    source: cust_folder + $('input[name=back_logo]').val(),
     x:100, y:150,
+    width: ($('input[name=frontlogo_width]').val()*0.2), height: ($('input[name=frontlogo_height]').val()*0.2),
+    draggable: true,
     fromCenter: false
   })
   .drawLayers();

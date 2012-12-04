@@ -9,6 +9,7 @@
 include_once('jcart/jcart.php');
 
 session_start();
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -33,22 +34,64 @@ session_start();
    }
    -->
   </style>
+  <script type="text/javascript">
+   function newPage()
+   { if(getCheckedValue(document.forms['custom'].elements['rdDesign'])==0)
+	 { var pageURL="invoice.html";
+	   var left = (screen.width/2)-(400/2);
+	   var top = (screen.height/2)-(400/2);
+	   var targetWin = window.open (pageURL,'height=770,width=810,toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, top='+top+', left='+left);
+	 }
+	 else
+	 { var pageURL="register.html";
+	   var left = (screen.width/2)-(400/2);
+	   var top = (screen.height/2)-(400/2);
+	   var targetWin = window.open (pageURL,'height=770,width=810,toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, top='+top+', left='+left);
+	 }
+   }
+   
+   function getCheckedValue(radioObj) 
+   { if(!radioObj)
+	  return "";
+	 var radioLength = radioObj.length;
+	 if(radioLength == undefined)
+	  if(radioObj.checked)
+	   return radioObj.value;
+	  else
+	   return "";
+	  for(var i = 0; i < radioLength; i++) 
+	  { if(radioObj[i].checked) 
+	    { return radioObj[i].value; }
+	  }
+	  return "";
+   }
+  </script>
  </head>
  <body>
- <div id="wrapper">
-  <h2>Custom myShirt Checkout Cart</h2>
-  <div id="sidebar"></div>
-   <div id="content">
-    <div id="jcart"><?php $jcart->display_cart();?></div>
-    <input type="button" value="&larr; Continue shopping" onclick="location.href='catalog.html'" />
-    <?php
-     //echo '<pre>';
-     //var_dump($_SESSION['jcart']);
-     //echo '</pre>';
-    ?>
+  <form name="custom" method="post" action="<?php $_SELF; ?>">
+   <div id="wrapper">
+    <h2>Custom myShirt Checkout Cart</h2>
+    <div id="sidebar"></div>
+     <div id="content">
+      <div id="jcart"><?php $jcart->display_cart();?></div>
+      <input type="button" value="&larr; Continue shopping" onclick="location.href='catalog.html'" />
+      <?php
+       //echo '<pre>';
+       //var_dump($_SESSION['jcart']);
+       //echo '</pre>';
+      ?>
+      <div class="jcart">
+       Billing/shipping information<br /><hr><br />
+       <div align="left"><input type="radio" name="rdDesign" id="return" value="0" />Returning Customer<br />
+       <input type="radio" name="rdDesign" id="new" value="1" />New Customer<br /><br /> </div>
+       <input type="button" value="Proceed" onclick="newPage()"/>
+      </div>
+     </div>
+     <div class="clear"></div>
+     <p><br />
+      Copyright &copy; 2012. Bancho Group Sdn.Bhd</p>
    </div>
-   <div class="clear"></div>
-  </div>
+  </form>
   <script type="text/javascript" src="jcart/js/jquery-1.4.4.min.js"></script>
   <script type="text/javascript" src="jcart/js/jcart.min.js"></script>
  </body>
