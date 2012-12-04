@@ -9,6 +9,7 @@
   <?php
     // If your page calls session_start() be sure to include jcart.php first
     include_once('jcart/jcart.php');
+    session_start();
   ?>
   <meta charset="utf-8" />
   <!-- Use the .htaccess and remove these lines to avoid edge case issues  More info: h5bp.com/i/378 -->
@@ -94,8 +95,9 @@
   <div role="main">
    <h1>Custom t-Shirt Design Arena</h1><div id="sidebar"><div id="jcart"><?php $jcart->display_cart();?></div></div>
    <form id="wizardform" method="post" action="" class="jcart">
-    <input type="hidden" id="inp_selected_design" value="roundneck_long">    
-    <input type="hidden" name="inp_selected_design" value="">    
+    <input type="hidden" name="jcartToken" value="<?php echo $_SESSION['jcartToken'];?>" />
+    <input type="hidden" name="inp_selected_design" value="roundneck_long">
+    <input type="hidden" name="selected_design" value="">
     <fieldset title="STEP 3">
      <legend>set the design</legend>
      <div id="categories">
@@ -109,18 +111,18 @@
        <div id="tabs-2">
         <h2>I like to add word (+ RM8)</h2>
         <h4>Front Design</h4>
-        <p><label for="p_scnts"><input type="text" id="front_text" size="20" value="" placeholder="Input Text" /></label><a href="#" id="front_icon_ok"><img id="front_ok_click" src="images/icon/ok.png" /></a><a href="#" id="front_icon_cancel"><img id="front_cancel_click" src="images/icon/cancel.png" /></a></p>
+        <p><label for="p_scnts"><input type="text" name="front_text" size="20" value="" placeholder="Input Text" /></label><a href="#" id="front_icon_ok"><img id="front_ok_click" src="images/icon/ok.png" /></a><a href="#" id="front_icon_cancel"><img id="front_cancel_click" src="images/icon/cancel.png" /></a></p>
         <hr>
         <h4>Back Design</h4>
-        <p><label for="p_scnts"><input type="text" id="back_text" size="20" value="" placeholder="Input Text" /></label><a href="#" id="back_icon_ok"><img id="back_ok_click" src="images/icon/ok.png" /></a><a href="#" id="back_icon_cancel"><img id="back_cancel_click" src="images/icon/cancel.png" /></a></p>
+        <p><label for="p_scnts"><input type="text" name="back_text" size="20" value="" placeholder="Input Text" /></label><a href="#" id="back_icon_ok"><img id="back_ok_click" src="images/icon/ok.png" /></a><a href="#" id="back_icon_cancel"><img id="back_cancel_click" src="images/icon/cancel.png" /></a></p>
        </div>
        <div id="tabs-3">
         <h2>I like to add logo (+ RM8)</h2>
         <h4>Front Design</h4>
-        <p><label for="p_scnts"><input type="file" id="front_logo" size="20" /></label><a href="#" id="logofront_ok"><img id="front_ok_click" src="images/icon/ok.png" /></a><a href="#" id="front_icon_cancel"><img id="front_cancel_click" src="images/icon/cancel.png" /></a></p>
+        <p><label for="p_scnts"><input type="file" name="front_logo" size="20" /></label><a href="#" id="logofront_ok"><img id="front_ok_click" src="images/icon/ok.png" /></a><a href="#" id="front_icon_cancel"><img id="front_cancel_click" src="images/icon/cancel.png" /></a></p>
         <hr>
         <h4>Back Design</h4>
-        <p><label for="p_scnts"><input type="file" id="back_logo" size="20" /></label><a href="#" id="logoback_ok"><img id="back_ok_click" src="images/icon/ok.png" /></a><a href="#" id="back_icon_cancel"><img id="back_cancel_click" src="images/icon/cancel.png" /></a></p>
+        <p><label for="p_scnts"><input type="file" name="back_logo" size="20" /></label><a href="#" id="logoback_ok"><img id="back_ok_click" src="images/icon/ok.png" /></a><a href="#" id="back_icon_cancel"><img id="back_cancel_click" src="images/icon/cancel.png" /></a></p>
        </div>
       </div>
      </div>
@@ -130,10 +132,9 @@
     <fieldset title="STEP 4">
      <legend>confirm</legend>
      <img src="" id="shirt_thumbnail" width="250" class="confirm_thumb" />
-     <p><input type="text" id="quantity" size="12" placeholder="Type Quantity" /><input type="button" id="calculate" value="Calculate" />
-     <input type="hidden" name="item_quantity" value="20" />
+     <p><input type="text" name="quantity" size="12" value="30" /><input type="button" id="calculate" value="Calculate" onclick=calculate_all() />
      <br /><font color="red" size="1">*must above 20 units</font></p>
-     <input type="hidden" id="previous_quantity" value="0" /><input type="hidden" id="total" value="0" />
+     <input type="hidden" name="previous_quantity" value="0" /><input type="hidden" name="total" value="0" />
      <ul id="confirmlist">
       <li>
        <span id="shirt_name">Round Neck Shirt Design</span><span></span><span id="shirt_price">RM20</span>
@@ -154,7 +155,7 @@
       </li>
      </ul>
     </fieldset>
-    <input type="submit" class="finish button" name="my-add-button" value="Add to Cart" />
+    <input type="submit" class="finish button tip" name="my-add-button" value="Add to Cart" />
    </form>
   </div>
   <!-- JavaScript at the bottom for fast page loading -->
@@ -187,15 +188,26 @@
 
    var calculate_all = function()
    { var grand_total = 0;
-     var current = parseInt($('#quantity').val(), 10);
-     var previous = parseInt($('#previous_quantity').val(),10);
-     var total_value = parseInt($('#total').val(), 10);
+     var current = parseInt($('input[name=quantity]').val(), 10);
+     var previous = parseInt($('input[name=previous_quantity]').val(),10);
+     var total_value = parseInt($('input[name=total]').val(), 10);
      
      if (current != previous)
      { grand_total = total_value * current;
        $('#final_total').html('RM' + grand_total);
-       $('#previous_quantity').val($('#quantity').val());
+       $('input[name=previous_quantity]').val($('input[name=quantity]').val());
      }
+     
+     $('input[name=selected_design]').val(shirt_name[$('input[name=inp_selected_design]').val()]);
+     
+     //alert all of the variable to submit to cart
+     alert($('input[name=selected_design]').val() +", "+ 
+           $('input[name=front_text]').val() +", "+  
+           $('input[name=back_text]').val() +", "+ 
+           $('input[name=front_logo]').val() +", "+ 
+           $('input[name=back_logo]').val() +", "+ 
+           $('input[name=quantity]').val() +", "+
+           $('input[name=sum_total]').val());
    }
    
    var draw_selector = function()
@@ -221,26 +233,15 @@
      $('#tabs').tabs();
    }
 
-/*$config['item']['id']             = 'cart_id';    // Item id
-$config['item']['name']           = 'inp_selected_design';    // Item name
-$config['item']['price']          = 'shirt_price';    // Item price
-$config['item']['qty']            = 'shirt_qty';    // Item quantity
-$config['item']['front_text']     = 'front_text';    // Item quantity
-$config['item']['back_text']      = 'back_text';    // Item quantity
-$config['item']['front_logo']     = 'front_logo';    // Item quantity
-$config['item']['back_logo']      = 'back_logo';    // Item quantity
-$config['item']['url']            = 'my-item-url';    // Item URL (optional)
-$config['item']['add']            = 'my-add-button';    // Add to cart button
-*/   
    var final_price = function()
    { var final_total = 0;
-     $('#shirt_name').html(shirt_name[$('#inp_selected_design').val()]);
-     $('#shirt_price').html('RM' + shirt_price[$('#inp_selected_design').val()]);
-     $('#selected_design').val(shirt_price[$('#inp_selected_design').val()]);
+     $('#shirt_name').html(shirt_name[$('input[name=inp_selected_design]').val()]);
+     $('#shirt_price').html('RM' + shirt_price[$('input[name=inp_selected_design]').val()]);
+     $('input[name=selected_design]').val(parseInt(shirt_price[$('input[name=inp_selected_design]').val()], 10));
      
-     final_total += shirt_price[$('#inp_selected_design').val()];
+     final_total += shirt_price[$('input[name=inp_selected_design]').val()];
     
- 	 var bg = shirt[$('#inp_selected_design').val()];
+ 	 var bg = shirt[$('input[name=inp_selected_design]').val()];
 
      var tmp_panels = '';
      var pname = '';
@@ -257,7 +258,7 @@ $config['item']['add']            = 'my-add-button';    // Add to cart button
      $('#final_panels').html(tmp_panels);
        
      //add-on
-     if (typeof $('input[name=front_text]').val() !== "undefined") 
+     if ($('input[name=front_text]').val() != "") 
      { $('#fronttext_option').html('Yes');
        $('#fronttext_price').html('RM' + addon_price['text']);
        final_total += addon_price['text'];
@@ -267,7 +268,7 @@ $config['item']['add']            = 'my-add-button';    // Add to cart button
        $('#fronttext_price').html('RM0');
      }
        
-     if (typeof $('input[name=back_text]').val() !== "undefined") 
+     if ($('input[name=back_text]').val() !== "") 
      { $('#backtext_option').html('Yes');
        $('#backtext_price').html('RM' + addon_price['text']);
        final_total += addon_price['text'];
@@ -277,7 +278,7 @@ $config['item']['add']            = 'my-add-button';    // Add to cart button
        $('#backtext_price').html('RM0');
      }
 
-     if (typeof $('input[name=front_logo]').val() !== "undefined") 
+     if ($('input[name=front_logo]').val() != "") 
      { $('#frontlogo_option').html('Yes');
        $('#frontlogo_price').html('RM' + addon_price['logo']);
        final_total += addon_price['logo'];
@@ -287,7 +288,7 @@ $config['item']['add']            = 'my-add-button';    // Add to cart button
        $('#frontlogo_price').html('RM0');
      }
      
-     if (typeof $('input[name=back_logo]').val() !== "undefined") 
+     if ($('input[name=back_logo]').val() != "") 
      { $('#backlogo_option').html('Yes');
        $('#backlogo_price').html('RM' + addon_price['logo']);
        final_total += addon_price['logo'];
@@ -299,6 +300,7 @@ $config['item']['add']            = 'my-add-button';    // Add to cart button
      
      $('#final_total').html('RM' + final_total);
      $('#total').val(final_total);
+     $('input[name=sum_total]').val(final_total);
    }
    
    
@@ -329,7 +331,7 @@ $config['item']['add']            = 'my-add-button';    // Add to cart button
 
 	ajax.send(postData);  
 }*/
-   var save_shirt = function()
+   /*var save_shirt = function()
    { var canvas = document.getElementById("front_shirt_canvas");
      var canvasData = canvas.toDataURL("image/png");
  	 var postData = "canvasData="+canvasData;
@@ -338,7 +340,7 @@ $config['item']['add']            = 'my-add-button';    // Add to cart button
      ajax.open("POST",'saveimage.php',true);
      ajax.setRequestHeader('Content-Type', 'canvas/upload');
      ajax.send(postData); 
-   }
+   }*/
 	
    $(document).ready(function()
    { draw_selector();

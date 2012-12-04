@@ -58,7 +58,7 @@ var sel_color_file = [
 ];
 
 var shirt_price = 
-{ 'roundneck_long' : 20.00
+{ 'roundneck_long' : 20
 }
 
 var shirt_name = 
@@ -66,8 +66,8 @@ var shirt_name =
 }
 	
 var addon_price = 
-{ 'text' : 8.00,
-  'logo' : 8.00
+{ 'text' : 8,
+  'logo' : 8
 }
 
 // custom function for jCanvas

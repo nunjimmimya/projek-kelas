@@ -17,16 +17,16 @@ $config['jcartPath']              = 'jcart/';
 $config['checkoutPath']           = 'checkout.php';
 
 // The HTML name attributes used in your item forms
-$config['item']['id']             = 'cart_id';    // Item id
-$config['item']['name']           = 'selected_design';    // Item name
-$config['item']['price']          = 'shirt_price';    // Item price
-$config['item']['qty']            = 'shirt_qty';    // Item quantity
-$config['item']['front_text']     = 'front_text';    // Item quantity
-$config['item']['back_text']      = 'back_text';    // Item quantity
-$config['item']['front_logo']     = 'front_logo';    // Item quantity
-$config['item']['back_logo']      = 'back_logo';    // Item quantity
-$config['item']['url']            = 'my-item-url';    // Item URL (optional)
-$config['item']['add']            = 'my-add-button';    // Add to cart button
+$config['item']['id']             = 'cart_id';         // Item id
+$config['item']['name']           = 'selected_design'; // Item name
+$config['item']['price']          = 'sum_total';       // Item price
+$config['item']['qty']            = 'quantity';        // Item quantity
+$config['item']['front_text']     = 'front_text';      // Item quantity
+$config['item']['back_text']      = 'back_text';       // Item quantity
+$config['item']['front_logo']     = 'front_logo';      // Item quantity
+$config['item']['back_logo']      = 'back_logo';       // Item quantity
+$config['item']['url']            = 'my-item-url';     // Item URL (optional)
+$config['item']['add']            = 'my-add-button';   // Add to cart button
 
 // Your PayPal secure merchant ID
 // Found here: https://www.paypal.com/webapps/customerprofile/summary.view
@@ -37,7 +37,7 @@ $config['paypal']['id']           = 'seller_1282188508_biz@conceptlogic.com';
 
 // Three-letter currency code, defaults to USD if empty
 // See available options here: http://j.mp/agNsTx
-$config['currencyCode']           = '';
+$config['currencyCode']           = 'MYR';
 
 // Add a unique token to form posts to prevent CSRF exploits
 // Learn more: http://conceptlogic.com/jcart/security.php
