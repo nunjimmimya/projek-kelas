@@ -17,7 +17,7 @@ $config['jcartPath']              = 'jcart/';
 $config['checkoutPath']           = 'checkout.php';
 
 // The HTML name attributes used in your item forms
-$config['item']['id']             = 'cart_id';         // Item id
+$config['item']['id']             = 'design_id';       // Item id
 $config['item']['name']           = 'selected_design'; // Item name
 $config['item']['price']          = 'sum_total';       // Item price
 $config['item']['qty']            = 'quantity';        // Item quantity

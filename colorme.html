@@ -9,7 +9,7 @@
   <?php
     // If your page calls session_start() be sure to include jcart.php first
     include_once('jcart/jcart.php');
-    session_start();
+    //session_start();
   ?>
   <meta charset="utf-8" />
   <!-- Use the .htaccess and remove these lines to avoid edge case issues  More info: h5bp.com/i/378 -->
@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="css/drawing.css" />
   <link rel="stylesheet" href="css/smoothness/jquery-ui-1.8.18.custom.css" />
   <link type="text/css" rel="stylesheet" href="css/jquery.stepy.css" />
+  <link rel="stylesheet" type="text/css" media="screen, projection" href="jcart/css/style.css" />
   <link rel="stylesheet" type="text/css" media="screen, projection" href="jcart/css/jcart.css" />
   
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
@@ -94,9 +95,10 @@
   <header></header>
   <div role="main">
    <h1>Custom t-Shirt Design Arena</h1><div id="sidebar"><div id="jcart"><?php $jcart->display_cart();?></div></div>
-   <form id="wizardform" method="post" action="" class="jcart">
+   <form id="wizardform" method="post" action="">
     <input type="hidden" name="jcartToken" value="<?php echo $_SESSION['jcartToken'];?>" />
     <input type="hidden" name="inp_selected_design" value="roundneck_long">
+    <input type="hidden" name="design_id" value="1" />
     <input type="hidden" name="selected_design" value="">
     <fieldset title="STEP 3">
      <legend>set the design</legend>
@@ -171,7 +173,7 @@
   <script type="text/javascript" src="script/jquery.stepy.min.js"></script>
   <!-- end scripts -->
 
-  <script type="text/javascript" src="jcart/js/jcart.min.js"></script>
+  <script type="text/javascript" src="jcart/js/jcart.js"></script>
   <script type="text/javascript" src="script/shirt.js"></script>
   <script>
    var theshirt = shirt['roundneck_long'];
@@ -237,7 +239,6 @@
    { var final_total = 0;
      $('#shirt_name').html(shirt_name[$('input[name=inp_selected_design]').val()]);
      $('#shirt_price').html('RM' + shirt_price[$('input[name=inp_selected_design]').val()]);
-     $('input[name=selected_design]').val(parseInt(shirt_price[$('input[name=inp_selected_design]').val()], 10));
      
      final_total += shirt_price[$('input[name=inp_selected_design]').val()];
     
