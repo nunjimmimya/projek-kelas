@@ -96,6 +96,8 @@ else {
 			++$count;
 		}
 
+		// Store into db before cart being emptied
+		
 		// Empty the cart
 		$jcart->empty_cart();
 

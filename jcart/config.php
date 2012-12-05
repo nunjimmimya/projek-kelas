@@ -30,14 +30,14 @@ $config['item']['add']            = 'my-add-button';   // Add to cart button
 
 // Your PayPal secure merchant ID
 // Found here: https://www.paypal.com/webapps/customerprofile/summary.view
-$config['paypal']['id']           = 'seller_1282188508_biz@conceptlogic.com';
+$config['paypal']['id']           = 'myshir_1354679335_biz@yahoo.com';
 
 ////////////////////////////////////////////////////////////////////////////////
 // OPTIONAL SETTINGS
 
 // Three-letter currency code, defaults to USD if empty
 // See available options here: http://j.mp/agNsTx
-$config['currencyCode']           = 'MYR';
+$config['currencyCode']           = '';
 
 // Add a unique token to form posts to prevent CSRF exploits
 // Learn more: http://conceptlogic.com/jcart/security.php
@@ -85,10 +85,10 @@ $config['priceFormat']            = array('decimals' => 2, 'dec_point' => '.', '
 $config['paypal']['https']        = true;
 
 // Use PayPal sandbox?
-$config['paypal']['sandbox']      = false;
+$config['paypal']['sandbox']      = true;
 
 // The URL a visitor is returned to after completing their PayPal transaction
-$config['paypal']['returnUrl']    = '';
+$config['paypal']['returnUrl']    = 'trackingid.html';
 
 // The URL of your PayPal IPN script
 $config['paypal']['notifyUrl']    = '';

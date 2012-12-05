@@ -1,5 +1,6 @@
 <!doctype html>
- <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+ <!-- credit has been given to people that create this plugin as this is GNU and CSSL -->
+ <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/         -->
  <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
  <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
  <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
@@ -7,6 +8,7 @@
  <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
  <head>
   <?php
+    // Initialize shopping cart
     // If your page calls session_start() be sure to include jcart.php first
     include_once('jcart/jcart.php');
     //session_start();    
@@ -99,6 +101,7 @@
    <form id="wizardform" method="post" action="catalog.html">
     <input type="hidden" name="jcartToken" value="<?php echo $_SESSION['jcartToken'];?>" />
     <?php 
+     // This code get value from catalog.html and process which shirt does visitor wants
      $shirt_type = $_POST["shirt_type"];
      
      switch ($shirt_type)
@@ -118,6 +121,9 @@
      
      print "<input type=\"hidden\" name=\"design_id\" value=\"$shirt_type\">";
     ?>
+    <!-- shirt_type 1 and 2 are not available as they are ready made shirt -->
+    <!-- shirt_type other than 1 and 2 are available to custom here        -->
+    <!-- those shirt can be colored, putting text and image                -->
     <fieldset title="STEP 1">
      <legend>set the design</legend>
      <div id="categories">
@@ -153,6 +159,10 @@
      <canvas id="front_shirt_canvas" width="660" height="400"></canvas>
      <div style="clear: both"> </div>
     </fieldset>
+    <!-- in this fieldset, users can confirm their shirt and quantity before adding it to the cart -->
+    <!-- the page will show initial price per unit and cart will calculate total of the selection  -->
+    <!-- after 'add to cart' is clicked, user will be guided back to page catalog to perform more  -->
+    <!-- transaction or just click checkout of they are done                                       -->
     <fieldset title="STEP 2">
      <legend>confirm</legend>
      <img src="" id="shirt_thumbnail" width="250" class="confirm_thumb" />
@@ -184,7 +194,6 @@
   </div>
   <!-- JavaScript at the bottom for fast page loading -->
 
-  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
   <script src="script/jquery-1.8.2.min.js"></script>
   <script src="script/jquery-ui-1.8.custom.js"></script>
 
@@ -199,18 +208,26 @@
   <script type="text/javascript" src="script/shirt.js"></script>
   <script type="text/javascript" src="upload/js/ajaxupload.3.5.js" ></script>
   <script>
+   // this part is used heavily on jquery and javascript
+   // the logic and calculation also applies in this area
+   
+   // define shirt array for right shirt that has been choose
    var theshirt = shirt['roundneck_long'];
+   
+   // color and html panel initialization
    var colors = [ '#fff','#fff','#fff','#fff', '#fff','#fff', '#fff','#fff' ];
    var color_panels = [ 8,8,8,8,8,8,8,8];
    var panel_html="";
    
    panel_html += "<h3><a href=\"javascript:void(0)\">Panel 4<img height=\"15\" width=\"15\" id=\"panel3_box\" src=\"images\/drawing\/sel_white.png\" style=\"float: right\"><\/a><\/h3><div><input type=\"hidden\" id=\"panel3\" value=\"8\"><br><img src=\"images\/drawing\/selector.png\" usemap=\"#panel_four\" \/><map name=\"panel_four\" id=\"panel_four\"><area shape=\"rect\" coords=\"37,107,68,138\" href=\"javascript:void(0)\" alt=\"Black\" id=\"panel3_13\" class=\"colorsel\" \/><area shape=\"rect\" coords=\"3,107,34,138\" href=\"javascript:void(0)\" alt=\"Purple\" id=\"panel3_12\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"3,72,34,103\" href=\"javascript:void(0)\" alt=\"White\" id=\"panel3_8\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"37,72,68,103\" href=\"javascript:void(0)\" alt=\"Florescent Pink\" id=\"panel3_9\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"71,72,102,103\" href=\"javascript:void(0)\" alt=\"Orange\" id=\"panel3_10\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"106,72,137,103\" href=\"javascript:void(0)\" alt=\"Spectre Yellow\" id=\"panel3_11\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"106,37,137,68\" href=\"javascript:void(0)\" alt=\"Navy\" id=\"panel3_7\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"71,36,102,67\" href=\"javascript:void(0)\" alt=\"Mustard Yellow\" id=\"panel3_6\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"37,37,68,68\" href=\"javascript:void(0)\" alt=\"Red\" id=\"panel3_5\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"3,37,34,68\" href=\"javascript:void(0)\" alt=\"Florescent Green\" id=\"panel3_4\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"106,3,137,34\" href=\"javascript:void(0)\" alt=\"Grey\" id=\"panel3_3\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"71,3,102,34\" href=\"javascript:void(0)\" alt=\"Classic Blue\" id=\"panel3_2\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"37,3,68,34\" href=\"javascript:void(0)\" alt=\"Green\" id=\"panel3_1\" class=\"colorsel\"\/><area shape=\"rect\" coords=\"3,3,34,34\" href=\"javascript:void(0)\" alt=\"Brown\" id=\"panel3_0\" class=\"colorsel\"\/><\/map><\/div>";
 
+   // calling this function will refresh the shirt setting (eg: color, text and image)
    var set_front_shirt = function()
    { theshirt = shirt[$('input[name=inp_selected_design]').val()];
      draw_front_shirt(theshirt);
    }
 
+   // calculation for bulk order is done here
    var calculate_all = function()
    { var grand_total = 0;
      var current = parseInt($('input[name=quantity]').val(), 10);
@@ -224,10 +241,13 @@
      }
    }
    
+   // draw selector is left hand tools to manipulate the shirt at right pane
    var draw_selector = function()
    { var numbers = ['one','two','three','four','five','six','seven','eight','nine','ten'];
      var accordion_html = '';
      
+     // cleverly selected how much color panel has in one shirt (if the shirt has more than 1 color)
+     // and accordion below will display the color panel
      for( i = 0; i < theshirt.panels.length; i++ )
      { temp = panel_html.replace( /Panel 4/gi, 'Panel '+(i+1));
        temp = temp.replace( /panel3/gi, 'panel'+i );
@@ -247,6 +267,7 @@
      $('#tabs').tabs();
    }
 
+   // final price is to calculate how much option has user selected and charge it accordingly
    var final_price = function()
    { var final_total = 0;
      $('#shirt_name').html(shirt_name[$('input[name=inp_selected_design]').val()]);
@@ -270,7 +291,8 @@
     
      $('#final_panels').html(tmp_panels);
        
-     //add-on
+     // add-on
+     // php will show these lines only when user select shirts other than ready made
      <?php
       switch ($shirt_type)
       { case '1' : break;
@@ -311,6 +333,7 @@
      $('input[name=sum_total]').val(final_total);
    }
    
+   // all setting will be process by HTML when page has been called
    $(document).ready(function()
    { draw_selector();
      set_front_shirt();
@@ -410,13 +433,14 @@
                     print "{ upload_file(); set_front_shirt(); });";
       }                     
      ?>
-     
-     $('#calculate').live('click', function()
-     { calculate_all(); });
-          
+    
+     // steps used to differentiate editing mode (Step1) and pricing mode (Step2)
      $('#wizardform').live('click', function()
      { $('#shirt_thumbnail').attr('src', $('#front_shirt_canvas').getCanvasImage("png"));
        final_price();
+   
+       $('#calculate').live('click', function()
+       { calculate_all(); });
      });
         
      $('#wizardform').stepy();

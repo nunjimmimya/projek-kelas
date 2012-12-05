@@ -11,7 +11,7 @@ include_once('jcart/jcart.php');
 session_start();
 
  //get userID from location bar
- $userid = $_GET["userid"];
+ //$userid = $_GET["userid"];
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -70,7 +70,6 @@ session_start();
   </script>
  </head>
  <body>
-  <form name="custom" method="post" action="<?php $_SELF; ?>">
    <div id="wrapper">
     <h2>Custom myShirt Checkout Cart</h2>
     <div id="sidebar"></div>
@@ -83,29 +82,30 @@ session_start();
        //echo '</pre>';
       ?>
       <div id="billing" class="jcart">
-       Billing/shipping information<br /><hr><br />
-       <div align="left"><input type="radio" name="rdDesign" id="return" value="0" />Returning Customer<br />
-       <input type="radio" name="rdDesign" id="new" value="1" />New Customer<br /><br /> </div>
-       <input type="button" value="Proceed" onclick="newPage()"/>
-      </div>
+       <form name="custom" method="post" action="">
+        Billing/shipping information<br /><hr><br />
+        <div align="left"><input type="radio" name="rdDesign" id="return" value="0" />Returning Customer<br />
+        <input type="radio" name="rdDesign" id="new" value="1" />New Customer<br /><br /> </div>
+        <input type="button" value="Proceed" onclick="newPage()"/>
+       </div>
+      </form> 
      </div>
      <div class="clear"></div>
      <p><br />
       Copyright &copy; 2012. Bancho Group Sdn.Bhd</p>
    </div>
-  </form>
   <script type="text/javascript" src="script/jquery-1.8.2.min.js"></script>
   <script type="text/javascript" src="jcart/js/jcart.min.js"></script>
   <script type="text/javascript" src="script/querystring-0.9.0-min.js".</script>
   <script type="text/javascript">
-   $(document).ready(function()
-   { var message = $.QueryString("userid"),
-		 message = ( !message )? "null":message;
+   //$(document).ready(function()
+   //{// var message = $.QueryString("userid"),
+	//	 message = ( !message )? "null":message;
 		 
 	 //hide button paypal if no user are registered
-	 if (message == '')
-	  $('#jcart-paypal-checkout').hide();
-   });
+//	 if (message == '')
+//	  $('#jcart-paypal-checkout').hide();
+  // });
   </script>
  </body>
 </html>

@@ -26,26 +26,25 @@
   </style>
  </head>
  <body>
-  <form>
-   <div id="wrapper">
-    <div id="header">
-     <div id="logo"><h1>Custom myShirt</h1></div>
-     <div id="cartbar"><div id="jcart"><?php $jcart->display_cart();?></div></div>
+  <div id="wrapper">
+   <div id="header">
+    <div id="logo"><h1>Custom myShirt</h1></div>
+    <div id="cartbar"><div id="jcart"><?php $jcart->display_cart();?></div></div>
+   </div>
+   <div id="body">
+    <div id="categories">
+     <h2>Catalog</h2>
+     <ul>
+      <li><a href="#">Corporate shirt</a></li>
+      <li><a href="#">Round Neck shirt</a></li>
+      <li><a href="#">Collar shirt</a></li>
+      <li><a href="#">Long sleeves shirt</a></li>
+      <li><a href="#">V-neck shirt</a></li>
+     </ul>
     </div>
-    <div id="body">
-     <div id="categories">
-      <h2>Catalog</h2>
-      <ul>
-       <li><a href="#">Corporate shirt</a></li>
-       <li><a href="#">Round Neck shirt</a></li>
-       <li><a href="#">Collar shirt</a></li>
-       <li><a href="#">Long sleeves shirt</a></li>
-       <li><a href="#">V-neck shirt</a></li>
-      </ul>
-     </div>
-     <div id="seasonal">
-      <div class="inner"><h2>Click image in our collection</h2></div>
-     </div>
+    <div id="seasonal">
+     <div class="inner"><h2>Click image in our collection</h2></div>
+    </div>
      <form method="post" action="colorme.html">
      <div id="catalog">
       <ul><li>Ready Made: Corporate Shirt</li></ul>
@@ -79,7 +78,6 @@
       <div class="clear"><div id="gallery2"></div></div>
      </div>
    </div>
-  </form>
   <div id="copyright"><p>Copyright &copy; 2012. Bancho Group Sdn.Bhd</p></div>
   <script type="text/javascript" src="script/jquery-1.8.3.min.js"></script>
   <script type="text/javascript">

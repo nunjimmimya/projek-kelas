@@ -10,6 +10,7 @@ class Jcart {
 
 	public $config       = array();
 	private $items       = array();
+	private $shirts      = array();
 	private $names       = array();
 	private $prices      = array();
 	private $qtys        = array();
@@ -38,6 +39,7 @@ class Jcart {
 		foreach($this->items as $tmpItem) {
 			$item = null;
 			$item['id']         = $tmpItem;
+			$item['shirt']      = $this->shirts[$tmpItem];
 			$item['name']       = $this->names[$tmpItem];
 			$item['price']      = $this->prices[$tmpItem];
 			$item['qty']        = $this->qtys[$tmpItem];
@@ -63,7 +65,7 @@ class Jcart {
 	*
 	* @return mixed
 	*/
-	private function add_item($id, $name, $price, $qty = 1, $front_text, $back_text, $front_logo, $back_logo, $url) {
+	private function add_item($id, $shirt, $name, $price, $qty = 1, $front_text, $back_text, $front_logo, $back_logo, $url) {
 
 		$validPrice = false;
 		$validQty = false;
@@ -93,6 +95,7 @@ class Jcart {
 			// This is a new item
 			else {
 				$this->items[]            = $id;
+				$this->shirt[$id]         = $shirt;
 				$this->names[$id]         = $name;
 				$this->prices[$id]        = $price;
 				$this->qtys[$id]          = $qty;
@@ -190,6 +193,7 @@ class Jcart {
 	*/
 	public function empty_cart() {
 		$this->items       = array();
+		$this->shirts      = array();
 		$this->names       = array();
 		$this->prices      = array();
 		$this->qtys        = array();
@@ -285,21 +289,23 @@ class Jcart {
 		$checkout = $config['checkoutPath'];
 		$priceFormat = $config['priceFormat'];
 
-		$id         = $config['item']['id'];
-		$name       = $config['item']['name'];
-		$price      = $config['item']['price'];
-		$qty        = $config['item']['qty'];
-		$front_text = $config['item']['front_text'];
-		$back_text  = $config['item']['back_text'];
-		$front_logo = $config['item']['front_logo'];
-		$back_logo  = $config['item']['back_logo'];
-		$url        = $config['item']['url'];
-		$add        = $config['item']['add'];
+		$id         = $config['item']['id'];         // id for cart
+		$shirt      = $config['item']['shirtimage']; // shirt image location
+		$name       = $config['item']['name'];       // shirt name
+		$price      = $config['item']['price'];      // shirt price
+		$qty        = $config['item']['qty'];        // shirt quantity
+		$front_text = $config['item']['front_text']; // shirt front text
+		$back_text  = $config['item']['back_text'];  // shirt back text
+		$front_logo = $config['item']['front_logo']; // shirt front logo
+		$back_logo  = $config['item']['back_logo'];  // shirt back logo
+		$url        = $config['item']['url'];        // shirt url (if any)
+		$add        = $config['item']['add'];        // shirt cart
 
 
 		// Use config values as literal indices for incoming POST values
 		// Values are the HTML name attributes set in config.json
 		$id         = $_POST[$id];
+		$shirt      = $_POST[$shirt];
 		$name       = $_POST[$name];
 		$price      = $_POST[$price];
 		$qty        = $_POST[$qty];
@@ -333,7 +339,7 @@ class Jcart {
 
 		// Add an item
 		if ($_POST[$add]) {
-			$itemAdded = $this->add_item($id, $name, $price, $qty, $front_text, $back_text, $front_logo, $back_logo, $url);
+			$itemAdded = $this->add_item($id, $shirt, $name, $price, $qty, $front_text, $back_text, $front_logo, $back_logo, $url);
 			// If not true the add item function returns the error type
 			if ($itemAdded !== true) {
 				$errorType = $itemAdded;
