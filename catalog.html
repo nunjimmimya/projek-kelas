@@ -4,6 +4,12 @@
   <?php
    // If your page calls session_start() be sure to include jcart.php first
    include_once('jcart/jcart.php');
+    
+    // if user already login
+    if(isset($_SESSION['name']))
+     $name = $_SESSION['name'];
+    else
+     $name = "Guest of Honor";
   ?>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <title>Custom myShirt</title>

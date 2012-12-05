@@ -11,7 +11,13 @@
     // Initialize shopping cart
     // If your page calls session_start() be sure to include jcart.php first
     include_once('jcart/jcart.php');
-    //session_start();    
+    session_start();    
+    
+    // if user already login
+    if(isset($_SESSION['name']))
+     $name = $_SESSION['name'];
+    else
+     $name = "Guest of Honor";
   ?>
   <meta charset="utf-8" />
   <!-- Use the .htaccess and remove these lines to avoid edge case issues  More info: h5bp.com/i/378 -->
@@ -97,7 +103,7 @@
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
   <header></header>
   <div role="main">
-   <h1>Custom t-Shirt Design Arena</h1><div id="cartbar"><div id="jcart"><?php $jcart->display_cart();?></div></div>
+   <h1>Custom myShirt Design Arena</h1><div id="cartbar"><div id="jcart"><?php $jcart->display_cart();?></div></div>
    <form id="wizardform" method="post" action="catalog.html">
     <input type="hidden" name="jcartToken" value="<?php echo $_SESSION['jcartToken'];?>" />
     <?php 
@@ -155,6 +161,7 @@
 		<hr>
         <h4>Back Design</h4>
         <div id="back_upload" ><span>Upload File<span></div><span id="status" ></span>
+        <p><font color="red">* must be in 640x480 dimension</font></p>
 		<input type="hidden" name="back_logo" value="" /><input type="hidden" name="backlogo_width" value="" /><input type="hidden" name="backlogo_height" value="" />
        </div>
       </div>

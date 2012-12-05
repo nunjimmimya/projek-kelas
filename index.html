@@ -4,7 +4,13 @@
   <?php
     // If your page calls session_start() be sure to include jcart.php first
     include_once('jcart/jcart.php');
-    //session_start();    
+    session_start();
+    
+    // if user already login
+    if(isset($_SESSION['name']))
+     $name = $_SESSION['name'];
+    else
+     $name = "Guest of Honor";
   ?>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Fashion Hut</title>
@@ -27,7 +33,8 @@
  <body>
   <div id="wrapper">
    <div id="header">
-    <div id="logo"><h1>Custom myShirt</h1></div><div id="cartbar"><div id="jcart"><?php $jcart->display_cart();?></div></div>
+    <div id="logo"><h1>Custom myShirt</h1></div>
+    <div id="cartbar"><div id="jcart"><?php $jcart->display_cart();?></div></div>
    </div>
    <div id="body">
     <div id="categories">

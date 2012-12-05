@@ -1,17 +1,17 @@
 <?php
+ // jCart v1.3
+ // http://conceptlogic.com/jcart/
+ // This file demonstrates a basic checkout page
+ // If your page calls session_start() be sure to include jcart.php first
+ include_once('jcart/jcart.php');
 
-// jCart v1.3
-// http://conceptlogic.com/jcart/
+ session_start();
 
-// This file demonstrates a basic checkout page
-
-// If your page calls session_start() be sure to include jcart.php first
-include_once('jcart/jcart.php');
-
-session_start();
-
- //get userID from location bar
- //$userid = $_GET["userid"];
+ // if user already login
+ if(isset($_SESSION['name']))
+  $name = $_SESSION['name'];
+ else
+  $name = "Guest of Honor";
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
