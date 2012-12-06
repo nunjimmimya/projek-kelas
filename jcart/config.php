@@ -88,7 +88,7 @@ $config['paypal']['https']        = true;
 $config['paypal']['sandbox']      = true;
 
 // The URL a visitor is returned to after completing their PayPal transaction
-$config['paypal']['returnUrl']    = 'trackingid.html';
+$config['paypal']['returnUrl']    = 'http://localhost/~nunjimmimya/fashionhut/trackingid.html';
 
 // The URL of your PayPal IPN script
 $config['paypal']['notifyUrl']    = '';
