@@ -96,8 +96,19 @@ else {
 			++$count;
 		}
 
-		// Store into db before cart being emptied
-		
+		// connect to db before cart being emptied
+        $con = mysql_connect("localhost","root","gampang");
+        if (!$con)
+        { die('Could not connect: ' . mysql_error());   }
+
+        $selecteddb = mysql_select_db("dbbancho", $con);
+        if (!$selecteddb) 
+        { die ('Can\'t use foo : ' . mysql_error()); }
+        
+        // store the transaction progress
+        // store the item in the cart to db
+        
+
 		// Empty the cart
 		$jcart->empty_cart();
 

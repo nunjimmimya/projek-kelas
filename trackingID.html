@@ -66,7 +66,14 @@
      </tr>
      <tr>
       <th>Product:</th>
-      <td>Custom made tshirt with embroiderry</td>
+      <td>
+       <?php 
+         $fh = fopen('images/drawing/cart/image.txt', 'r');
+         $theData = fread($fh, filesize('images/drawing/cart/image.txt'));
+         fclose($fh);
+         print "<img src='$theData' width='240' />";
+       ?>
+      </td>
      </tr>
      <tr>
       <th>Price:</th>
