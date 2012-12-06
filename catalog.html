@@ -10,6 +10,8 @@
      $name = $_SESSION['name'];
     else
      $name = "Guest of Honor";
+     
+    print_r($_SERVER);
   ?>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <title>Custom myShirt</title>
@@ -56,12 +58,12 @@
       <ul><li>Ready Made: Corporate Shirt</li></ul>
       <ul id="contentholder">
        <li>
-        <div><input type="image" src="images/corporate tshirt1.png" name="shirt_type1" value="corporate_shirt1" width="200" alt="Corporate Shirt Type 1" /></div>
+        <div><input type="image" src="images/corporate_tshirt1.png" name="shirt_type1" value="corporate_shirt1" width="200" alt="Corporate Shirt Type 1" /></div>
         <div id="harga">Corporate Shirt Type 1<br />RM80</div>
         <input type="hidden" name="shirt_type" value="" />
        </li>
        <li>
-        <div><input type="image" src="images/corporate tshirt3.png" name="shirt_type2" value="corporate_shirt2" width="200" alt="Corporate Shirt Type 2" /></div>
+        <div><input type="image" src="images/corporate_tshirt3.png" name="shirt_type2" value="corporate_shirt2" width="200" alt="Corporate Shirt Type 2" /></div>
         <div id="harga">Corporate Shirt Type 2<br />RM80</div>
        </li>
       </ul>
