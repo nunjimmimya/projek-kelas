@@ -39,13 +39,13 @@
   <script type="text/javascript">
    function newPage()
    { if(getCheckedValue(document.forms['custom'].elements['rdDesign'])==0)
-	 { var pageURL="invoice.html";
+	 { var pageURL="invoice.php";
 	   var left = (screen.width/2)-(400/2);
 	   var top = (screen.height/2)-(400/2);
 	   var targetWin = window.open (pageURL,'height=770,width=810,toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, top='+top+', left='+left);
 	 }
 	 else
-	 { var pageURL="register.html";
+	 { var pageURL="register.php";
 	   var left = (screen.width/2)-(400/2);
 	   var top = (screen.height/2)-(400/2);
 	   var targetWin = window.open (pageURL,'height=770,width=810,toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, top='+top+', left='+left);
@@ -77,7 +77,7 @@
    <div id="content"><br />
     <div align="center"><h2><u>Custom myShirt Checkout Cart</u></h2></div>
     <div id="jcart"><?php $jcart->display_cart(); ?></div>
-    <div align="center"><input type="button" value="&larr; Continue shopping" onclick="location.href='catalog.html'" /></div>
+    <div align="center"><input type="button" value="&larr; Continue shopping" onclick="location.href='catalog.php'" /></div>
     <?php
      //echo '<pre>';
      //var_dump($_SESSION['jcart']);
@@ -97,16 +97,6 @@
   </div>
   <script type="text/javascript" src="script/jquery-1.8.2.min.js"></script>
   <script type="text/javascript" src="jcart/js/jcart.min.js"></script>
-  <script type="text/javascript" src="script/querystring-0.9.0-min.js".</script>
-  <script type="text/javascript">
-   //$(document).ready(function()
-   //{// var message = $.QueryString("userid"),
-	//	 message = ( !message )? "null":message;
-		 
-	 //hide button paypal if no user are registered
-//	 if (message == '')
-//	  $('#jcart-paypal-checkout').hide();
-  // });
-  </script>
+  <script type="text/javascript" src="script/querystring-0.9.0-min.js"</script>
  </body>
 </html>

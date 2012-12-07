@@ -49,11 +49,11 @@
     <div id="categories">
      <h2>Catalog</h2>
      <ul>
-      <li><a href="catalog.html">Corporate shirt</a></li>
-      <li><a href="catalog.html">Round Neck shirt</a></li>
-      <li><a href="catalog.html">Collar shirt</a></li>
-      <li><a href="catalog.html">Long sleeves shirt</a></li>
-      <li><a href="catalog.html">V-neck shirt</a></li>
+      <li><a href="catalog.php">Corporate shirt</a></li>
+      <li><a href="catalog.php">Round Neck shirt</a></li>
+      <li><a href="catalog.php">Collar shirt</a></li>
+      <li><a href="catalog.php">Long sleeves shirt</a></li>
+      <li><a href="catalog.php">V-neck shirt</a></li>
      </ul>
      <?php
        /*$passid = $_POST["password"];
@@ -66,14 +66,14 @@
              echo "<br />";
            }
            else
-           {*/ print "<form method='post' action='$_SELF'>\n";
+           {*/ print "<form method='post' action=''>\n";
              print " <br />\n";
              print " <p>\n";
              print "  <h6>Enter your credential</h6>\n";
              print "  <input type='text' name='emailid' placeholder='Type your email address' />\n";
              print "  <input type='password' name='password' placeholder='Type your password'  />\n";
              print "  <input type='submit' value='Sign in' />||\n";
-             print "  <a href='register.html'><u>Register</u></a>\n";
+             print "  <a href='register.php'><u>Register</u></a>\n";
              print " </p>\n";
              print "</form>\n";
            /*}

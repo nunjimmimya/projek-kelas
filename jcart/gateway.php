@@ -10,6 +10,16 @@ include_once('jcart.php');
 
 $config = $jcart->config;
 
+// connect to db before cart being emptied
+$con = mysql_connect("localhost","root","gampang");
+if (!$con)
+{ die('Could not connect: ' . mysql_error());   }
+
+$selecteddb = mysql_select_db("dbbancho", $con);
+if (!$selecteddb) 
+{ die ('Can\'t use foo : ' . mysql_error()); }
+
+
 // The update and empty buttons are displayed when javascript is disabled 
 // Re-display the cart if the visitor has clicked either button
 if ($_POST['jcartUpdateCart'] || $_POST['jcartEmpty']) {
@@ -91,24 +101,23 @@ else {
 			$queryString .= '&item_name_' . $count . '=' . urlencode($item['name']);
 			$queryString .= '&amount_' . $count . '=' . urlencode($item['price']);
 			$queryString .= '&quantity_' . $count . '=' . urlencode($item['qty']);
+			
+            // store the transaction progress
+            // store the item in the cart to db :FAIL!!!:
+            
+            // alernative..use file to save base64 image
+            print_r($item['shirt_snapshot']);
+            $snapshot_shirt = $item['shirt_snapshot'];
+            print_r($snapshot_shirt);
+            mysql_query("insert into image values('$count','$snapshot_shirt','')")
+            or die(mysql_error());
 
 			// Increment the counter
 			++$count;
 		}
-
-		// connect to db before cart being emptied
-        $con = mysql_connect("localhost","root","gampang");
-        if (!$con)
-        { die('Could not connect: ' . mysql_error());   }
-
-        $selecteddb = mysql_select_db("dbbancho", $con);
-        if (!$selecteddb) 
-        { die ('Can\'t use foo : ' . mysql_error()); }
-        
-        // store the transaction progress
-        // store the item in the cart to db
-        
-
+		
+		break;
+                
 		// Empty the cart
 		$jcart->empty_cart();
 
@@ -134,6 +143,7 @@ else {
 			die('Couldn&rsquo;t find a PayPal ID in <strong>config.php</strong>.');
 		}
 	}
+	mysql_close($con);
 }
 
 ?>

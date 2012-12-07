@@ -52,7 +52,7 @@
     <div id="seasonal">
      <div class="inner"><h2>Click image in our collection</h2></div>
     </div>
-     <form method="post" action="colorme.html">
+     <form method="post" action="colorme.php">
      <div id="catalog">
       <ul><li>Ready Made: Corporate Shirt</li></ul>
       <ul id="contentholder">

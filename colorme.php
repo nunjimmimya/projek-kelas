@@ -104,7 +104,7 @@
   <header></header>
   <div role="main">
    <h1>Custom myShirt Design Arena</h1><div id="cartbar"><div id="jcart"><?php $jcart->display_cart();?></div></div>
-   <form id="wizardform" method="post" action="catalog.html">
+   <form id="wizardform" method="post" action="catalog.php">
     <input type="hidden" name="jcartToken" value="<?php echo $_SESSION['jcartToken'];?>" />
     <?php 
      // This code get value from catalog.html and process which shirt does visitor wants
@@ -127,7 +127,7 @@
        //            print '<input type="hidden" name="selected_design" value="t-Shirt Long Sleeve Colarneck">';
        //            break;
      }
-     
+          
      print "<input type=\"hidden\" name=\"design_id\" value=\"$shirt_type\">";
     ?>
     <!-- shirt_type 1 and 2 are not available as they are ready made shirt -->
@@ -167,6 +167,7 @@
       </div>
      </div>
      <canvas id="front_shirt_canvas" width="660" height="400"></canvas>
+     <textarea name="shirt_snapshot"></textarea>
      <div style="clear: both"> </div>
     </fieldset>
     <!-- in this fieldset, users can confirm their shirt and quantity before adding it to the cart -->
@@ -344,8 +345,11 @@
    }
    
    var saveshirt_canvas = function()
-   { //this function will save canvas data to base64 and save it in db
-     var shirt_image = $('#front_shirt_canvas').getCanvasImage("png");
+   { // try save with base64 value with textarea
+     $('textarea[name=shirt_snapshot]').val($('#front_shirt_canvas').getCanvasImage("png"));
+     
+     //this function will save canvas data to base64 and save it in db
+     /*var shirt_image = $('#front_shirt_canvas').getCanvasImage("png");
      
      $.ajax(
      { type: 'POST',
@@ -353,7 +357,7 @@
 	   data: {shirtdata : shirt_image},
 	   success: function(data)
 	   {  }
-	 });
+	 });*/
    }
    
    // all setting will be process by HTML when page has been called
@@ -457,6 +461,9 @@
       }                     
      ?>
     
+     // hide textarea
+     $('textarea[name=shirt_snapshot]').hide();
+     
      // steps used to differentiate editing mode (Step1) and pricing mode (Step2)
      $('#wizardform').live('click', function()
      { $('#shirt_thumbnail').attr('src', $('#front_shirt_canvas').getCanvasImage("png"));
