@@ -468,7 +468,8 @@
      $('#wizardform').live('click', function()
      { $('#shirt_thumbnail').attr('src', $('#front_shirt_canvas').getCanvasImage("png"));
        final_price();
-       saveshirt_canvas();
+       // try save with base64 value with textarea
+       $('textarea[name=shirt_snapshot]').val($('#front_shirt_canvas').getCanvasImage("png"));
    
        $('#calculate').live('click', function()
        { calculate_all(); });

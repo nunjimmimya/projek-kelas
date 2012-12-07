@@ -19,7 +19,6 @@ $selecteddb = mysql_select_db("dbbancho", $con);
 if (!$selecteddb) 
 { die ('Can\'t use foo : ' . mysql_error()); }
 
-
 // The update and empty buttons are displayed when javascript is disabled 
 // Re-display the cart if the visitor has clicked either button
 if ($_POST['jcartUpdateCart'] || $_POST['jcartEmpty']) {
@@ -102,22 +101,20 @@ else {
 			$queryString .= '&amount_' . $count . '=' . urlencode($item['price']);
 			$queryString .= '&quantity_' . $count . '=' . urlencode($item['qty']);
 			
-            // store the transaction progress
-            // store the item in the cart to db :FAIL!!!:
-            
-            // alernative..use file to save base64 image
-            print_r($item['shirt_snapshot']);
-            $snapshot_shirt = $item['shirt_snapshot'];
-            print_r($snapshot_shirt);
-            mysql_query("insert into image values('$count','$snapshot_shirt','')")
-            or die(mysql_error());
-
 			// Increment the counter
 			++$count;
 		}
 		
-		break;
-                
+        foreach ($jcart->get_contents() as $key=>$item)
+        { //print_r($key);
+          //print_r($item['shirt_snapshot']);
+          // store the transaction progress
+          // store the item in the cart to db :FAIL!!!:
+          $shirt = $item['shirt_snapshot'];
+          //var_dump($shirt);
+          mysql_query("insert into image values('$key','$shirt','')") or die(mysql_error());
+        }
+	
 		// Empty the cart
 		$jcart->empty_cart();
 

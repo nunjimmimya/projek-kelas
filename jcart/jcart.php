@@ -8,20 +8,20 @@
 // Cart logic based on Webforce Cart: http://www.webforcecart.com/
 class Jcart {
 
-	public $config       = array();
-	private $items       = array();
-	private $shirts      = array();
-	private $names       = array();
-	private $shirt_snapshots   = array();
-	private $prices      = array();
-	private $qtys        = array();
-	private $front_texts = array();
-	private $back_texts  = array();
-	private $front_logos = array();
-	private $back_logos  = array();
-	private $urls        = array();
-	private $subtotal    = 0;
-	private $itemCount   = 0;
+	public $config           = array();
+	private $items           = array();
+	private $shirts          = array();
+	private $names           = array();
+	private $shirt_snapshots = array();
+	private $prices          = array();
+	private $qtys            = array();
+	private $front_texts     = array();
+	private $back_texts      = array();
+	private $front_logos     = array();
+	private $back_logos      = array();
+	private $urls            = array();
+	private $subtotal        = 0;
+	private $itemCount       = 0;
 
 	function __construct() {
 
@@ -39,19 +39,19 @@ class Jcart {
 		$items = array();
 		foreach($this->items as $tmpItem) {
 			$item = null;
-			$item['id']         = $tmpItem;
-			$item['shirt']      = $this->shirts[$tmpItem];
-			$item['name']       = $this->names[$tmpItem];
-			$item['shirt_snapshot']   = $this->shirt_snapshots[$tmpItem];
-			$item['price']      = $this->prices[$tmpItem];
-			$item['qty']        = $this->qtys[$tmpItem];
-			$item['front_text'] = $this->front_texts[$tmpItem];
-			$item['back_text']  = $this->back_texts[$tmpItem];
-			$item['front_logo'] = $this->front_logos[$tmpItem];
-			$item['back_logo']  = $this->back_logos[$tmpItem];
-			$item['url']        = $this->urls[$tmpItem];
-			$item['subtotal']   = $item['price'] * $item['qty'];
-			$items[]            = $item;
+			$item['id']             = $tmpItem;
+			$item['shirt']          = $this->shirts[$tmpItem];
+			$item['name']           = $this->names[$tmpItem];
+			$item['shirt_snapshot'] = $this->shirt_snapshots[$tmpItem];
+			$item['price']          = $this->prices[$tmpItem];
+			$item['qty']            = $this->qtys[$tmpItem];
+			$item['front_text']     = $this->front_texts[$tmpItem];
+			$item['back_text']      = $this->back_texts[$tmpItem];
+			$item['front_logo']     = $this->front_logos[$tmpItem];
+			$item['back_logo']      = $this->back_logos[$tmpItem];
+			$item['url']            = $this->urls[$tmpItem];
+			$item['subtotal']       = $item['price'] * $item['qty'];
+			$items[]                = $item;
 		}
 		return $items;
 	}
@@ -96,17 +96,17 @@ class Jcart {
 			}
 			// This is a new item
 			else {
-				$this->items[]            = $id;
-				$this->shirt[$id]         = $shirt;
-				$this->names[$id]         = $name;
-				$this->shirt_snapshots[$id]     = $shirt_snapshot;
-				$this->prices[$id]        = $price;
-				$this->qtys[$id]          = $qty;
-				$this->front_texts[$id]   = $front_text;
-				$this->back_texts[$id]    = $back_text;
-				$this->front_logos[$id]   = $front_logo;
-				$this->back_logos[$id]    = $back_logo;
-				$this->urls[$id]          = $url;
+				$this->items[]              = $id;
+				$this->shirt[$id]           = $shirt;
+				$this->names[$id]           = $name;
+				$this->shirt_snapshots[$id] = $shirt_snapshot;
+				$this->prices[$id]          = $price;
+				$this->qtys[$id]            = $qty;
+				$this->front_texts[$id]     = $front_text;
+				$this->back_texts[$id]      = $back_text;
+				$this->front_logos[$id]     = $front_logo;
+				$this->back_logos[$id]      = $back_logo;
+				$this->urls[$id]            = $url;
 			}
 			$this->update_subtotal();
 			return true;
@@ -195,19 +195,19 @@ class Jcart {
 	* Empty the cart
 	*/
 	public function empty_cart() {
-		$this->items       = array();
-		$this->shirts      = array();
-		$this->names       = array();
-		$this->shirt_snapshots   = array();
-		$this->prices      = array();
-		$this->qtys        = array();
-		$this->front_texts = array();
-		$this->back_texts  = array();
-		$this->front_logos = array();
-		$this->back_logos  = array();
-		$this->urls      = array();
-		$this->subtotal  = 0;
-		$this->itemCount = 0;
+		$this->items           = array();
+		$this->shirts          = array();
+		$this->names           = array();
+		$this->shirt_snapshots = array();
+		$this->prices          = array();
+		$this->qtys            = array();
+		$this->front_texts     = array();
+		$this->back_texts      = array();
+		$this->front_logos     = array();
+		$this->back_logos      = array();
+		$this->urls            = array();
+		$this->subtotal        = 0;
+		$this->itemCount       = 0;
 	}
 
 	/**
@@ -293,33 +293,33 @@ class Jcart {
 		$checkout = $config['checkoutPath'];
 		$priceFormat = $config['priceFormat'];
 
-		$id         = $config['item']['id'];         // id for cart
-		$shirt      = $config['item']['shirtimage']; // shirt image location
-		$name       = $config['item']['name'];       // shirt name
-		$shirt_snapshot   = $config['item']['shirt_snapshot'];   // shirt base64 data
-		$price      = $config['item']['price'];      // shirt price
-		$qty        = $config['item']['qty'];        // shirt quantity
-		$front_text = $config['item']['front_text']; // shirt front text
-		$back_text  = $config['item']['back_text'];  // shirt back text
-		$front_logo = $config['item']['front_logo']; // shirt front logo
-		$back_logo  = $config['item']['back_logo'];  // shirt back logo
-		$url        = $config['item']['url'];        // shirt url (if any)
-		$add        = $config['item']['add'];        // shirt cart
+		$id             = $config['item']['id'];         // id for cart
+		$shirt          = $config['item']['shirtimage']; // shirt image location
+		$name           = $config['item']['name'];       // shirt name
+		$shirt_snapshot = $config['item']['shirt_snapshot'];   // shirt base64 data
+		$price          = $config['item']['price'];      // shirt price
+		$qty            = $config['item']['qty'];        // shirt quantity
+		$front_text     = $config['item']['front_text']; // shirt front text
+		$back_text      = $config['item']['back_text'];  // shirt back text
+		$front_logo     = $config['item']['front_logo']; // shirt front logo
+		$back_logo      = $config['item']['back_logo'];  // shirt back logo
+		$url            = $config['item']['url'];        // shirt url (if any)
+		$add            = $config['item']['add'];        // shirt cart
 
 
 		// Use config values as literal indices for incoming POST values
 		// Values are the HTML name attributes set in config.json
-		$id         = $_POST[$id];
-		$shirt      = $_POST[$shirt];
-		$name       = $_POST[$name];
-		$shirt_snapshot   = $_POST[$shirt_snapshot];
-		$price      = $_POST[$price];
-		$qty        = $_POST[$qty];
-		$front_text = $_POST[$front_text];
-		$back_text  = $_POST[$back_text];
-		$front_logo = $_POST[$front_logo];
-		$back_logo  = $_POST[$back_logo];
-		$url        = $_POST[$url];
+		$id             = $_POST[$id];
+		$shirt          = $_POST[$shirt];
+		$name           = $_POST[$name];
+		$shirt_snapshot = $_POST[$shirt_snapshot];
+		$price          = $_POST[$price];
+		$qty            = $_POST[$qty];
+		$front_text     = $_POST[$front_text];
+		$back_text      = $_POST[$back_text];
+		$front_logo     = $_POST[$front_logo];
+		$back_logo      = $_POST[$back_logo];
+		$url            = $_POST[$url];
 
 		// Optional CSRF protection, see: http://conceptlogic.com/jcart/security.php
 		$jcartToken = $_POST['jcartToken'];

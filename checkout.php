@@ -71,9 +71,7 @@
  </head>
  <body>
   <div id="wrapper">
-   <div id="header">
-    <div id="logo"><h1>Custom myShirt</h1></div>
-   </div>
+   <div id="header"><div id="logo"><h1>Custom myShirt</h1></div></div>
    <div id="content"><br />
     <div align="center"><h2><u>Custom myShirt Checkout Cart</u></h2></div>
     <div id="jcart"><?php $jcart->display_cart(); ?></div>
@@ -82,21 +80,22 @@
      //echo '<pre>';
      //var_dump($_SESSION['jcart']);
      //echo '</pre>';
+     
     ?>
     <div id="billing" class="jcart">
      <form name="custom" method="post" action="">
       Billing/shipping information<br /><hr><br />
       <div align="left"><input type="radio" name="rdDesign" id="return" value="0" />Returning Customer<br />
-      <input type="radio" name="rdDesign" id="new" value="1" />New Customer<br /><br /> </div>
-      <input type="button" value="Proceed" onclick="newPage()"/>
-     </div>
-    </form> 
+       <input type="radio" name="rdDesign" id="new" value="1" />New Customer<br /><br /> </div>
+       <input type="button" value="Proceed" onclick="newPage()"/>
+      </div>
+     </form> 
+    </div>
+    <div class="clear"></div>
+    <div id="copyright"><p>Copyright &copy; 2012. Bancho Group Sdn.Bhd</p></div>
    </div>
-   <div class="clear"></div>
-   <div id="copyright"><p>Copyright &copy; 2012. Bancho Group Sdn.Bhd</p></div>
   </div>
   <script type="text/javascript" src="script/jquery-1.8.2.min.js"></script>
   <script type="text/javascript" src="jcart/js/jcart.min.js"></script>
-  <script type="text/javascript" src="script/querystring-0.9.0-min.js"</script>
  </body>
 </html>
