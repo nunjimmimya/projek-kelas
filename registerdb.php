@@ -2,7 +2,7 @@
  //initiate all variable
  $fname = $_POST["fname"];
  $lname = $_POST["lname"];
- $email = $_POST["email"];
+ $email = $_POST["emailid"];
  $password = $_POST["password"];
  $address = $_POST["address"];
  $postcode = $_POST["postcode"];
@@ -14,13 +14,28 @@
  { die('Could not connect: ' . mysql_error());   }
 
  $selecteddb = mysql_select_db('dbbancho', $con);
- if (!$db_selected) 
+ if (!$selecteddb) 
  { die ('Can\'t use foo : ' . mysql_error()); }
  
- //insert user
- $insert = "INSERT INTO `customers` (`FirstName`, `LastName`, `Address`, `PhoneNo`, `Email Address`, `HomePhone`, `PostCode`) VALUES
- ('$fname', '$lname', '$address', '$phone', '$email', '$phone', '$postcode')";
-
- mysql_query($insert);
- header("Location: checkout.php?userid=$email");
+ // check whether user click submit or register
+ if (isset($_POST['logmein']))
+ { // validate user
+   $checklogin = mysql_query("select emailid from security where pwd = '$password'");
+   $row = mysql_fetch_assoc($checklogin);
+   if ($row['emailid'] == $email)
+   { echo "Welcome $email \n";
+     echo "<br />";
+   }
+   
+   // jump to appropriate page
+   mysql_free_result($checklogin);
+   header("Location: checkout.php?email=$email");
+ }
+ else if (isset($_POST['registerme']))
+ { // write user to db and jump to page appropriate
+   // insert user
+   mysql_query("INSERT INTO customers VALUES('$fname', '$lname', '$address', '$phone', '$email', '$phone', '$postcode','','')") or die(mysql_error());
+   header("Location: checkout.php?email=$email");
+ }
+ 
 ?>

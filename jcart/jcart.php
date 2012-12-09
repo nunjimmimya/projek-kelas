@@ -621,11 +621,6 @@ class Jcart {
 // Start a new session in case it hasn't already been started on the including page
 @session_start();
 
-/* Create a new session, deleting the previous session data. */
-//    session_regenerate_id(TRUE);
-    /* erase data carried over from previous session */
-//    $_SESSION=array();
-
 // Initialize jcart after session start
 $jcart = $_SESSION['custommyshirt'];
 if(!is_object($jcart)) {

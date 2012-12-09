@@ -6,12 +6,6 @@
  include_once('jcart/jcart.php');
 
  session_start();
-
- // if user already login
- if(isset($_SESSION['name']))
-  $name = $_SESSION['name'];
- else
-  $name = "Guest of Honor";
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -36,42 +30,33 @@
    }
    -->
   </style>
-  <script type="text/javascript">
-   function newPage()
-   { if(getCheckedValue(document.forms['custom'].elements['rdDesign'])==0)
-	 { var pageURL="invoice.php";
-	   var left = (screen.width/2)-(400/2);
-	   var top = (screen.height/2)-(400/2);
-	   var targetWin = window.open (pageURL,'height=770,width=810,toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, top='+top+', left='+left);
-	 }
-	 else
-	 { var pageURL="register.php";
-	   var left = (screen.width/2)-(400/2);
-	   var top = (screen.height/2)-(400/2);
-	   var targetWin = window.open (pageURL,'height=770,width=810,toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, top='+top+', left='+left);
-	 }
-   }
-   
-   function getCheckedValue(radioObj) 
-   { if(!radioObj)
-	  return "";
-	 var radioLength = radioObj.length;
-	 if(radioLength == undefined)
-	  if(radioObj.checked)
-	   return radioObj.value;
-	  else
-	   return "";
-	  for(var i = 0; i < radioLength; i++) 
-	  { if(radioObj[i].checked) 
-	    { return radioObj[i].value; }
-	  }
-	  return "";
-   }
-  </script>
  </head>
  <body>
   <div id="wrapper">
-   <div id="header"><div id="logo"><h1>Custom myShirt</h1></div></div>
+   <div id="header">
+    <div id="logo"><h1>Custom myShirt</h1></div><br />
+    <div id="cartbar">
+     <?php
+       // if user already login
+       $emailid = $_GET["email"];
+       if(isset($emailid))
+        print "<h5>Welcome $emailid</h5>\n";
+       else
+       { // ask user to register
+         print "<h6><u>Please login to finish your order</u></h6><br />\n";
+         print "<form method='post' action='registerdb.php'>\n";
+         print " <p>\n";
+         print " <h6>Enter your credential</h6>\n";
+         print " <input type='text' name='emailid' placeholder='Type your email address' /><br />\n";
+         print " <input type='password' name='password' placeholder='Type your password'  /><br />\n";
+         print " <input type='submit' name='logmein' value='Sign in' />||\n";
+         print " <a href='register.php'><u>Register</u></a>\n";
+         print " </p>\n";
+         print "</form>\n";
+      }
+     ?>
+    </div>
+   </div>
    <div id="content"><br />
     <div align="center"><h2><u>Custom myShirt Checkout Cart</u></h2></div>
     <div id="jcart"><?php $jcart->display_cart(); ?></div>
@@ -82,15 +67,6 @@
      //echo '</pre>';
      
     ?>
-    <div id="billing" class="jcart">
-     <form name="custom" method="post" action="">
-      Billing/shipping information<br /><hr><br />
-      <div align="left"><input type="radio" name="rdDesign" id="return" value="0" />Returning Customer<br />
-       <input type="radio" name="rdDesign" id="new" value="1" />New Customer<br /><br /> </div>
-       <input type="button" value="Proceed" onclick="newPage()"/>
-      </div>
-     </form> 
-    </div>
     <div class="clear"></div>
     <div id="copyright"><p>Copyright &copy; 2012. Bancho Group Sdn.Bhd</p></div>
    </div>

@@ -18,11 +18,8 @@
   </style>
  </head>
  <body>
- <form method="post" action="invoice.html">
   <div id="wrapper">
-   <div id="header">
-    <div id="logo"><h1>Custom myShirt</h1></div>
-   </div>
+   <div id="header"><div id="logo"><h1>Custom myShirt</h1></div></div>
    <div id="copyright">
     <form id='register' action='registerdb.php' method='post' accept-charset='UTF-8'>
      <fieldset >
@@ -89,7 +86,7 @@
       <p>&nbsp;  </p>
       <div><br />
        <input type="submit" name="reset" id="reset" value="Reset" />
-       <input type='submit' name='Submit' value='Submit' />
+       <input type='submit' name='registerme' value='Submit' />
       </div>
       <p>&nbsp;  </p>
      </fieldset>
