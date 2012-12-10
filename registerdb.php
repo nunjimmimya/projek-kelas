@@ -14,7 +14,7 @@
  if (!$con)
  { die('Could not connect: ' . mysql_error());   }
 
- $selecteddb = mysql_select_db('dbbancho', $con);
+ $selecteddb = mysql_select_db('dbbancho2', $con);
  if (!$selecteddb) 
  { die ('Can\'t use foo : ' . mysql_error()); }
  
