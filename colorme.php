@@ -113,9 +113,11 @@
      switch ($shirt_type)
      { case '1'  : print '<input type="hidden" name="inp_selected_design" value="corporate_shirt1">';
                    print '<input type="hidden" name="selected_design" value="Corporate Shirt Type 1">';
+                   $link = "images\/drawing\/corporate_shirt1.png";
                    break;
        case '2'  : print '<input type="hidden" name="inp_selected_design" value="corporate_shirt2">';
                    print '<input type="hidden" name="selected_design" value="Corporate Shirt Type 2">';
+                   $link = "images\/drawing\/corporate_shirt3.png";
                    break;
        case '3'  : print '<input type="hidden" name="inp_selected_design" value="roundneck_long">';
                    print '<input type="hidden" name="selected_design" value="t-Shirt Long Sleeve Roundneck">';
@@ -468,9 +470,15 @@
      $('#wizardform').live('click', function()
      { $('#shirt_thumbnail').attr('src', $('#front_shirt_canvas').getCanvasImage("png"));
        final_price();
-       // try save with base64 value with textarea
-       $('textarea[name=shirt_snapshot]').val($('#front_shirt_canvas').getCanvasImage("png"));
-   
+       
+       <?php
+        // try save with base64 value with textarea
+        if (($shirt_type == '1') || ($shirt_type == '2'))
+         print "$('textarea[name=shirt_snapshot]').val('" .$link. "');\n";
+        else
+         print "$('textarea[name=shirt_snapshot]').val($('#front_shirt_canvas').getCanvasImage(\"png\"));\n";
+       ?>
+        
        $('#calculate').live('click', function()
        { calculate_all(); });
      });

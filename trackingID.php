@@ -47,32 +47,37 @@
       <th>Tracking No:</th>
       <td>
        <?php 
+        //check whether tx from paypal is available
         if(isset($_GET['tx']))
-         { echo $_GET['tx'];
-           // Further processing
-         }
+        { // write tx to image
+          $query = "update image set transactionid='" .$_GET['tx']. "' where transactionid=''";
+          mysql_query($query) or die(mysql_error());
+          print $_GET['tx']. "\n";
+          // Further processing
+        }        
        ?>
       </td>
      </tr>
      <tr>
       <th>Name:</th>
-      <td>Tasha</td>
-     </tr>
-     <tr>
-      <th>Product:</th>
       <td>
        <?php 
-         $fh = fopen('images/drawing/cart/image.txt', 'r');
-         $theData = fread($fh, filesize('images/drawing/cart/image.txt'));
-         fclose($fh);
-         print "<img src='$theData' width='240' />";
+        // get first and last name from db
+        $checklogin = mysql_query("select firstname, lastname from customers where `email address` = 'tinbang@gmail.com'");
+        $row = mysql_fetch_assoc($checklogin);
+        print $row['firstname']. " " .$row['lastname']. "\n";
        ?>
       </td>
      </tr>
-     <tr>
-      <th>Price:</th>
-      <td>RM 2000</td>
-     </tr>
+     <?php
+      // list buyed item from store
+      $query = "select image from image where transactionid = '" .$_GET['tx']. "'";
+      $buyed = mysql_query ($query) or die (mysql_error());
+      while ($row = mysql_fetch_array($buyed))
+      { print "<tr><th>Product:</th><td><img width='300' src='$row[image]' /></td>\n";
+        print "<td>RM 2000</td></tr>\n";
+      }
+     ?>
     </table>
     <br />
     Thank you for Shopping with us
