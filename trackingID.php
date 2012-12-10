@@ -49,11 +49,19 @@
        <?php 
         //check whether tx from paypal is available
         if(isset($_GET['tx']))
-        { // write tx to image
+        { // write tx to all that appropriate
           $query = "update image set transactionid='" .$_GET['tx']. "' where transactionid=''";
           mysql_query($query) or die(mysql_error());
           print $_GET['tx']. "\n";
           // Further processing
+          // orderid is transacionid
+          $query = "update orderdetails set orderid='" .$_GET['tx']. "' where orderid=''";
+          mysql_query($query) or die(mysql_error());
+          
+          // store addon details
+          // addonid is transactionid
+          $query = "update addon set addonid='" .$_GET['tx']. "' where addonid=''";
+          mysql_query($query) or die(mysql_error());
         }        
        ?>
       </td>
@@ -70,13 +78,21 @@
       </td>
      </tr>
      <?php
-      // list buyed item from store
+      // list buyed image item from store
       $query = "select image from image where transactionid = '" .$_GET['tx']. "'";
       $buyed = mysql_query ($query) or die (mysql_error());
       while ($row = mysql_fetch_array($buyed))
-      { print "<tr><th>Product:</th><td><img width='300' src='$row[image]' /></td>\n";
-        print "<td>RM 2000</td></tr>\n";
+      { print "<tr><th>" .($row[addimageid]). "</th><td><img width='300' src='$row[image]' /></td>\n";
+        // list buyed text item from store
+        $query = "select addtext from addon where addonid= '" .$_GET['tx']. "'";
+        $text = mysql_query ($query) or die (mysql_error());
+        print "<td><h6>Text</h6>\n";
+        while ($row = mysql_fetch_array($text))
+        { print "<div align='left'>$row[addtext]</div><br />\n"; }
+        print "</td>\n";
+        print "</tr>";
       }
+      //print "<td>RM 2000</td></tr>\n";
      ?>
     </table>
     <br />

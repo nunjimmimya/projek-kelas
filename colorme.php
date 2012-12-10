@@ -350,16 +350,6 @@
    { // try save with base64 value with textarea
      $('textarea[name=shirt_snapshot]').val($('#front_shirt_canvas').getCanvasImage("png"));
      
-     //this function will save canvas data to base64 and save it in db
-     /*var shirt_image = $('#front_shirt_canvas').getCanvasImage("png");
-     
-     $.ajax(
-     { type: 'POST',
-	   url: 'saveshirtimage.php',
-	   data: {shirtdata : shirt_image},
-	   success: function(data)
-	   {  }
-	 });*/
    }
    
    // all setting will be process by HTML when page has been called

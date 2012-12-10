@@ -106,9 +106,19 @@ else {
 		}
 		
         foreach ($jcart->get_contents() as $key=>$item)
-        { //print_r($key);
-          //print_r($item['shirt_snapshot']);
-          // store the transaction progress
+        { // store the transaction progress
+          // store design name
+          $shirt_id = $item['id'];
+          $shirt_quantity = $item['qty'];
+          mysql_query("insert into orderdetails values('','$shirt_id','$shirt_quantity','','','','','')") or die(mysql_error());
+          
+          // store addon details
+          $front_text = $item['front_text'];
+          $back_text = $item['back_text'];
+          mysql_query("insert into addon values('','$front_text','','','','','','','$key')") or die(mysql_error());
+          mysql_query("insert into addon values('','$back_text','','','','','','','$key')") or die(mysql_error());
+          
+          // store shirt snapshot
           $shirt = $item['shirt_snapshot'];
           mysql_query("insert into image values('$key','$shirt','')") or die(mysql_error());
         }
