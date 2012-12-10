@@ -38,9 +38,8 @@
     <div id="cartbar">
      <?php
        // if user already login
-       $emailid = $_GET["email"];
-       if(isset($emailid))
-        print "<h5>Welcome $emailid</h5>\n";
+       if(isset($_SESSION['email']))
+        print "<h5>Welcome " .$_SESSION['email']. "</h5>\n";
        else
        { // ask user to register
          print "<h6><u>Please login to finish your order</u></h6><br />\n";

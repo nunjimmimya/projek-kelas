@@ -109,9 +109,7 @@ else {
         { //print_r($key);
           //print_r($item['shirt_snapshot']);
           // store the transaction progress
-          // store the item in the cart to db :FAIL!!!:
           $shirt = $item['shirt_snapshot'];
-          //var_dump($shirt);
           mysql_query("insert into image values('$key','$shirt','')") or die(mysql_error());
         }
 	

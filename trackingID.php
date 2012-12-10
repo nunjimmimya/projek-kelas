@@ -14,12 +14,6 @@
     if (!$selecteddb) 
     { die ('Can\'t use foo : ' . mysql_error()); }
            
-    // if user already login
-    if(isset($_SESSION['name']))
-     $name = $_SESSION['name'];
-    else
-     $name = "Guest of Honor";
-     
   ?>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Fashion Hut</title>

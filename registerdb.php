@@ -8,8 +8,9 @@
  $postcode = $_POST["postcode"];
  $phone = $_POST["phone"];
  $office = $_POST["office"];
- 
  $con = mysql_connect("localhost","root","gampang");
+ $referer =  $_SERVER['HTTP_REFERER'];
+ 
  if (!$con)
  { die('Could not connect: ' . mysql_error());   }
 
@@ -23,19 +24,25 @@
    $checklogin = mysql_query("select emailid from security where pwd = '$password'");
    $row = mysql_fetch_assoc($checklogin);
    if ($row['emailid'] == $email)
-   { echo "Welcome $email \n";
-     echo "<br />";
+   { // write emailid into session
+     $_SESSION['email'] = $email;
    }
    
    // jump to appropriate page
-   mysql_free_result($checklogin);
-   header("Location: checkout.php?email=$email");
+   mysql_close($con);
+   header("Location: $referer");
  }
  else if (isset($_POST['registerme']))
  { // write user to db and jump to page appropriate
    // insert user
    mysql_query("INSERT INTO customers VALUES('$fname', '$lname', '$address', '$phone', '$email', '$phone', '$postcode','','')") or die(mysql_error());
-   header("Location: checkout.php?email=$email");
+   mysql_close($con);
+   header("Location: $referer");
  }
- 
+ else if (isset($_POST['logout']))
+ { // delete user session
+   unset($_SESSION['email']);
+   mysql_close($con);
+   header("Location: $referer");
+ }
 ?>

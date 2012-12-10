@@ -14,12 +14,6 @@
     if (!$selecteddb) 
     { die ('Can\'t use foo : ' . mysql_error()); }
        
-    // if user already login
-    if(isset($_SESSION['name']))
-     $name = $_SESSION['name'];
-    else
-     $name = "Guest of Honor";
-     
   ?>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Fashion Hut</title>
@@ -56,29 +50,24 @@
       <li><a href="catalog.php">V-neck shirt</a></li>
      </ul>
      <?php
-       /*$passid = $_POST["password"];
-       if ((!is_null($passid)) || ($passid == ''))
-       { $checklogin = mysql_query("select emailid from masterlist where passid = '$passid'");
-         while($row = mysql_fetch_array($checklogin))
-         { print_r($row);
-           if ($row['emailid'] == $_POST["emailid"])
-           { echo "Welcome $emailid\n";
-             echo "<br />";
-           }
-           else
-           {*/ print "<form method='post' action=''>\n";
-             print " <br />\n";
-             print " <p>\n";
-             print "  <h6>Enter your credential</h6>\n";
-             print "  <input type='text' name='emailid' placeholder='Type your email address' />\n";
-             print "  <input type='password' name='password' placeholder='Type your password'  />\n";
-             print "  <input type='submit' value='Sign in' />||\n";
-             print "  <a href='register.php'><u>Register</u></a>\n";
-             print " </p>\n";
-             print "</form>\n";
-           /*}
-         }
-       }*/
+       if (isset($_SESSSION['email']))
+       { print "<form method='post' action='registerdb.php'>\n";
+         print "Welcome $emailid\n";
+         echo "<br /><input type='submit' name='logout' value='logout' />\n";
+         print "</form>\n";
+       }
+       else
+       { print "<form method='post' action='registerdb.php'>\n";
+         print " <br />\n";
+         print " <p>\n";
+         print "  <h6>Enter your credential</h6>\n";
+         print "  <input type='text' name='emailid' placeholder='Type your email address' />\n";
+         print "  <input type='password' name='password' placeholder='Type your password'  />\n";
+         print "  <input type='submit' value='Sign in' />||\n";
+         print "  <a href='register.php'><u>Register</u></a>\n";
+         print " </p>\n";
+         print "</form>\n";
+       }
     ?>
     </div>
     <div id="seasonal">
